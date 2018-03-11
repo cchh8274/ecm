@@ -1,0 +1,80 @@
+###########################################################################
+一、logic层分库
+参见ecm_dao\src\main\java\cn\kanmars\ecm\dyndata\impl\MyDataSourceRouter.java
+package cn.kanmars.ecm.dyndata.impl;
+
+import cn.kanmars.ecm.dyndata.DynamicDataSourceRouter;
+import org.springframework.stereotype.Component;
+
+/**
+ * Created by kanmars on 2017/5/9.
+ */
+@Component("MyDataSourceRouter")
+public class MyDataSourceRouter implements DynamicDataSourceRouter {
+    @Override
+    public String router(Object ... partionKeys) {
+        return "ecm-DataSource-ds1";
+    }
+}
+
+在logic层的方法上增加注解,即可在logic层进行分库
+/*
+ * 查询信息
+ */
+@DynamicDataSourceMethod(partionKeyIndex = {0},routerBeanName="kkk")
+public TblSysmenuInfo querySysmenuInfo(TblSysmenuInfo tblSysmenuInfo) throws Exception {
+    logger.debug("querySysmenuInfo:start");
+    logger.debug("传入参数:tblSysmenuInfo:" + (tblSysmenuInfo != null ? JSONObject.fromObject(tblSysmenuInfo).toString() : "null"));
+    TblSysmenuInfo result = tblSysmenuInfoMapper.select(tblSysmenuInfo);
+    logger.debug("查询结果:tblSysmenuInfo:" + (result != null ? JSONObject.fromObject(result).toString() : "null"));
+    logger.debug("querySysmenuInfo:end");
+    return result;
+}
+
+任何一个方法加上了DynamicDataSourceMethod注解，在执行此方法之前会根据partionKeyIndex代表的参数序号，用value代表的DynamicDataSourceRouter对象选择数据源，
+优先级在事务处理之前，因此可以实现分库分表功能
+
+partionKeyIndex为数组，会将index指定的参数(或参数列表)作为分区key传入DynamicDataSourceAspect进行处理，最终传入DynamicDataSourceRouter
+
+
+###########################################################################
+二、dao层分表
+参见ecm_dao\src\main\java\cn\kanmars\ecm\dyndata\impl\MyTableSplitDemo.java
+package cn.kanmars.ecm.dyndata.impl;
+
+/**
+ * Created by kanmars on 2017/5/9.
+ */
+
+import cn.kanmars.ecm.dyndata.DynamicTableSplitor;
+import org.springframework.stereotype.Component;
+
+@Component("MyTableSplitor")
+public class MyTableSplitor implements DynamicTableSplitor {
+    @Override
+    public String suffix(Object... splitKeys) {
+        if(1==1)return"_201704";
+        return "";
+    }
+}
+
+
+
+在dao层增加注解
+public interface TblFileInfoMapper {
+    /**
+     * 查询单个对象
+     */
+    @DynamicTableSplitMethod(splitKeyIndex={0},suffixBeanName = "MyTableSplitor")
+    public TblFileInfo select(TblFileInfo tblFileInfo);
+}
+
+在sql中增加标记@TableSplitor@
+<select id="select" parameterType="cn.kanmars.ecm.entity.TblFileInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_info@TableSplitor@
+       。。。。。。
+</select>
+
+即可在运行时，sql进行prepare之前，将参数0传入MyTableSplitor，将解析后的表名放入tbl_file_info之后

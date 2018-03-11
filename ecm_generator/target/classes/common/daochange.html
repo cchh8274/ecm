@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>自动变换数据库语言</title>
+    <script src="/common/js/jquery-1.7.1.min.js"></script>
+    <script src="/common/js/jquery.base64.js"></script>
+</head>
+<body>
+<h3>备注：当前工具，用于支持原生ecm系统的数据库语言转换，例如，将原生的MYSQL版本，转换为ORACLE版本</h3>
+<br>
+<h3>目前支持如下几种转换:</h3><br>
+<h3>MYSQL->ORACLE</h3><br>
+<h3>MYSQL->DB2</h3><br>
+<h3>MYSQL->SQLITE</h3><br>
+<h3>严重说明：仅能用于“原生ecm系统自动生成的DAO层Mapper文件”，多或者少一个空格，或者把空格换成一个tab键都有可能会导致转换失效</h3><br>
+<h3>其原因为：判断Mapper文件是否需要替换，以及当前属于什么数据库类型，均为使用“回车换行+8个空格+&lt;foreach”等关键字寻找的，这些字段错误，会导致转换失效。</h3><br>
+<h3>新增字段则不会，但是需要小心IDE偷偷将回车换行或者空格进行“人性化转换”</h3><br>
+<br>
+请输入mapper文件夹名称:<br><input id="mapperpath" style="width:800px" value="E:\code\ecm\branches\ecm_parent_0.1.0_BR\ecm_dao\src\main\resources\props\ecm\mapper"><br>
+请选择转换类型<br>
+<select id="daochangetype" style="width:800px">
+    <option value="">未选择</option>
+    <option value="1">MYSQL->ORACLE</option>
+    <option value="2">MYSQL->DB2</option>
+    <option value="3">MYSQL->SQLITE</option>
+</select>
+<input type="button" value="转换" onclick="daochange()" />
+<script>
+    function daochange(){
+        var mapperpath = $("#mapperpath").val();
+        if(mapperpath==""){
+            alert("请输入mapper路径");
+            return;
+        }
+        var daochangetype = $("#daochangetype").val();
+        if(daochangetype==""){
+            alert("请输入数据转换类型");
+            return;
+        }
+        var queryurl="/daochange?mapperpath="+$.base64.encode(encodeURIComponent($("#mapperpath").val()))+"&daochangetype="+daochangetype;
+        $.ajax({
+            url:queryurl,
+            type:"GET",
+            dataType:"json",
+            success:function(data){
+                //第三个参数为N，代表非联合查询
+                alert(data.resDesc);
+            }
+        })
+
+
+    }
+</script>
+</body>
+</html>

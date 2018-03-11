@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblDemoUserphotoInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblDemoUserphotoInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="DECIMAL" />
+            <arg column="user_nm" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="photo" javaType="java.lang.Long" jdbcType="DECIMAL" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,user_nm,photo
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblDemoUserphotoInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userNm != null and userNm != '' ">
+            and user_nm = #{userNm,jdbcType=VARCHAR}
+        </if>
+        <if test="photo != null and photo != '' ">
+            and photo = #{photo,jdbcType=DECIMAL}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblDemoUserphotoInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userNm != null and userNm != '' ">
+            and user_nm = #{userNm,jdbcType=VARCHAR}
+        </if>
+        <if test="photo != null and photo != '' ">
+            and photo = #{photo,jdbcType=DECIMAL}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblDemoUserphotoInfo" >
+        insert into tbl_demo_userphoto_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="userNm != null ">
+                user_nm,
+            </if>
+            <if test="photo != null ">
+                photo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="userNm != null ">
+                #{userNm,jdbcType=VARCHAR},
+            </if>
+            <if test="photo != null ">
+                #{photo,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblDemoUserphotoInfo" >
+        update tbl_demo_userphoto_info
+        <set>
+            <if test="userNm != null">
+                user_nm = #{userNm,jdbcType=VARCHAR} ,
+            </if>
+            <if test="photo != null">
+                photo = #{photo,jdbcType=DECIMAL} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblDemoUserphotoInfo" >
+        delete from tbl_demo_userphoto_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="userNm != null and userNm != '' ">
+                and user_nm = #{userNm,jdbcType=VARCHAR}
+            </if>
+            <if test="photo != null and photo != '' ">
+                and photo = #{photo,jdbcType=DECIMAL}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userNm != null and userNm != '' ">
+            and user_nm = #{userNm,jdbcType=VARCHAR}
+        </if>
+        <if test="photo != null and photo != '' ">
+            and photo = #{photo,jdbcType=DECIMAL}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userNm != null and userNm != '' ">
+            and user_nm = #{userNm,jdbcType=VARCHAR}
+        </if>
+        <if test="photo != null and photo != '' ">
+            and photo = #{photo,jdbcType=DECIMAL}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_demo_userphoto_info
+        <set>
+            <if test="userNm_new != null">
+                user_nm = #{userNm_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="photo_new != null">
+                photo = #{photo_new,jdbcType=DECIMAL} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="userNm != null ">
+                and user_nm = #{userNm,jdbcType=VARCHAR}
+            </if>
+            <if test="photo != null ">
+                and photo = #{photo,jdbcType=DECIMAL}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userNm != null and userNm != '' ">
+            and user_nm like CONCAT(#{userNm,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="photo != null and photo != '' ">
+            and photo = #{photo,jdbcType=DECIMAL}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_demo_userphoto_info (id,user_nm,photo) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.userNm},#{item.photo}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_demo_userphoto_info
+            <set>
+                <if test="item.userNm_new != null">
+                    user_nm = #{item.userNm_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.photo_new != null">
+                    photo = #{item.photo_new,jdbcType=DECIMAL} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.userNm != null ">
+                    and user_nm = #{item.userNm,jdbcType=VARCHAR}
+                </if>
+                <if test="item.photo != null ">
+                    and photo = #{item.photo,jdbcType=DECIMAL}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_demo_userphoto_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

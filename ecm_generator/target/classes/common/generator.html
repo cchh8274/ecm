@@ -1,0 +1,299 @@
+<html>
+<head>
+    <title>选择页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="/common/js/jquery-1.7.1.min.js"></script>
+    <script src="/common/js/jquery.base64.js"></script>
+    <script src="/common/js/generator.js"></script>
+</head>
+<body>
+<h3>第一步:请输入数据库信息，指定数据库类型，数据库帐号密码等信息</h3>
+<br>
+    <textarea id="dbDriverInfo" style="width:1000px;height:170px;">
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  MYSQL
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+ecm.jdbc.dbtype=MYSQL
+ecm.jdbc.driverClass=com.mysql.jdbc.Driver
+ecm.jdbc.url=jdbc:mysql://10.112.180.165:3306/ecm_v_010?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+ecm.jdbc.schema=ecm_v_010
+ecm.jdbc.username=ecm_v_010
+ecm.jdbc.password=ecm_v_010
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  ORACLE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ecm.jdbc.dbtype=ORACLE
+//ecm.jdbc.driverClass=oracle.jdbc.driver.OracleDriver
+//ecm.jdbc.url=jdbc:oracle:thin:@10.126.53.197:1521:finance
+//ecm.jdbc.schema=billuat
+//ecm.jdbc.username=billuat
+//ecm.jdbc.password=billuat
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  SQLITE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ecm.jdbc.dbtype=SQLITE
+//ecm.jdbc.driverClass=org.sqlite.JDBC
+//ecm.jdbc.url=jdbc:sqlite:D:/sqlite.ecm.db3
+//ecm.jdbc.username=
+//ecm.jdbc.schema=
+//ecm.jdbc.password=
+    </textarea><br>
+<br>
+<h3>第二步:输入基础路径</h3>
+请输入基础路径(即ecm-parent文件夹的位置):<br><input id="basePath" style="width:800px" value="E:/code/ecm/branches/ecm_parent_0.1.0_BR"><br>
+<br>
+请输入表名:<br><input id="tableName" style="width:800px" value="tbl_demo_info"><br>
+中文表名称:<br><input id="tableComment" style="width:800px" value="DEMO表"><br>
+<br>
+<h3>第三步:查询字段</h3>
+<input type="button" onclick="selectTableInfo()" value="点击查询"/><br>
+<br>
+
+选择要生成的文件:
+<input type="checkbox" id="cb_0" class="checkbox_gp0" checked="checked"/>ALL&nbsp;&nbsp;
+<input type="checkbox" id="cb_1" class="checkbox_gp0" checked="checked"/>Entity
+<input type="checkbox" id="cb_2" class="checkbox_gp0" checked="checked"/>Dao
+<input type="checkbox" id="cb_3" class="checkbox_gp0" checked="checked"/>Mapper
+<input type="checkbox" id="cb_4" class="checkbox_gp0" checked="checked"/>Logic
+<input type="checkbox" id="cb_5" class="checkbox_gp0" checked="checked"/>Controller
+<input type="checkbox" id="cb_6" class="checkbox_gp0" checked="checked"/>Ftl
+<input type="checkbox" id="cb_7" class="checkbox_gp0" checked="checked"/>JS
+<input type="button" onclick="buildFiles(true,true)" value="生成文件并储存配置"/>
+<input type="button" onclick="buildFiles(false,true)" value="仅储存配置"/>
+<input type="button" onclick="buildFiles(true,false)" value="仅生成文件"/>
+<script>
+    function selectTableInfo(){
+        var basePath = $("#basePath").val();
+        if(basePath==""){
+            alert("请输入基础路径");
+            return;
+        }
+        var tableName = $("#tableName").val();
+        if(tableName==""){
+            alert("请输入表名");
+            return;
+        }
+        var tableComment = $("#tableComment").val();
+        if(tableComment==""){
+            alert("请输入表的中文名称");
+            return;
+        }
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        var queryurl="/generator?type=a_01_selectDBINFO&dbDriverInfo="+dbDriverInfo+"&tableName="+tableName+"&tableComment="+$.base64.encode(encodeURIComponent($("#tableComment").val()));
+        $.ajax({
+            url:queryurl,
+            type:"GET",
+            dataType:"json",
+            success:function(data){
+                //第三个参数为N，代表非联合查询
+                loadDataToTable("tableInfo",data,"N");
+            }
+        })
+    }
+
+
+
+
+    $(function(){
+        //绑定切换事件
+        $(".TYPE_SELECT").live("change",function(){
+            var type = $(this).val();
+            var columnCommentJson = {};
+            columnCommentJson.type=type;
+            var idx = $(this).attr("idx");
+            initDefaultAndSetValueBycolumnCommentJson("tableInfo",idx,columnCommentJson);
+        });
+        //全选事件
+        $("#cb_0").change(function(){
+            var checked = $(this).prop("checked");
+            $(".checkbox_gp0").prop("checked",checked);
+        })
+    })
+
+
+    /**
+     * 创建文件并生成comment标志
+     * @param fileFlg   是否创建文件，true或者false
+     * @param commentflg 是否修改commentflg，true或者false
+     */
+    function buildFiles(fileflg,commentflg){
+
+        var basePath = $("#basePath").val();
+        if(basePath==""){
+            alert("请输入基础路径");
+            return;
+        }
+        var tableName = $("#tableName").val();
+        if(tableName==""){
+            alert("请输入表名");
+            return;
+        }
+        var tableComment = $("#tableComment").val();
+        if(tableComment==""){
+            alert("请输入表的中文名称");
+            return;
+        }
+
+        if($("#tableInfo tr:gt(0)").size()<=0){
+            alert("请点击查询按钮查询数据");
+            return;
+        }
+
+
+        var allTypeSelected = true;
+        var hasblob = false;
+        $(".TYPE_SELECT").each(function(){
+            if($(this).val()==""){
+                allTypeSelected = false;
+            }
+        });
+        $(".TYPE_SELECT").each(function(){
+            if($(this).val()=="blob"){
+                hasblob = true;
+            }
+        });
+        if(!allTypeSelected){
+
+            var ct_entity = $("#cb_1").prop("checked");
+            var ct_dao = $("#cb_2").prop("checked");
+            var ct_mapper = $("#cb_3").prop("checked");
+            var ct_logic = $("#cb_4").prop("checked");
+            var ct_controller = $("#cb_5").prop("checked");
+            var ct_ftl = $("#cb_6").prop("checked");
+            var ct_js = $("#cb_7").prop("checked");
+
+            if(!(
+                    ct_logic==false
+                            &&
+                    ct_controller==false
+                            &&
+                    ct_ftl==false
+                            &&
+                    ct_js==false
+                    )){
+                alert("您没有选择字段类型，当需要生成logic,controller,ftl,js时，必须选择字段类型并填写对应的值！");
+                return;
+            }
+
+            if(hasblob){
+                if(
+                        ct_logic==true
+                        ||
+                        ct_controller==true
+                        ||
+                        ct_ftl==true
+                        ||
+                        ct_js==true
+                ){
+                    alert("当含有Blob时，不可以生成logic,controller,ftl,js!");
+                    return;
+                }
+            }
+        }
+
+
+        var hasPrimaryKey = false;
+        $(".isPrimaryKey").each(function(){
+            if($(this).val()=="true"){
+                hasPrimaryKey = true;
+            }
+        });
+        if(!hasPrimaryKey) {
+            alert("请选择主键");
+            return;
+        }
+
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        if(fileflg){//生成文件，根据commentFlg决定是否修改comment
+            if(!confirm("是否确定生成？")){
+                return;
+            }
+            var buildurl="/generator?type=a_02_buildFiles"
+                    +"&dbDriverInfo="+dbDriverInfo
+                    +"&tableName="+tableName
+                    +"&basePath="+ $.base64.encode($("#basePath").val())
+                    +"&tableComment="+$.base64.encode(encodeURIComponent($("#tableComment").val()))
+                    +"&alterCommentFlg="+commentflg
+                    +"&entity="+$("#cb_1").prop("checked")
+                    +"&dao="+$("#cb_2").prop("checked")
+                    +"&mapper="+$("#cb_3").prop("checked")
+                    +"&logic="+$("#cb_4").prop("checked")
+                    +"&controller="+$("#cb_5").prop("checked")
+                    +"&ftl="+$("#cb_6").prop("checked")
+                    +"&js="+$("#cb_7").prop("checked")
+        }else{//不生成文件仅储存配置
+            if(!confirm("是否确定储存？\n说明：SQLITE数据库不支持储存，点击确定无任何效果")){
+                return;
+            }
+            var buildurl="/generator?type=a_02_buildFiles"
+                    +"&dbDriverInfo="+dbDriverInfo
+                    +"&tableName="+tableName
+                    +"&basePath="+ $.base64.encode($("#basePath").val())
+                    +"&tableComment="+$.base64.encode(encodeURIComponent($("#tableComment").val()))
+                    +"&entity=false"
+                    +"&dao=false"
+                    +"&mapper=false"
+                    +"&logic=false"
+                    +"&controller=false"
+                    +"&ftl=false"
+                    +"&js=false"
+        }
+
+        var buildParam = getBuildParam("tableInfo","N");
+        buildParam = JSON.stringify(buildParam);
+        buildParam = encodeURIComponent(buildParam);
+        $.ajax({
+            url:buildurl,
+            type:"POST",
+            data:"buildParam="+buildParam,
+            dataType:"json",
+            success:function(data){
+                if(data.resCode=="0000"){
+                    alert("成功");
+                }else{
+                    alert("生成失败，错误原因如下:"+data.resDesc)
+                }
+            }
+        })
+    }
+</script>
+<hr>
+<style>
+    table{
+        border-collapse:collapse;
+    }
+    td{
+        border: solid 1px #000000;
+        height: 20px;
+    }
+    .sztitle{
+        width:200px;
+        display:block;
+        float:left;
+    }
+    .szinput{
+        width:490px;
+    }
+    .szselect{
+        width:490px;
+    }
+
+</style>
+
+
+
+<table id="tableInfo" >
+    <tr>
+        <td style="width:100px;">COLUMN</td>
+        <td style="width:100px;">列名</td>
+        <td style="width:100px;">数据库类型</td>
+        <td style="width:100px;">类型</td>
+        <td style="width:700px;">配置</td>
+        <td style="width:100px;">主键</td>
+        <td style="width:50px;">数据库宽度</td>
+        <td style="width:50px;">数据库精度</td>
+        <td style="width:50px;">是否可以为空</td>
+    </tr>
+</table>
+</body>
+</html>

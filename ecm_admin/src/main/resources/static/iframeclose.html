@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>iframeclose.html</title>
+    <!--
+        用法说明
+        1、用于解决跨域问题
+        2、如果使用ecm框架，内部通过IFRAME形式，引用了其他的项目，则会发生跨域
+        3、则需要在其他的项目内部，创建iframe，并指定src为iframeopen,iframeclose,iframeresize,iframecall等html页面
+        4、由于A->B->C这样的结构中，A,C是同域的，则B可以通过指定C的参数来实现跨域
+        5、参数如下
+            iframeopen.html，需要传入:id,menuName,menuUrl三个参数，且需要encodeURIComponent一次
+            iframeclose.html，需要传入：id参数，且需要encodeURIComponent一次
+            iframesize.html，需要传入：id,height参数，且需要encodeURIComponent一次
+            iframecall.html，需要传入：callstr参数，且需要encodeURIComponent一次
+    -->
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function() {
+        var search = location.search.replace('?', '')
+        var id;
+        var c = search.split("&");
+        for(var x in c){
+            var key = x.split("=")[0];
+            var value = x.split("=")[1];
+            value = decodeURIComponent(value);
+            if(key=="id"){
+                id = value;
+            }
+        }
+        parent.parent.closeIframe(id);
+    }
+</script>
+</body>
+</html>

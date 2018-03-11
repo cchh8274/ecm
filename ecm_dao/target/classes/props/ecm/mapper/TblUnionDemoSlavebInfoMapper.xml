@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblUnionDemoSlavebInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo">
+        <constructor>
+            <idArg column="demo_idb" javaType="java.lang.Long" jdbcType="DECIMAL" />
+            <arg column="forgien_id" javaType="java.lang.Long" jdbcType="DECIMAL" />
+            <arg column="demo_nmb" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_timeb" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="count_numberb" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="demo_moneyb" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <arg column="select_staticb" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="select_dynamicb" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="radio_staticb" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="radio_dynamicb" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="checkbox_staticb" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="checkbox_dynamicb" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_dateb" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        demo_idb,forgien_id,demo_nmb,create_timeb,count_numberb,demo_moneyb,select_staticb,select_dynamicb,radio_staticb,radio_dynamicb,checkbox_staticb,checkbox_dynamicb,create_dateb
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        <if test="demoIdb != null and demoIdb != '' ">
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        <if test="demoIdb != null and demoIdb != '' ">
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo" >
+        insert into tbl_union_demo_slaveb_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="demoIdb != null ">
+                demo_idb,
+            </if>
+            <if test="forgienId != null ">
+                forgien_id,
+            </if>
+            <if test="demoNmb != null ">
+                demo_nmb,
+            </if>
+            <if test="createTimeb != null ">
+                create_timeb,
+            </if>
+            <if test="countNumberb != null ">
+                count_numberb,
+            </if>
+            <if test="demoMoneyb != null ">
+                demo_moneyb,
+            </if>
+            <if test="selectStaticb != null ">
+                select_staticb,
+            </if>
+            <if test="selectDynamicb != null ">
+                select_dynamicb,
+            </if>
+            <if test="radioStaticb != null ">
+                radio_staticb,
+            </if>
+            <if test="radioDynamicb != null ">
+                radio_dynamicb,
+            </if>
+            <if test="checkboxStaticb != null ">
+                checkbox_staticb,
+            </if>
+            <if test="checkboxDynamicb != null ">
+                checkbox_dynamicb,
+            </if>
+            <if test="createDateb != null ">
+                create_dateb,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="demoIdb != null ">
+                #{demoIdb,jdbcType=DECIMAL},
+            </if>
+            <if test="forgienId != null ">
+                #{forgienId,jdbcType=DECIMAL},
+            </if>
+            <if test="demoNmb != null ">
+                #{demoNmb,jdbcType=VARCHAR},
+            </if>
+            <if test="createTimeb != null ">
+                #{createTimeb,jdbcType=CHAR},
+            </if>
+            <if test="countNumberb != null ">
+                #{countNumberb,jdbcType=DECIMAL},
+            </if>
+            <if test="demoMoneyb != null ">
+                #{demoMoneyb,jdbcType=DECIMAL},
+            </if>
+            <if test="selectStaticb != null ">
+                #{selectStaticb,jdbcType=CHAR},
+            </if>
+            <if test="selectDynamicb != null ">
+                #{selectDynamicb,jdbcType=CHAR},
+            </if>
+            <if test="radioStaticb != null ">
+                #{radioStaticb,jdbcType=CHAR},
+            </if>
+            <if test="radioDynamicb != null ">
+                #{radioDynamicb,jdbcType=CHAR},
+            </if>
+            <if test="checkboxStaticb != null ">
+                #{checkboxStaticb,jdbcType=VARCHAR},
+            </if>
+            <if test="checkboxDynamicb != null ">
+                #{checkboxDynamicb,jdbcType=VARCHAR},
+            </if>
+            <if test="createDateb != null ">
+                #{createDateb,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo" >
+        update tbl_union_demo_slaveb_info
+        <set>
+            <if test="forgienId != null">
+                forgien_id = #{forgienId,jdbcType=DECIMAL} ,
+            </if>
+            <if test="demoNmb != null">
+                demo_nmb = #{demoNmb,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTimeb != null">
+                create_timeb = #{createTimeb,jdbcType=CHAR} ,
+            </if>
+            <if test="countNumberb != null">
+                count_numberb = #{countNumberb,jdbcType=DECIMAL} ,
+            </if>
+            <if test="demoMoneyb != null">
+                demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL} ,
+            </if>
+            <if test="selectStaticb != null">
+                select_staticb = #{selectStaticb,jdbcType=CHAR} ,
+            </if>
+            <if test="selectDynamicb != null">
+                select_dynamicb = #{selectDynamicb,jdbcType=CHAR} ,
+            </if>
+            <if test="radioStaticb != null">
+                radio_staticb = #{radioStaticb,jdbcType=CHAR} ,
+            </if>
+            <if test="radioDynamicb != null">
+                radio_dynamicb = #{radioDynamicb,jdbcType=CHAR} ,
+            </if>
+            <if test="checkboxStaticb != null">
+                checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR} ,
+            </if>
+            <if test="checkboxDynamicb != null">
+                checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createDateb != null">
+                create_dateb = #{createDateb,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblUnionDemoSlavebInfo" >
+        delete from tbl_union_demo_slaveb_info
+        where 1=1
+            <if test="demoIdb != null and demoIdb != '' ">
+                and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+            </if>
+            <if test="forgienId != null and forgienId != '' ">
+                and forgien_id = #{forgienId,jdbcType=DECIMAL}
+            </if>
+            <if test="demoNmb != null and demoNmb != '' ">
+                and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+            </if>
+            <if test="createTimeb != null and createTimeb != '' ">
+                and create_timeb = #{createTimeb,jdbcType=CHAR}
+            </if>
+            <if test="countNumberb != null and countNumberb != '' ">
+                and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+            </if>
+            <if test="demoMoneyb != null and demoMoneyb != '' ">
+                and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+            </if>
+            <if test="selectStaticb != null and selectStaticb != '' ">
+                and select_staticb = #{selectStaticb,jdbcType=CHAR}
+            </if>
+            <if test="selectDynamicb != null and selectDynamicb != '' ">
+                and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+            </if>
+            <if test="radioStaticb != null and radioStaticb != '' ">
+                and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+            </if>
+            <if test="radioDynamicb != null and radioDynamicb != '' ">
+                and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+            </if>
+            <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+                and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+            </if>
+            <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+                and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+            </if>
+            <if test="createDateb != null and createDateb != '' ">
+                and create_dateb = #{createDateb,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        <if test="demoIdb != null and demoIdb != '' ">
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        <if test="demoIdb != null and demoIdb != '' ">
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_union_demo_slaveb_info
+        <set>
+            <if test="forgienId_new != null">
+                forgien_id = #{forgienId_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="demoNmb_new != null">
+                demo_nmb = #{demoNmb_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTimeb_new != null">
+                create_timeb = #{createTimeb_new,jdbcType=CHAR} ,
+            </if>
+            <if test="countNumberb_new != null">
+                count_numberb = #{countNumberb_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="demoMoneyb_new != null">
+                demo_moneyb = #{demoMoneyb_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="selectStaticb_new != null">
+                select_staticb = #{selectStaticb_new,jdbcType=CHAR} ,
+            </if>
+            <if test="selectDynamicb_new != null">
+                select_dynamicb = #{selectDynamicb_new,jdbcType=CHAR} ,
+            </if>
+            <if test="radioStaticb_new != null">
+                radio_staticb = #{radioStaticb_new,jdbcType=CHAR} ,
+            </if>
+            <if test="radioDynamicb_new != null">
+                radio_dynamicb = #{radioDynamicb_new,jdbcType=CHAR} ,
+            </if>
+            <if test="checkboxStaticb_new != null">
+                checkbox_staticb = #{checkboxStaticb_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="checkboxDynamicb_new != null">
+                checkbox_dynamicb = #{checkboxDynamicb_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createDateb_new != null">
+                create_dateb = #{createDateb_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="demoIdb != null ">
+                and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+            </if>
+            <if test="forgienId != null ">
+                and forgien_id = #{forgienId,jdbcType=DECIMAL}
+            </if>
+            <if test="demoNmb != null ">
+                and demo_nmb = #{demoNmb,jdbcType=VARCHAR}
+            </if>
+            <if test="createTimeb != null ">
+                and create_timeb = #{createTimeb,jdbcType=CHAR}
+            </if>
+            <if test="countNumberb != null ">
+                and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+            </if>
+            <if test="demoMoneyb != null ">
+                and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+            </if>
+            <if test="selectStaticb != null ">
+                and select_staticb = #{selectStaticb,jdbcType=CHAR}
+            </if>
+            <if test="selectDynamicb != null ">
+                and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+            </if>
+            <if test="radioStaticb != null ">
+                and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+            </if>
+            <if test="radioDynamicb != null ">
+                and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+            </if>
+            <if test="checkboxStaticb != null ">
+                and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+            </if>
+            <if test="checkboxDynamicb != null ">
+                and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+            </if>
+            <if test="createDateb != null ">
+                and create_dateb = #{createDateb,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        <if test="demoIdb != null and demoIdb != '' ">
+            and demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and demo_nmb like CONCAT(#{demoNmb,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+        <if test="createDateb_start != null and createDateb_start != '' ">
+            and create_dateb &gt;= #{createDateb_start,jdbcType=CHAR}
+        </if>
+        <if test="createDateb_end != null and createDateb_end != '' ">
+            and create_dateb &lt;= #{createDateb_end,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_union_demo_slaveb_info (demo_idb,forgien_id,demo_nmb,create_timeb,count_numberb,demo_moneyb,select_staticb,select_dynamicb,radio_staticb,radio_dynamicb,checkbox_staticb,checkbox_dynamicb,create_dateb) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.demoIdb},#{item.forgienId},#{item.demoNmb},#{item.createTimeb},#{item.countNumberb},#{item.demoMoneyb},#{item.selectStaticb},#{item.selectDynamicb},#{item.radioStaticb},#{item.radioDynamicb},#{item.checkboxStaticb},#{item.checkboxDynamicb},#{item.createDateb}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_union_demo_slaveb_info
+            <set>
+                <if test="item.forgienId_new != null">
+                    forgien_id = #{item.forgienId_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.demoNmb_new != null">
+                    demo_nmb = #{item.demoNmb_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTimeb_new != null">
+                    create_timeb = #{item.createTimeb_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.countNumberb_new != null">
+                    count_numberb = #{item.countNumberb_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.demoMoneyb_new != null">
+                    demo_moneyb = #{item.demoMoneyb_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.selectStaticb_new != null">
+                    select_staticb = #{item.selectStaticb_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.selectDynamicb_new != null">
+                    select_dynamicb = #{item.selectDynamicb_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.radioStaticb_new != null">
+                    radio_staticb = #{item.radioStaticb_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.radioDynamicb_new != null">
+                    radio_dynamicb = #{item.radioDynamicb_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.checkboxStaticb_new != null">
+                    checkbox_staticb = #{item.checkboxStaticb_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.checkboxDynamicb_new != null">
+                    checkbox_dynamicb = #{item.checkboxDynamicb_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createDateb_new != null">
+                    create_dateb = #{item.createDateb_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.demoIdb != null ">
+                    and demo_idb = #{item.demoIdb,jdbcType=DECIMAL}
+                </if>
+                <if test="item.forgienId != null ">
+                    and forgien_id = #{item.forgienId,jdbcType=DECIMAL}
+                </if>
+                <if test="item.demoNmb != null ">
+                    and demo_nmb = #{item.demoNmb,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTimeb != null ">
+                    and create_timeb = #{item.createTimeb,jdbcType=CHAR}
+                </if>
+                <if test="item.countNumberb != null ">
+                    and count_numberb = #{item.countNumberb,jdbcType=DECIMAL}
+                </if>
+                <if test="item.demoMoneyb != null ">
+                    and demo_moneyb = #{item.demoMoneyb,jdbcType=DECIMAL}
+                </if>
+                <if test="item.selectStaticb != null ">
+                    and select_staticb = #{item.selectStaticb,jdbcType=CHAR}
+                </if>
+                <if test="item.selectDynamicb != null ">
+                    and select_dynamicb = #{item.selectDynamicb,jdbcType=CHAR}
+                </if>
+                <if test="item.radioStaticb != null ">
+                    and radio_staticb = #{item.radioStaticb,jdbcType=CHAR}
+                </if>
+                <if test="item.radioDynamicb != null ">
+                    and radio_dynamicb = #{item.radioDynamicb,jdbcType=CHAR}
+                </if>
+                <if test="item.checkboxStaticb != null ">
+                    and checkbox_staticb = #{item.checkboxStaticb,jdbcType=VARCHAR}
+                </if>
+                <if test="item.checkboxDynamicb != null ">
+                    and checkbox_dynamicb = #{item.checkboxDynamicb,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createDateb != null ">
+                    and create_dateb = #{item.createDateb,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_union_demo_slaveb_info
+        where 1=1
+        and demo_idb = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

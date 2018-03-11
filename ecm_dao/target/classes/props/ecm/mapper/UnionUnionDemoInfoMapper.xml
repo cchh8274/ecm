@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.UnionUnionDemoInfoMapper">
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+            main.demo_id,
+            main.forgien_id,
+            main.demo_nm,
+            main.create_time,
+            main.count_number,
+            main.demo_money,
+            main.select_static,
+            main.select_dynamic,
+            main.radio_static,
+            main.radio_dynamic,
+            main.checkbox_static,
+            main.checkbox_dynamic,
+            main.create_date,
+            slavea.demo_ida,
+            slavea.demo_nma,
+            slavea.create_timea,
+            slavea.count_numbera,
+            slavea.demo_moneya,
+            slavea.select_statica,
+            slavea.select_dynamica,
+            slavea.radio_statica,
+            slavea.radio_dynamica,
+            slavea.checkbox_statica,
+            slavea.checkbox_dynamica,
+            slavea.create_datea,
+            slaveb.demo_idb,
+            slaveb.demo_nmb,
+            slaveb.create_timeb,
+            slaveb.count_numberb,
+            slaveb.demo_moneyb,
+            slaveb.select_staticb,
+            slaveb.select_dynamicb,
+            slaveb.radio_staticb,
+            slaveb.radio_dynamicb,
+            slaveb.checkbox_staticb,
+            slaveb.checkbox_dynamicb,
+            slaveb.create_dateb
+        from
+            tbl_union_demo_main_info main,
+            tbl_union_demo_slavea_info slavea,
+            tbl_union_demo_slaveb_info slaveb
+        where 1=1
+            and main.demo_id=slavea.forgien_id
+            and main.demo_id=slaveb.forgien_id
+        <if test="demoId != null and demoId != '' ">
+            and main.demo_id = #{demoId,jdbcType=DECIMAL}
+        </if>
+        <if test="forgienId != null and forgienId != '' ">
+            and main.forgien_id = #{forgienId,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNm != null and demoNm != '' ">
+            and main.demo_nm like CONCAT(#{demoNm,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and main.create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="countNumber != null and countNumber != '' ">
+            and main.count_number = #{countNumber,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoney != null and demoMoney != '' ">
+            and main.demo_money = #{demoMoney,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStatic != null and selectStatic != '' ">
+            and main.select_static = #{selectStatic,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamic != null and selectDynamic != '' ">
+            and main.select_dynamic = #{selectDynamic,jdbcType=CHAR}
+        </if>
+        <if test="radioStatic != null and radioStatic != '' ">
+            and main.radio_static = #{radioStatic,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamic != null and radioDynamic != '' ">
+            and main.radio_dynamic = #{radioDynamic,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStatic != null and checkboxStatic != '' ">
+            and main.checkbox_static = #{checkboxStatic,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamic != null and checkboxDynamic != '' ">
+            and main.checkbox_dynamic = #{checkboxDynamic,jdbcType=VARCHAR}
+        </if>
+        <if test="createDate != null and createDate != '' ">
+            and main.create_date = #{createDate,jdbcType=CHAR}
+        </if>
+        <if test="createDate_start != null and createDate_start != '' ">
+            and main.create_date &gt;= #{createDate_start,jdbcType=CHAR}
+        </if>
+        <if test="createDate_end != null and createDate_end != '' ">
+            and main.create_date &lt;= #{createDate_end,jdbcType=CHAR}
+        </if>
+        <if test="demoIda != null and demoIda != '' ">
+            and slavea.demo_ida = #{demoIda,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNma != null and demoNma != '' ">
+            and slavea.demo_nma like CONCAT(#{demoNma,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTimea != null and createTimea != '' ">
+            and slavea.create_timea = #{createTimea,jdbcType=CHAR}
+        </if>
+        <if test="countNumbera != null and countNumbera != '' ">
+            and slavea.count_numbera = #{countNumbera,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneya != null and demoMoneya != '' ">
+            and slavea.demo_moneya = #{demoMoneya,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStatica != null and selectStatica != '' ">
+            and slavea.select_statica = #{selectStatica,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamica != null and selectDynamica != '' ">
+            and slavea.select_dynamica = #{selectDynamica,jdbcType=CHAR}
+        </if>
+        <if test="radioStatica != null and radioStatica != '' ">
+            and slavea.radio_statica = #{radioStatica,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamica != null and radioDynamica != '' ">
+            and slavea.radio_dynamica = #{radioDynamica,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStatica != null and checkboxStatica != '' ">
+            and slavea.checkbox_statica = #{checkboxStatica,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamica != null and checkboxDynamica != '' ">
+            and slavea.checkbox_dynamica = #{checkboxDynamica,jdbcType=VARCHAR}
+        </if>
+        <if test="createDatea != null and createDatea != '' ">
+            and slavea.create_datea = #{createDatea,jdbcType=CHAR}
+        </if>
+        <if test="createDatea_start != null and createDatea_start != '' ">
+            and slavea.create_datea &gt;= #{createDatea_start,jdbcType=CHAR}
+        </if>
+        <if test="createDatea_end != null and createDatea_end != '' ">
+            and slavea.create_datea &lt;= #{createDatea_end,jdbcType=CHAR}
+        </if>
+        <if test="demoIdb != null and demoIdb != '' ">
+            and slaveb.demo_idb = #{demoIdb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoNmb != null and demoNmb != '' ">
+            and slaveb.demo_nmb like CONCAT(#{demoNmb,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTimeb != null and createTimeb != '' ">
+            and slaveb.create_timeb = #{createTimeb,jdbcType=CHAR}
+        </if>
+        <if test="countNumberb != null and countNumberb != '' ">
+            and slaveb.count_numberb = #{countNumberb,jdbcType=DECIMAL}
+        </if>
+        <if test="demoMoneyb != null and demoMoneyb != '' ">
+            and slaveb.demo_moneyb = #{demoMoneyb,jdbcType=DECIMAL}
+        </if>
+        <if test="selectStaticb != null and selectStaticb != '' ">
+            and slaveb.select_staticb = #{selectStaticb,jdbcType=CHAR}
+        </if>
+        <if test="selectDynamicb != null and selectDynamicb != '' ">
+            and slaveb.select_dynamicb = #{selectDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="radioStaticb != null and radioStaticb != '' ">
+            and slaveb.radio_staticb = #{radioStaticb,jdbcType=CHAR}
+        </if>
+        <if test="radioDynamicb != null and radioDynamicb != '' ">
+            and slaveb.radio_dynamicb = #{radioDynamicb,jdbcType=CHAR}
+        </if>
+        <if test="checkboxStaticb != null and checkboxStaticb != '' ">
+            and slaveb.checkbox_staticb = #{checkboxStaticb,jdbcType=VARCHAR}
+        </if>
+        <if test="checkboxDynamicb != null and checkboxDynamicb != '' ">
+            and slaveb.checkbox_dynamicb = #{checkboxDynamicb,jdbcType=VARCHAR}
+        </if>
+        <if test="createDateb != null and createDateb != '' ">
+            and slaveb.create_dateb = #{createDateb,jdbcType=CHAR}
+        </if>
+        <if test="createDateb_start != null and createDateb_start != '' ">
+            and slaveb.create_dateb &gt;= #{createDateb_start,jdbcType=CHAR}
+        </if>
+        <if test="createDateb_end != null and createDateb_end != '' ">
+            and slaveb.create_dateb &lt;= #{createDateb_end,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+
+</mapper>
+

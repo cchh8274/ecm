@@ -1,0 +1,486 @@
+<html>
+<head>
+    <title>生成联合查询后台管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="/common/js/jquery-1.7.1.min.js"></script>
+    <script src="/common/js/jquery.base64.js"></script>
+    <script src="/common/js/generator.js"></script>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        td{
+            border: solid 1px #000000;
+            height: 20px;
+        }
+        .sztitle{
+            width:200px;
+            display:block;
+            float:left;
+        }
+        .szinput{
+            width:490px;
+        }
+        .szselect{
+            width:490px;
+        }
+
+    </style>
+</head>
+<body>
+<h3><span style="color: red;">使用联合查询生成的前提是：各单表的增删改查已独立生成</span></h3>
+<h3>第一步:导入配置文件(如果没有配置文件，此步骤可以略过)</h3>
+
+<input id="props" value=""/>
+<button id="import" onclick="importproperties()">导入配置文件</button>
+<br/>
+<h3>第二步:请输入数据库信息</h3>
+    <textarea id="dbDriverInfo" style="width:1000px;height:170px;">
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  MYSQL
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+ecm.jdbc.dbtype=MYSQL
+ecm.jdbc.driverClass=com.mysql.jdbc.Driver
+ecm.jdbc.url=jdbc:mysql://10.112.180.165:3306/ecm_v_010?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+ecm.jdbc.schema=ecm_v_010
+ecm.jdbc.username=ecm_v_010
+ecm.jdbc.password=ecm_v_010
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  ORACLE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ecm.jdbc.dbtype=ORACLE
+//ecm.jdbc.driverClass=oracle.jdbc.driver.OracleDriver
+//ecm.jdbc.url=jdbc:oracle:thin:@10.126.53.197:1521:finance
+//ecm.jdbc.schema=billuat
+//ecm.jdbc.username=billuat
+//ecm.jdbc.password=billuat
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  SQLITE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ecm.jdbc.dbtype=SQLITE
+//ecm.jdbc.driverClass=org.sqlite.JDBC
+//ecm.jdbc.url=jdbc:sqlite:D:/sqlite.ecm.db3
+//ecm.jdbc.username=
+//ecm.jdbc.schema=
+//ecm.jdbc.password=
+    </textarea><br>
+<h3>第三步:请输入基础信息</h3>
+<!--
+请输入基础路径(即ecm-parent文件夹的位置):<br><input id="basePath" style="width:800px" value="E:/work/GFS_NEW_IntenlliJ/ecm/branches/ecm_parent_0.1.0_BR"><br>
+-->
+请输入基础路径(即ecm-parent文件夹的位置):<br><input id="basePath" style="width:800px" value="E:/code/ecm/branches/ecm_parent_0.1.0_BR"><br>
+请输入业务英文名称:<br><input id="businessName" style="width:800px" value="union_Demo_Info"><br>
+请输入业务中文名称:<br><input id="businessCnName" style="width:800px" value="联表查询DEMO"><br>
+
+<h3>第四步:请设置主表</h3>
+主表英文名称：<input id="mainTableName" style="width:400px" value="tbl_union_demo_main_info">
+主表英文别名：<input id="mainTableAlias" style="width:50px" value="main">
+<button id="refreshmain" onclick="refreshmain()">刷新主表字段</button>
+<br>
+
+<h3>第五步:请设置从表(主从关系为一条记录对一条记录，支持多张从表)</h3>
+<button id="addslave" onclick="addslave()">添加从表</button>
+<div id="slavetabledemoforclone" style="display: none">
+    <button  onclick="deleteslave(this)">删除从表</button>
+    从表英文名称：<input name="slaveTableName" class="slaveTableName" style="width:400px" value="tbl_union_demo_slavea_info"  placeholder="tbl_union_demo_slavea_info">
+    从表英文别名：<input name="slaveTableAlias" class="slaveTableAlias" style="width:50px" value="slavea" placeholder="slavea">
+    从表关联条件：<input name="slaveTableWhere" class="slaveTableWhere" style="width:250px" value="main.demo_id=slavea.forgien_id" placeholder="main.demo_id=slavea.forgien_id">
+    <button onclick="refreshslave(this)">刷新从表字段</button>
+</div>
+<div id="slaveTableDiv">
+
+</div>
+<br>
+<h3>第六步:请设置子表(主子关系为一张主表记录对多张子表记录，仅支持一张子表)</h3>
+<div id="subtable">
+    子表英文名称：<input id="subTableName" name="subTableName" class="subTableName" style="width:400px" value="tbl_union_demo_sub_info" placeholder="tbl_union_demo_sub_info">
+    子表英文别名：<input id="subTableAlias" name="subTableAlias" class="subTableAlias" style="width:50px" value="sub" placeholder="sub">
+    子表关联条件：<input id="subTableWhere" name="subTableWhere" class="subTableWhere" style="width:250px" value="main.demo_id=sub.forgien_id" placeholder="main.demo_id=sub.foreign_id">
+    <button onclick="refreshsub(this)">刷新子表字段</button>
+</div>
+<h3>第七步:配置主表字段(当第四步设置主表后，点击“刷新主表字段”后可用)</h3>
+<div id="mainTableColumns" class="mainTableColumns">
+    <table id="mainTableColumnsTable" name="TableColumnsTable" beenrefresh="false">
+        <tr>
+            <td style="width:100px;">COLUMN</td>
+            <td style="width:100px;">列名</td>
+            <td style="width:100px;">数据库类型</td>
+            <td style="width:100px;">类型</td>
+            <td style="width:700px;">配置</td>
+            <td style="width:100px;">主键</td>
+            <td style="width:50px;">数据库宽度</td>
+            <td style="width:50px;">数据库精度</td>
+            <td style="width:50px;">是否可以为空</td>
+            <td style="width:50px;">是否非关联字段</td>
+        </tr>
+    </table>
+</div>
+<h3>第八步:配置从表字段(当第五步设置从表后，点击“刷新从表字段”后可用)</h3>
+<div id="slaveTablesColumns" class="slaveTablesColumns">
+    <div id="slavetabledColumnsDemoforclone" style="display: none;margin-top:10px;">
+        <div class="table_name_td" style="font-size:20px;font-weight: 900;color:red;"></div>
+        <table class="slaveTableColumnsTable">
+            <tr>
+                <td style="width:100px;">COLUMN</td>
+                <td style="width:100px;">列名</td>
+                <td style="width:100px;">数据库类型</td>
+                <td style="width:100px;">类型</td>
+                <td style="width:700px;">配置</td>
+                <td style="width:100px;">主键</td>
+                <td style="width:50px;">数据库宽度</td>
+                <td style="width:50px;">数据库精度</td>
+                <td style="width:50px;">是否可以为空</td>
+                <td style="width:50px;">是否非关联字段</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<h3>第九步:配置子表字段(当第六步设置子表后，点击“刷新子表字段”后可用。备注：query-condition:Y,query-result:N,在子表中无效，均为N。默认联合查询时，不可以查询出子表中的数据)</h3>
+<div id="subTableColumns" class="subTableColumns">
+    <table id="subTableColumnsTable" name="TableColumnsTable" beenrefresh="false">
+        <tr>
+            <td style="width:100px;">COLUMN</td>
+            <td style="width:100px;">列名</td>
+            <td style="width:100px;">数据库类型</td>
+            <td style="width:100px;">类型</td>
+            <td style="width:700px;">配置</td>
+            <td style="width:100px;">主键</td>
+            <td style="width:50px;">数据库宽度</td>
+            <td style="width:50px;">数据库精度</td>
+            <td style="width:50px;">是否可以为空</td>
+            <td style="width:50px;">是否非关联字段</td>
+        </tr>
+    </table>
+</div>
+<h3>第十步:生成代码</h3>
+<div>
+    <button id="export" onclick="exportproperties()">导出配置文件</button>
+    <button id="build" onclick="buildfile()">生成代码</button>
+</div>
+
+<script>
+    function refreshmain(){
+        var mainTableName = $("#mainTableName").val();
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        var queryurl="/generatorunion?type=queryColumnsInfo&dbDriverInfo="+dbDriverInfo+"&tableName="+mainTableName;
+        $.ajax({
+            url: queryurl,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //第三个参数为：是否显示“是否作为联合查询字段”
+                loadDataToTable("mainTableColumnsTable",data,'Y');
+                $("#mainTableColumnsTable").attr("beenrefresh","true");
+            }
+        });
+    }
+
+
+
+    var slaveIdx = 0;
+
+    function addslave(){
+        var newslave = $("#slavetabledemoforclone").clone();
+        $(newslave).css("display","block");
+        $(newslave).addClass("slave_");
+        slaveIdx = slaveIdx + 1;
+        $(newslave).attr("idx", slaveIdx);
+        $(newslave).attr("beenrefresh","false");
+        $("#slaveTableDiv").append(newslave);
+
+        var newslavecolumns = $("#slavetabledColumnsDemoforclone").clone();
+        $(newslavecolumns).css("display","block");
+        $(newslavecolumns).find(".slaveTableColumnsTable").addClass("slaveTableColumnsTable_"+slaveIdx);
+        $(newslavecolumns).find(".slaveTableColumnsTable").attr("id","slaveTableColumnsTable_"+slaveIdx);
+        $(newslavecolumns).find(".slaveTableColumnsTable").attr("idx",slaveIdx);
+
+        $("#slaveTablesColumns").append(newslavecolumns);
+        //绑定选择事件
+        $(newslavecolumns).find(".TYPE_SELECT").live("change",function(){
+            var type = $(this).val();
+            var columnCommentJson = {};
+            columnCommentJson.type=type;
+            var idx = $(this).attr("idx");
+            initDefaultAndSetValueBycolumnCommentJson("slaveTableColumnsTable_"+slaveIdx,idx,columnCommentJson);
+        });
+
+    }
+    function refreshslave(a){
+        var slaveidx = $(a).parent().attr("idx");
+        var slavecolumns = $(".slaveTableColumnsTable_"+slaveidx);
+
+        var slaveTableName = $(a).parent().find(".slaveTableName").val();
+        var slaveTableAlias = $(a).parent().find(".slaveTableAlias").val();
+        var slaveTableWhere = $(a).parent().find(".slaveTableWhere").val();
+
+        //帮助显示名称
+        $(slavecolumns).parent().find(".table_name_td").text(slaveTableName);
+        //加载数据
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        var queryurl="/generatorunion?type=queryColumnsInfo&dbDriverInfo="+dbDriverInfo+"&tableName="+slaveTableName;
+        $.ajax({
+            url: queryurl,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //第三个参数为：是否显示“是否作为联合查询字段”
+                loadDataToTable("slaveTableColumnsTable_"+slaveidx,data,'Y');
+                $(a).parent().attr("beenrefresh","true");
+            }
+        });
+
+    }
+    function deleteslave(a){
+        var idx = $(a).parent().attr("idx");
+        $(a).parent().remove();
+        $(".slaveTableColumnsTable_"+idx).parent().remove();
+    }
+
+    function refreshsub(a){
+        var subTableName = $("#subTableName").val();
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        var queryurl="/generatorunion?type=queryColumnsInfo&dbDriverInfo="+dbDriverInfo+"&tableName="+subTableName;
+        $.ajax({
+            url: queryurl,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //第三个参数为：是否显示“是否显示'是否为关联字段'，早期有选择，现在已都是Y”
+                loadDataToTable("subTableColumnsTable",data,'Y');
+                $("#subTableColumnsTable").attr("beenrefresh","true");
+            }
+        });
+    }
+
+    function importproperties(){
+        alert("//TODO 功能待实现");
+    }
+    function exportproperties(){
+        alert("//TODO 功能待实现");
+    }
+
+    function getproperties(){
+        //1获取参数
+        //1.1.1获取数据库参数
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        //1.1.2获取基础路径
+        var basePath = $.base64.encode($("#basePath").val());
+        //1.1.3获取业务英文名称
+        var businessName = $("#businessName").val();
+        //1.1.4获取业务中文名称
+        var businessCnName = $("#businessCnName").val();
+        //1.1.5获取主表名称、主表别名、主表配置信息
+        var mainTableName = $("#mainTableName").val();
+        var mainTableAlias = $("#mainTableAlias").val();
+        var mainTableProperties = getBuildParam('mainTableColumnsTable','Y');
+
+        //2形成数据结构
+        var buildParam = {};
+        buildParam.dbDriverInfo=dbDriverInfo;
+        buildParam.basePath=basePath;
+        buildParam.businessName=businessName;
+        buildParam.businessCnName=businessCnName;
+        buildParam.mainTableName=mainTableName;
+        buildParam.mainTableAlias=mainTableAlias;
+        buildParam.mainTableProperties=mainTableProperties;
+
+
+        //1.1.6获取从表列表
+        var slaveTables = [];
+        //1.1.6.1循环获取从表名称，从表别名，从表关联语句，从表配置信息
+        $(".slave_").each(function(){
+            var slaveTableName  = $(this).find(".slaveTableName").val();
+            var slaveTableAlias = $(this).find(".slaveTableAlias").val();
+            var slaveTableWhere = $(this).find(".slaveTableWhere").val();
+            var slaveTableId = $(this).attr("idx");
+            var slaveTableProperties = {};
+            slaveTableProperties.slaveTableName = $(this).find(".slaveTableName").val();
+            slaveTableProperties.slaveTableAlias = $(this).find(".slaveTableAlias").val();
+            slaveTableProperties.slaveTableWhere = $(this).find(".slaveTableWhere").val();
+            slaveTableProperties.slaveTableId = $(this).find(".slaveTableId").val();
+            slaveTableProperties.buildParam = getBuildParam("slaveTableColumnsTable_"+slaveTableId,'Y');
+            slaveTables.push(slaveTableProperties);
+        });
+        if(slaveTables.length!=0){
+            //如果有从表
+            buildParam.slaveTables=slaveTables;
+        }
+
+        //1.1.7获取子表名称、主表别名、主表配置信息
+        var subTableName = $("#subTableName").val();
+        if(subTableName!=''){
+            var subTableAlias = $("#subTableAlias").val();
+            var subTableWhere = $("#subTableWhere").val();
+            var subTableProperties = getBuildParam('subTableColumnsTable','Y');
+            buildParam.subTableName=subTableName;
+            buildParam.subTableAlias=subTableAlias;
+            buildParam.subTableWhere=subTableWhere;
+            buildParam.subTableProperties=subTableProperties;
+        }
+
+        return buildParam;
+    }
+
+    function buildfile(){
+        if($(".slaveTableColumnsTable").size()<=1&&$("#subTableName").val()==''){
+            alert("请至少新增一张从表，或者设置一张子表！否则没有使用联合生成的必要！");
+            return;
+        }
+
+        var basePath = $("#basePath").val();
+        if(basePath==""){
+            alert("请输入基础路径");
+            return;
+        }
+        var businessName = $("#businessName").val();
+        if(businessName==""){
+            alert("请输入业务英文名称");
+            return;
+        }
+        var businessCnName = $("#businessCnName").val();
+        if(businessCnName==""){
+            alert("请输入业务中文名称");
+            return;
+        }
+        var mainTableName = $("#mainTableName").val();
+        if(mainTableName==""){
+            alert("请输入主表英文名称");
+            return;
+        }
+        var mainTableAlias = $("#mainTableAlias").val();
+        if(mainTableAlias==""){
+            alert("请输入主表英文别名");
+            return;
+        }
+
+        if($("#mainTableColumnsTable").attr("beenrefresh")!="true"){
+            alert("请刷新主表字段！");
+            return;
+        }
+        //校验字段是否已选择
+        var mainHasError = false;
+        $("#mainTableColumnsTable").each(function(){
+            $(this).find(".TYPE_SELECT").each(function(){
+                if($(this).val()==""){
+                    mainHasError = true;
+                }
+            });
+        });
+        if(mainHasError){
+            alert("请选择主表数据类型");
+            return;
+        }
+
+        var slaveTableNameHasError = false;
+        $(".slave_ .slaveTableName").add(".slave_ .slaveTableAlias").add(".slave_ .slaveTableWhere").each(function(){
+            if($(this).val()==""){
+                slaveTableNameHasError = true;
+            }
+        });
+        if(slaveTableNameHasError){
+            alert("请输入从表英文名称、英文别名、关联条件");
+            return;
+        }
+
+
+
+        if($(".slave_").size()>0){
+            //校验所有表是否已刷新
+            var allBeenRefresh = true;
+            $(".slave_").each(function(){
+                if($(this).attr("beenrefresh")=="false"){
+                    allBeenRefresh = false;
+                }
+            });
+
+            if(!allBeenRefresh){
+                alert("请对所有的从表进行刷新并设置表的字段！");
+                return;
+            }
+
+            //校验字段是否已选择
+            var slaveHasError = false;
+            $(".slaveTableColumnsTable:gt(0)").each(function(){
+                $(this).find(".TYPE_SELECT").each(function(){
+                    if($(this).val()==""){
+                        alert("请选择从表数据类型");
+                        slaveHasError = true;
+                    }
+                });
+            });
+            //校验从表字段
+            if(slaveHasError){
+                return;
+            }
+        }
+        if($("#subTableName").val()!=''){
+
+            if($("#subTableName").val()==''||$("#subTableAlias").val()==''||$("#subTableWhere").val()==''){
+                alert("请输入子表英文名称、英文别名、关联条件!");
+                return;
+            }
+
+            //校验子表字段
+            if($("#subTableColumnsTable").attr("beenrefresh")!="true"){
+                alert("请刷新子表字段！");
+                return;
+            }
+            //校验字段是否已选择
+            var subHasError = false;
+            $("#subTableColumnsTable").each(function(){
+                $(this).find(".TYPE_SELECT").each(function(){
+                    if($(this).val()==""){
+                        alert("请选择子表数据类型");
+                        subHasError = true;
+                    }
+                });
+            });
+            if(subHasError){
+                return;
+            }
+        }
+
+        //1获取创建参数
+        var buildParam = getproperties();
+        buildParam = JSON.stringify(buildParam);
+        buildParam = encodeURIComponent(buildParam);
+        //2提交到后台
+        var buildurl="/generatorunion?type=buildfile";
+        $.ajax({
+            url:buildurl,
+            type:"POST",
+            data:"buildParam="+buildParam,
+            dataType:"json",
+            success:function(data){
+                if(data.resCode=="0000"){
+                    alert("成功");
+                }else{
+                    alert("生成失败，错误原因如下:"+data.resDesc)
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                /*错误信息处理*/
+            }
+        })
+    }
+
+    $(function(){
+        //绑定切换事件
+        $("#mainTableColumnsTable .TYPE_SELECT").live("change",function(){
+            var type = $(this).val();
+            var columnCommentJson = {};
+            columnCommentJson.type=type;
+            var idx = $(this).attr("idx");
+            initDefaultAndSetValueBycolumnCommentJson("mainTableColumnsTable",idx,columnCommentJson);
+        });
+        $("#subTableColumnsTable .TYPE_SELECT").live("change",function(){
+            var type = $(this).val();
+            var columnCommentJson = {};
+            columnCommentJson.type=type;
+            var idx = $(this).attr("idx");
+            initDefaultAndSetValueBycolumnCommentJson("subTableColumnsTable",idx,columnCommentJson);
+        });
+    })
+</script>
+</body>
+</html>

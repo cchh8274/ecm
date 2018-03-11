@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblTaskDetailLogMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblTaskDetailLog">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="DECIMAL" />
+            <arg column="task_cn_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="business_obj_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="register_group" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="ip_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="global_task_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="global_task_count" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="global_task_index" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="batch_count" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="batch_index" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="begin_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="end_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="exec_result" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="exec_log" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="up_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,task_cn_name,business_obj_name,register_group,ip_info,global_task_name,global_task_count,global_task_index,batch_count,batch_index,begin_time,end_time,exec_result,exec_log,create_time,up_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblTaskDetailLog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="taskCnName != null and taskCnName != '' ">
+            and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+        </if>
+        <if test="businessObjName != null and businessObjName != '' ">
+            and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+        </if>
+        <if test="registerGroup != null and registerGroup != '' ">
+            and register_group = #{registerGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="ipInfo != null and ipInfo != '' ">
+            and ip_info = #{ipInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskName != null and globalTaskName != '' ">
+            and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskCount != null and globalTaskCount != '' ">
+            and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+        </if>
+        <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+            and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="batchCount != null and batchCount != '' ">
+            and batch_count = #{batchCount,jdbcType=DECIMAL}
+        </if>
+        <if test="batchIndex != null and batchIndex != '' ">
+            and batch_index = #{batchIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and begin_time = #{beginTime,jdbcType=CHAR}
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and end_time = #{endTime,jdbcType=CHAR}
+        </if>
+        <if test="execResult != null and execResult != '' ">
+            and exec_result = #{execResult,jdbcType=VARCHAR}
+        </if>
+        <if test="execLog != null and execLog != '' ">
+            and exec_log = #{execLog,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblTaskDetailLog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="taskCnName != null and taskCnName != '' ">
+            and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+        </if>
+        <if test="businessObjName != null and businessObjName != '' ">
+            and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+        </if>
+        <if test="registerGroup != null and registerGroup != '' ">
+            and register_group = #{registerGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="ipInfo != null and ipInfo != '' ">
+            and ip_info = #{ipInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskName != null and globalTaskName != '' ">
+            and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskCount != null and globalTaskCount != '' ">
+            and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+        </if>
+        <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+            and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="batchCount != null and batchCount != '' ">
+            and batch_count = #{batchCount,jdbcType=DECIMAL}
+        </if>
+        <if test="batchIndex != null and batchIndex != '' ">
+            and batch_index = #{batchIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and begin_time = #{beginTime,jdbcType=CHAR}
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and end_time = #{endTime,jdbcType=CHAR}
+        </if>
+        <if test="execResult != null and execResult != '' ">
+            and exec_result = #{execResult,jdbcType=VARCHAR}
+        </if>
+        <if test="execLog != null and execLog != '' ">
+            and exec_log = #{execLog,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblTaskDetailLog" >
+        insert into tbl_task_detail_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="taskCnName != null ">
+                task_cn_name,
+            </if>
+            <if test="businessObjName != null ">
+                business_obj_name,
+            </if>
+            <if test="registerGroup != null ">
+                register_group,
+            </if>
+            <if test="ipInfo != null ">
+                ip_info,
+            </if>
+            <if test="globalTaskName != null ">
+                global_task_name,
+            </if>
+            <if test="globalTaskCount != null ">
+                global_task_count,
+            </if>
+            <if test="globalTaskIndex != null ">
+                global_task_index,
+            </if>
+            <if test="batchCount != null ">
+                batch_count,
+            </if>
+            <if test="batchIndex != null ">
+                batch_index,
+            </if>
+            <if test="beginTime != null ">
+                begin_time,
+            </if>
+            <if test="endTime != null ">
+                end_time,
+            </if>
+            <if test="execResult != null ">
+                exec_result,
+            </if>
+            <if test="execLog != null ">
+                exec_log,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="upTime != null ">
+                up_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="taskCnName != null ">
+                #{taskCnName,jdbcType=VARCHAR},
+            </if>
+            <if test="businessObjName != null ">
+                #{businessObjName,jdbcType=VARCHAR},
+            </if>
+            <if test="registerGroup != null ">
+                #{registerGroup,jdbcType=VARCHAR},
+            </if>
+            <if test="ipInfo != null ">
+                #{ipInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="globalTaskName != null ">
+                #{globalTaskName,jdbcType=VARCHAR},
+            </if>
+            <if test="globalTaskCount != null ">
+                #{globalTaskCount,jdbcType=DECIMAL},
+            </if>
+            <if test="globalTaskIndex != null ">
+                #{globalTaskIndex,jdbcType=DECIMAL},
+            </if>
+            <if test="batchCount != null ">
+                #{batchCount,jdbcType=DECIMAL},
+            </if>
+            <if test="batchIndex != null ">
+                #{batchIndex,jdbcType=DECIMAL},
+            </if>
+            <if test="beginTime != null ">
+                #{beginTime,jdbcType=CHAR},
+            </if>
+            <if test="endTime != null ">
+                #{endTime,jdbcType=CHAR},
+            </if>
+            <if test="execResult != null ">
+                #{execResult,jdbcType=VARCHAR},
+            </if>
+            <if test="execLog != null ">
+                #{execLog,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="upTime != null ">
+                #{upTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblTaskDetailLog" >
+        update tbl_task_detail_log
+        <set>
+            <if test="taskCnName != null">
+                task_cn_name = #{taskCnName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="businessObjName != null">
+                business_obj_name = #{businessObjName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="registerGroup != null">
+                register_group = #{registerGroup,jdbcType=VARCHAR} ,
+            </if>
+            <if test="ipInfo != null">
+                ip_info = #{ipInfo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="globalTaskName != null">
+                global_task_name = #{globalTaskName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="globalTaskCount != null">
+                global_task_count = #{globalTaskCount,jdbcType=DECIMAL} ,
+            </if>
+            <if test="globalTaskIndex != null">
+                global_task_index = #{globalTaskIndex,jdbcType=DECIMAL} ,
+            </if>
+            <if test="batchCount != null">
+                batch_count = #{batchCount,jdbcType=DECIMAL} ,
+            </if>
+            <if test="batchIndex != null">
+                batch_index = #{batchIndex,jdbcType=DECIMAL} ,
+            </if>
+            <if test="beginTime != null">
+                begin_time = #{beginTime,jdbcType=CHAR} ,
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=CHAR} ,
+            </if>
+            <if test="execResult != null">
+                exec_result = #{execResult,jdbcType=VARCHAR} ,
+            </if>
+            <if test="execLog != null">
+                exec_log = #{execLog,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime != null">
+                up_time = #{upTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblTaskDetailLog" >
+        delete from tbl_task_detail_log
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="taskCnName != null and taskCnName != '' ">
+                and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+            </if>
+            <if test="businessObjName != null and businessObjName != '' ">
+                and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+            </if>
+            <if test="registerGroup != null and registerGroup != '' ">
+                and register_group = #{registerGroup,jdbcType=VARCHAR}
+            </if>
+            <if test="ipInfo != null and ipInfo != '' ">
+                and ip_info = #{ipInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="globalTaskName != null and globalTaskName != '' ">
+                and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+            </if>
+            <if test="globalTaskCount != null and globalTaskCount != '' ">
+                and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+            </if>
+            <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+                and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+            </if>
+            <if test="batchCount != null and batchCount != '' ">
+                and batch_count = #{batchCount,jdbcType=DECIMAL}
+            </if>
+            <if test="batchIndex != null and batchIndex != '' ">
+                and batch_index = #{batchIndex,jdbcType=DECIMAL}
+            </if>
+            <if test="beginTime != null and beginTime != '' ">
+                and begin_time = #{beginTime,jdbcType=CHAR}
+            </if>
+            <if test="endTime != null and endTime != '' ">
+                and end_time = #{endTime,jdbcType=CHAR}
+            </if>
+            <if test="execResult != null and execResult != '' ">
+                and exec_result = #{execResult,jdbcType=VARCHAR}
+            </if>
+            <if test="execLog != null and execLog != '' ">
+                and exec_log = #{execLog,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null and upTime != '' ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="taskCnName != null and taskCnName != '' ">
+            and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+        </if>
+        <if test="businessObjName != null and businessObjName != '' ">
+            and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+        </if>
+        <if test="registerGroup != null and registerGroup != '' ">
+            and register_group = #{registerGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="ipInfo != null and ipInfo != '' ">
+            and ip_info = #{ipInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskName != null and globalTaskName != '' ">
+            and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskCount != null and globalTaskCount != '' ">
+            and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+        </if>
+        <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+            and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="batchCount != null and batchCount != '' ">
+            and batch_count = #{batchCount,jdbcType=DECIMAL}
+        </if>
+        <if test="batchIndex != null and batchIndex != '' ">
+            and batch_index = #{batchIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and begin_time = #{beginTime,jdbcType=CHAR}
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and end_time = #{endTime,jdbcType=CHAR}
+        </if>
+        <if test="execResult != null and execResult != '' ">
+            and exec_result = #{execResult,jdbcType=VARCHAR}
+        </if>
+        <if test="execLog != null and execLog != '' ">
+            and exec_log = #{execLog,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="taskCnName != null and taskCnName != '' ">
+            and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+        </if>
+        <if test="businessObjName != null and businessObjName != '' ">
+            and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+        </if>
+        <if test="registerGroup != null and registerGroup != '' ">
+            and register_group = #{registerGroup,jdbcType=VARCHAR}
+        </if>
+        <if test="ipInfo != null and ipInfo != '' ">
+            and ip_info = #{ipInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskName != null and globalTaskName != '' ">
+            and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+        </if>
+        <if test="globalTaskCount != null and globalTaskCount != '' ">
+            and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+        </if>
+        <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+            and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="batchCount != null and batchCount != '' ">
+            and batch_count = #{batchCount,jdbcType=DECIMAL}
+        </if>
+        <if test="batchIndex != null and batchIndex != '' ">
+            and batch_index = #{batchIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and begin_time = #{beginTime,jdbcType=CHAR}
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and end_time = #{endTime,jdbcType=CHAR}
+        </if>
+        <if test="execResult != null and execResult != '' ">
+            and exec_result = #{execResult,jdbcType=VARCHAR}
+        </if>
+        <if test="execLog != null and execLog != '' ">
+            and exec_log = #{execLog,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_task_detail_log
+        <set>
+            <if test="taskCnName_new != null">
+                task_cn_name = #{taskCnName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="businessObjName_new != null">
+                business_obj_name = #{businessObjName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="registerGroup_new != null">
+                register_group = #{registerGroup_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="ipInfo_new != null">
+                ip_info = #{ipInfo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="globalTaskName_new != null">
+                global_task_name = #{globalTaskName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="globalTaskCount_new != null">
+                global_task_count = #{globalTaskCount_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="globalTaskIndex_new != null">
+                global_task_index = #{globalTaskIndex_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="batchCount_new != null">
+                batch_count = #{batchCount_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="batchIndex_new != null">
+                batch_index = #{batchIndex_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="beginTime_new != null">
+                begin_time = #{beginTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="endTime_new != null">
+                end_time = #{endTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="execResult_new != null">
+                exec_result = #{execResult_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="execLog_new != null">
+                exec_log = #{execLog_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime_new != null">
+                up_time = #{upTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="taskCnName != null ">
+                and task_cn_name = #{taskCnName,jdbcType=VARCHAR}
+            </if>
+            <if test="businessObjName != null ">
+                and business_obj_name = #{businessObjName,jdbcType=VARCHAR}
+            </if>
+            <if test="registerGroup != null ">
+                and register_group = #{registerGroup,jdbcType=VARCHAR}
+            </if>
+            <if test="ipInfo != null ">
+                and ip_info = #{ipInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="globalTaskName != null ">
+                and global_task_name = #{globalTaskName,jdbcType=VARCHAR}
+            </if>
+            <if test="globalTaskCount != null ">
+                and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+            </if>
+            <if test="globalTaskIndex != null ">
+                and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+            </if>
+            <if test="batchCount != null ">
+                and batch_count = #{batchCount,jdbcType=DECIMAL}
+            </if>
+            <if test="batchIndex != null ">
+                and batch_index = #{batchIndex,jdbcType=DECIMAL}
+            </if>
+            <if test="beginTime != null ">
+                and begin_time = #{beginTime,jdbcType=CHAR}
+            </if>
+            <if test="endTime != null ">
+                and end_time = #{endTime,jdbcType=CHAR}
+            </if>
+            <if test="execResult != null ">
+                and exec_result = #{execResult,jdbcType=VARCHAR}
+            </if>
+            <if test="execLog != null ">
+                and exec_log = #{execLog,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="taskCnName != null and taskCnName != '' ">
+            and task_cn_name like CONCAT(#{taskCnName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="businessObjName != null and businessObjName != '' ">
+            and business_obj_name like CONCAT(#{businessObjName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="registerGroup != null and registerGroup != '' ">
+            and register_group like CONCAT(#{registerGroup,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="ipInfo != null and ipInfo != '' ">
+            and ip_info like CONCAT(#{ipInfo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="globalTaskName != null and globalTaskName != '' ">
+            and global_task_name like CONCAT(#{globalTaskName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="globalTaskCount != null and globalTaskCount != '' ">
+            and global_task_count = #{globalTaskCount,jdbcType=DECIMAL}
+        </if>
+        <if test="globalTaskIndex != null and globalTaskIndex != '' ">
+            and global_task_index = #{globalTaskIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="batchCount != null and batchCount != '' ">
+            and batch_count = #{batchCount,jdbcType=DECIMAL}
+        </if>
+        <if test="batchIndex != null and batchIndex != '' ">
+            and batch_index = #{batchIndex,jdbcType=DECIMAL}
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and begin_time = #{beginTime,jdbcType=CHAR}
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and end_time = #{endTime,jdbcType=CHAR}
+        </if>
+        <if test="execResult != null and execResult != '' ">
+            and exec_result like CONCAT(#{execResult,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="execLog != null and execLog != '' ">
+            and exec_log like CONCAT(#{execLog,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createTime_start != null and createTime_start != '' ">
+            and create_time &gt;= #{createTime_start,jdbcType=CHAR}
+        </if>
+        <if test="createTime_end != null and createTime_end != '' ">
+            and create_time &lt;= #{createTime_end,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime_start != null and upTime_start != '' ">
+            and up_time &gt;= #{upTime_start,jdbcType=CHAR}
+        </if>
+        <if test="upTime_end != null and upTime_end != '' ">
+            and up_time &lt;= #{upTime_end,jdbcType=CHAR}
+        </if>
+
+        order by create_time desc
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_task_detail_log (id,task_cn_name,business_obj_name,register_group,ip_info,global_task_name,global_task_count,global_task_index,batch_count,batch_index,begin_time,end_time,exec_result,exec_log,create_time,up_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.taskCnName},#{item.businessObjName},#{item.registerGroup},#{item.ipInfo},#{item.globalTaskName},#{item.globalTaskCount},#{item.globalTaskIndex},#{item.batchCount},#{item.batchIndex},#{item.beginTime},#{item.endTime},#{item.execResult},#{item.execLog},#{item.createTime},#{item.upTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_task_detail_log
+            <set>
+                <if test="item.taskCnName_new != null">
+                    task_cn_name = #{item.taskCnName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.businessObjName_new != null">
+                    business_obj_name = #{item.businessObjName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.registerGroup_new != null">
+                    register_group = #{item.registerGroup_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.ipInfo_new != null">
+                    ip_info = #{item.ipInfo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.globalTaskName_new != null">
+                    global_task_name = #{item.globalTaskName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.globalTaskCount_new != null">
+                    global_task_count = #{item.globalTaskCount_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.globalTaskIndex_new != null">
+                    global_task_index = #{item.globalTaskIndex_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.batchCount_new != null">
+                    batch_count = #{item.batchCount_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.batchIndex_new != null">
+                    batch_index = #{item.batchIndex_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.beginTime_new != null">
+                    begin_time = #{item.beginTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.endTime_new != null">
+                    end_time = #{item.endTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.execResult_new != null">
+                    exec_result = #{item.execResult_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.execLog_new != null">
+                    exec_log = #{item.execLog_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.upTime_new != null">
+                    up_time = #{item.upTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.taskCnName != null ">
+                    and task_cn_name = #{item.taskCnName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.businessObjName != null ">
+                    and business_obj_name = #{item.businessObjName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.registerGroup != null ">
+                    and register_group = #{item.registerGroup,jdbcType=VARCHAR}
+                </if>
+                <if test="item.ipInfo != null ">
+                    and ip_info = #{item.ipInfo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.globalTaskName != null ">
+                    and global_task_name = #{item.globalTaskName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.globalTaskCount != null ">
+                    and global_task_count = #{item.globalTaskCount,jdbcType=DECIMAL}
+                </if>
+                <if test="item.globalTaskIndex != null ">
+                    and global_task_index = #{item.globalTaskIndex,jdbcType=DECIMAL}
+                </if>
+                <if test="item.batchCount != null ">
+                    and batch_count = #{item.batchCount,jdbcType=DECIMAL}
+                </if>
+                <if test="item.batchIndex != null ">
+                    and batch_index = #{item.batchIndex,jdbcType=DECIMAL}
+                </if>
+                <if test="item.beginTime != null ">
+                    and begin_time = #{item.beginTime,jdbcType=CHAR}
+                </if>
+                <if test="item.endTime != null ">
+                    and end_time = #{item.endTime,jdbcType=CHAR}
+                </if>
+                <if test="item.execResult != null ">
+                    and exec_result = #{item.execResult,jdbcType=VARCHAR}
+                </if>
+                <if test="item.execLog != null ">
+                    and exec_log = #{item.execLog,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.upTime != null ">
+                    and up_time = #{item.upTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_task_detail_log
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblFileStoreMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblFileStore">
+        <constructor>
+            <idArg column="file_no" javaType="java.lang.Long" jdbcType="DECIMAL" />
+            <arg column="file_blob" javaType="[B" />
+            <arg column="file_md5" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="up_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        file_no,file_blob,file_md5,create_time,up_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblFileStore" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        <if test="fileNo != null and fileNo != '' ">
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+        </if>
+        <if test="fileBlob != null and fileBlob != '' ">
+            and file_blob = #{fileBlob,jdbcType=BLOB}
+        </if>
+        <if test="fileMd5 != null and fileMd5 != '' ">
+            and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblFileStore" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        <if test="fileNo != null and fileNo != '' ">
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+        </if>
+        <if test="fileBlob != null and fileBlob != '' ">
+            and file_blob = #{fileBlob,jdbcType=BLOB}
+        </if>
+        <if test="fileMd5 != null and fileMd5 != '' ">
+            and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblFileStore" >
+        insert into tbl_file_store
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fileNo != null ">
+                file_no,
+            </if>
+            <if test="fileBlob != null ">
+                file_blob,
+            </if>
+            <if test="fileMd5 != null ">
+                file_md5,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="upTime != null ">
+                up_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="fileNo != null ">
+                #{fileNo,jdbcType=DECIMAL},
+            </if>
+            <if test="fileBlob != null ">
+                #{fileBlob,jdbcType=BLOB},
+            </if>
+            <if test="fileMd5 != null ">
+                #{fileMd5,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="upTime != null ">
+                #{upTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblFileStore" >
+        update tbl_file_store
+        <set>
+            <if test="fileBlob != null">
+                file_blob = #{fileBlob,jdbcType=BLOB} ,
+            </if>
+            <if test="fileMd5 != null">
+                file_md5 = #{fileMd5,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime != null">
+                up_time = #{upTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblFileStore" >
+        delete from tbl_file_store
+        where 1=1
+            <if test="fileNo != null and fileNo != '' ">
+                and file_no = #{fileNo,jdbcType=DECIMAL}
+            </if>
+            <if test="fileBlob != null and fileBlob != '' ">
+                and file_blob = #{fileBlob,jdbcType=BLOB}
+            </if>
+            <if test="fileMd5 != null and fileMd5 != '' ">
+                and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null and upTime != '' ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        <if test="fileNo != null and fileNo != '' ">
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+        </if>
+        <if test="fileBlob != null and fileBlob != '' ">
+            and file_blob = #{fileBlob,jdbcType=BLOB}
+        </if>
+        <if test="fileMd5 != null and fileMd5 != '' ">
+            and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        <if test="fileNo != null and fileNo != '' ">
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+        </if>
+        <if test="fileBlob != null and fileBlob != '' ">
+            and file_blob = #{fileBlob,jdbcType=BLOB}
+        </if>
+        <if test="fileMd5 != null and fileMd5 != '' ">
+            and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_file_store
+        <set>
+            <if test="fileBlob_new != null">
+                file_blob = #{fileBlob_new,jdbcType=BLOB} ,
+            </if>
+            <if test="fileMd5_new != null">
+                file_md5 = #{fileMd5_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime_new != null">
+                up_time = #{upTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="fileNo != null ">
+                and file_no = #{fileNo,jdbcType=DECIMAL}
+            </if>
+            <if test="fileBlob != null ">
+                and file_blob = #{fileBlob,jdbcType=BLOB}
+            </if>
+            <if test="fileMd5 != null ">
+                and file_md5 = #{fileMd5,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        <if test="fileNo != null and fileNo != '' ">
+            and file_no = #{fileNo,jdbcType=DECIMAL}
+        </if>
+        <if test="fileBlob != null and fileBlob != '' ">
+            and file_blob = #{fileBlob,jdbcType=BLOB}
+        </if>
+        <if test="fileMd5 != null and fileMd5 != '' ">
+            and file_md5 like CONCAT(#{fileMd5,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createTime_start != null and createTime_start != '' ">
+            and create_time &gt;= #{createTime_start,jdbcType=CHAR}
+        </if>
+        <if test="createTime_end != null and createTime_end != '' ">
+            and create_time &lt;= #{createTime_end,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime_start != null and upTime_start != '' ">
+            and up_time &gt;= #{upTime_start,jdbcType=CHAR}
+        </if>
+        <if test="upTime_end != null and upTime_end != '' ">
+            and up_time &lt;= #{upTime_end,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_file_store (file_no,file_blob,file_md5,create_time,up_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.fileNo},#{item.fileBlob},#{item.fileMd5},#{item.createTime},#{item.upTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_file_store
+            <set>
+                <if test="item.fileBlob_new != null">
+                    file_blob = #{item.fileBlob_new,jdbcType=BLOB} ,
+                </if>
+                <if test="item.fileMd5_new != null">
+                    file_md5 = #{item.fileMd5_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.upTime_new != null">
+                    up_time = #{item.upTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.fileNo != null ">
+                    and file_no = #{item.fileNo,jdbcType=DECIMAL}
+                </if>
+                <if test="item.fileBlob != null ">
+                    and file_blob = #{item.fileBlob,jdbcType=BLOB}
+                </if>
+                <if test="item.fileMd5 != null ">
+                    and file_md5 = #{item.fileMd5,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.upTime != null ">
+                    and up_time = #{item.upTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_file_store
+        where 1=1
+        and file_no = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

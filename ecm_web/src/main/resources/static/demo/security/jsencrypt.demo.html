@@ -1,0 +1,137 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jsencrypt.demo</title>
+</head>
+<body>
+    <script language="JavaScript" src="/js/jquery-1.7.1.min.js"></script>
+    <script language="JavaScript" src="/js/jsencrypt.min.js"></script>
+    <h2>
+        步骤1：生成私钥与公钥，私钥转化为pkcs8格式
+    </h2>
+    <h3>
+        openssl genrsa 1024        >  server.key<br>
+        openssl rsa -in server.key -pubout -out server_pub.key<br>
+        openssl pkcs8 -topk8 -inform PEM -in server.key -outform pem -nocrypt -out server.key.pkcs8<br>
+
+    </h3>
+    <h2>
+        公钥与私钥如下：<br>
+
+    </h2>
+    <h3>
+        -----BEGIN PRIVATE KEY-----<br>
+        MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMGgptew13ulhTDa<br>
+        7fzRT2O7Z8zbDZd1SYWgxOBRqyOHnKTHh9F2fxODEGrH6dxTuaIrxSAU2xnJbIwC<br>
+        Y532bPc6I+dskTf6kQBni9OuWszFCTX5zByzkNPywj3b5fVDzKWgi+uNYFNyxmOP<br>
+        P4gzF/v6AJqs/IxdWt7EIsP2i2HDAgMBAAECgYAhJXJKTDCnLw+c7G1/MQmpJgS/<br>
+        8ePiwKZEZOAvEmv8mhN7tdiPR/y7B13BGdXz7LVDiMCnHErhoDSfxyzsdqnyX82S<br>
+        O5+lkV5VPguA5TsC7OP0ReJ3XZKc1N0BFkzrcYbCs87864CoJPqyZNkdhB0LVzP0<br>
+        x4KnYrgQITwkeY0sQQJBAPtEpXIBaB3vuKTSBOfTMqxIjCQAQE1oSxuSc4fg6fEV<br>
+        jpG6aIMeSMbXayAEwqyTUVfnEWLFqPWMMfl+p2vy56MCQQDFRh9V/3si+0MkiArF<br>
+        b8DMirGwOGcK/8teRoqcuBVgOBPT1v6XN5N59vignq9owA10Rgha6FmBVLbBpPZf<br>
+        hb9hAkAjow3QCJEKxegrQDo/4v1p3/Q4WuzDzcnxRCksmWK0tbj9xDF0f0QVJ5Ji<br>
+        /SnbLh24WOZnWt9mzBZ+a081iUL/AkEAhCf11ibQ1x58XHzGun2jK2O+pc8jOLsk<br>
+        AoQ/V736k/r9TW06IROaOJq69N9Zo1MFsF86OaxuSbX2uMNKSbPQAQJAFeywI8i1<br>
+        ebUlPdteqAuZ7+8XaHl6dyDN38LbKa4+YCChr9c9yk/jnvuOymI4k3B4/ch5Pa0y<br>
+        o9XuDKyfeEcuIA==<br>
+        -----END PRIVATE KEY-----<br>
+        -----BEGIN PUBLIC KEY-----<br>
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBoKbXsNd7pYUw2u380U9ju2fM<br>
+        2w2XdUmFoMTgUasjh5ykx4fRdn8TgxBqx+ncU7miK8UgFNsZyWyMAmOd9mz3OiPn<br>
+        bJE3+pEAZ4vTrlrMxQk1+cwcs5DT8sI92+X1Q8yloIvrjWBTcsZjjz+IMxf7+gCa<br>
+        rPyMXVrexCLD9othwwIDAQAB<br>
+        -----END PUBLIC KEY-----<br>
+    </h3>
+    <br>私钥：<input id="PRI_KEY" value="-----BEGIN PRIVATE KEY-----MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMGgptew13ulhTDa7fzRT2O7Z8zbDZd1SYWgxOBRqyOHnKTHh9F2fxODEGrH6dxTuaIrxSAU2xnJbIwCY532bPc6I+dskTf6kQBni9OuWszFCTX5zByzkNPywj3b5fVDzKWgi+uNYFNyxmOPP4gzF/v6AJqs/IxdWt7EIsP2i2HDAgMBAAECgYAhJXJKTDCnLw+c7G1/MQmpJgS/8ePiwKZEZOAvEmv8mhN7tdiPR/y7B13BGdXz7LVDiMCnHErhoDSfxyzsdqnyX82SO5+lkV5VPguA5TsC7OP0ReJ3XZKc1N0BFkzrcYbCs87864CoJPqyZNkdhB0LVzP0x4KnYrgQITwkeY0sQQJBAPtEpXIBaB3vuKTSBOfTMqxIjCQAQE1oSxuSc4fg6fEVjpG6aIMeSMbXayAEwqyTUVfnEWLFqPWMMfl+p2vy56MCQQDFRh9V/3si+0MkiArFb8DMirGwOGcK/8teRoqcuBVgOBPT1v6XN5N59vignq9owA10Rgha6FmBVLbBpPZfhb9hAkAjow3QCJEKxegrQDo/4v1p3/Q4WuzDzcnxRCksmWK0tbj9xDF0f0QVJ5Ji/SnbLh24WOZnWt9mzBZ+a081iUL/AkEAhCf11ibQ1x58XHzGun2jK2O+pc8jOLskAoQ/V736k/r9TW06IROaOJq69N9Zo1MFsF86OaxuSbX2uMNKSbPQAQJAFeywI8i1ebUlPdteqAuZ7+8XaHl6dyDN38LbKa4+YCChr9c9yk/jnvuOymI4k3B4/ch5Pa0yo9XuDKyfeEcuIA==-----END PRIVATE KEY-----">
+    <br>公钥：<input id="PUB_KEY" value="-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBoKbXsNd7pYUw2u380U9ju2fM2w2XdUmFoMTgUasjh5ykx4fRdn8TgxBqx+ncU7miK8UgFNsZyWyMAmOd9mz3OiPnbJE3+pEAZ4vTrlrMxQk1+cwcs5DT8sI92+X1Q8yloIvrjWBTcsZjjz+IMxf7+gCarPyMXVrexCLD9othwwIDAQAB-----END PUBLIC KEY-----">
+    <br>待加密内容：<input id="content" value="11111111">
+    <br>已加密内容：<input id="encontent" value="">
+    <br>已解密内容：<input id="decontent" value="">
+    <br><input type="button" value="加密" onclick="ennnnnn()">
+    <input type="button" value="解密" onclick="dennnnn()">
+    <script>
+        function ennnnnn(){
+            var encrypt = new JSEncrypt();
+            encrypt.setPublicKey($("#PUB_KEY").val());
+            var data = encrypt.encrypt($("#content").val());
+            $("#encontent").val(data);
+        }
+        function dennnnn(){
+            var decrypt = new JSEncrypt();
+            decrypt.setPrivateKey($("#PRI_KEY").val())
+            var data = decrypt.decrypt($("#encontent").val());
+            $("#decontent").val(data);
+        }
+    </script>
+<br>
+<textarea style="width: 800px;height: 450px;">
+    服务端解密代码:
+    PrivateKey privateKey = RSAUtil.getPrivateKeyFromPcks8String("-----BEGIN PRIVATE KEY-----\n" +
+                    "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMGgptew13ulhTDa\n" +
+                    "7fzRT2O7Z8zbDZd1SYWgxOBRqyOHnKTHh9F2fxODEGrH6dxTuaIrxSAU2xnJbIwC\n" +
+                    "Y532bPc6I+dskTf6kQBni9OuWszFCTX5zByzkNPywj3b5fVDzKWgi+uNYFNyxmOP\n" +
+                    "P4gzF/v6AJqs/IxdWt7EIsP2i2HDAgMBAAECgYAhJXJKTDCnLw+c7G1/MQmpJgS/\n" +
+                    "8ePiwKZEZOAvEmv8mhN7tdiPR/y7B13BGdXz7LVDiMCnHErhoDSfxyzsdqnyX82S\n" +
+                    "O5+lkV5VPguA5TsC7OP0ReJ3XZKc1N0BFkzrcYbCs87864CoJPqyZNkdhB0LVzP0\n" +
+                    "x4KnYrgQITwkeY0sQQJBAPtEpXIBaB3vuKTSBOfTMqxIjCQAQE1oSxuSc4fg6fEV\n" +
+                    "jpG6aIMeSMbXayAEwqyTUVfnEWLFqPWMMfl+p2vy56MCQQDFRh9V/3si+0MkiArF\n" +
+                    "b8DMirGwOGcK/8teRoqcuBVgOBPT1v6XN5N59vignq9owA10Rgha6FmBVLbBpPZf\n" +
+                    "hb9hAkAjow3QCJEKxegrQDo/4v1p3/Q4WuzDzcnxRCksmWK0tbj9xDF0f0QVJ5Ji\n" +
+                    "/SnbLh24WOZnWt9mzBZ+a081iUL/AkEAhCf11ibQ1x58XHzGun2jK2O+pc8jOLsk\n" +
+                    "AoQ/V736k/r9TW06IROaOJq69N9Zo1MFsF86OaxuSbX2uMNKSbPQAQJAFeywI8i1\n" +
+                    "ebUlPdteqAuZ7+8XaHl6dyDN38LbKa4+YCChr9c9yk/jnvuOymI4k3B4/ch5Pa0y\n" +
+                    "o9XuDKyfeEcuIA==\n" +
+                    "-----END PRIVATE KEY-----");
+    //此处Base64的decodeMessage内容为加密后的信息
+    byte[] decode = RSAUtil.decodeMessage(privateKey, Base64Util.decodeMessage("CQ7YCkBbwnPGQ2SSuCJvLnJyGVlk4+yzYIV0q8sprRg9pPIV+mndw0/s6H0kuG/xDz9mNr/YJcZf+Jk6Ck8NGhxBJazq0MyKH9yzxl56rfZ1aI4oc3vcUlQT+lwbG64Q9Sw+jWn3kULRBZN+pkm/zB06UB/O3esrw41IP0+AsLg="));
+    System.out.println("解密后的字符串"+new String(decode));
+</textarea>
+    <textarea style="width: 800px;height: 450px;">
+    服务端加密代码:
+        openssl将pem公钥转化为X509格式，因为JAVA只支持X509格式的公钥证书文件
+        1)生成自签名证书
+        openssl req -new -x509 -nodes -sha1 -days 365 -key server.key.pkcs8 > server.cert
+        2)从证书中导出公钥（x509证书，pem格式）
+        openssl x509 -in server.cert -pubkey -out server_public.key.x509
+
+        导出结果为：
+-----BEGIN CERTIFICATE-----
+MIICUjCCAbugAwIBAgIJAKhUpwki+7AuMA0GCSqGSIb3DQEBBQUAMEIxCzAJBgNV
+BAYTAlhYMRUwEwYDVQQHDAxEZWZhdWx0IENpdHkxHDAaBgNVBAoME0RlZmF1bHQg
+Q29tcGFueSBMdGQwHhcNMTcwOTMwMTIwMTUyWhcNMTgwOTMwMTIwMTUyWjBCMQsw
+CQYDVQQGEwJYWDEVMBMGA1UEBwwMRGVmYXVsdCBDaXR5MRwwGgYDVQQKDBNEZWZh
+dWx0IENvbXBhbnkgTHRkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBoKbX
+sNd7pYUw2u380U9ju2fM2w2XdUmFoMTgUasjh5ykx4fRdn8TgxBqx+ncU7miK8Ug
+FNsZyWyMAmOd9mz3OiPnbJE3+pEAZ4vTrlrMxQk1+cwcs5DT8sI92+X1Q8yloIvr
+jWBTcsZjjz+IMxf7+gCarPyMXVrexCLD9othwwIDAQABo1AwTjAdBgNVHQ4EFgQU
+WUOQ7rKTopFdbRZ6EiePVOB3CcswHwYDVR0jBBgwFoAUWUOQ7rKTopFdbRZ6EieP
+VOB3CcswDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQAUIyenhvdlCgDe
+kRtnh/rFUeW2tz+MiGx0s7vnbWKIya9bk8VnOdsG+nOegVDdQxH01NcRXCxrmtJn
+9scw/QZ+avzv0+96M3AB62cuD9d2IftyOlHClC787Xk5p36HtsIol0sR/wqq792r
+Ud0da763BMUv0Wmx3DYGCrAwhN/5Tg==
+-----END CERTIFICATE-----
+
+        服务端加密代码为
+PublicKey publicKey = RSAUtil.getPublicKeyFromX509String("-----BEGIN CERTIFICATE-----\n" +
+                    "MIICUjCCAbugAwIBAgIJAKhUpwki+7AuMA0GCSqGSIb3DQEBBQUAMEIxCzAJBgNV\n" +
+                    "BAYTAlhYMRUwEwYDVQQHDAxEZWZhdWx0IENpdHkxHDAaBgNVBAoME0RlZmF1bHQg\n" +
+                    "Q29tcGFueSBMdGQwHhcNMTcwOTMwMTIwMTUyWhcNMTgwOTMwMTIwMTUyWjBCMQsw\n" +
+                    "CQYDVQQGEwJYWDEVMBMGA1UEBwwMRGVmYXVsdCBDaXR5MRwwGgYDVQQKDBNEZWZh\n" +
+                    "dWx0IENvbXBhbnkgTHRkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBoKbX\n" +
+                    "sNd7pYUw2u380U9ju2fM2w2XdUmFoMTgUasjh5ykx4fRdn8TgxBqx+ncU7miK8Ug\n" +
+                    "FNsZyWyMAmOd9mz3OiPnbJE3+pEAZ4vTrlrMxQk1+cwcs5DT8sI92+X1Q8yloIvr\n" +
+                    "jWBTcsZjjz+IMxf7+gCarPyMXVrexCLD9othwwIDAQABo1AwTjAdBgNVHQ4EFgQU\n" +
+                    "WUOQ7rKTopFdbRZ6EiePVOB3CcswHwYDVR0jBBgwFoAUWUOQ7rKTopFdbRZ6EieP\n" +
+                    "VOB3CcswDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQAUIyenhvdlCgDe\n" +
+                    "kRtnh/rFUeW2tz+MiGx0s7vnbWKIya9bk8VnOdsG+nOegVDdQxH01NcRXCxrmtJn\n" +
+                    "9scw/QZ+avzv0+96M3AB62cuD9d2IftyOlHClC787Xk5p36HtsIol0sR/wqq792r\n" +
+                    "Ud0da763BMUv0Wmx3DYGCrAwhN/5Tg==\n" +
+                    "-----END CERTIFICATE-----");
+            byte[] encode = RSAUtil.encodeMessage(publicKey, "11111111".getBytes());
+            System.out.println("加密后的字符串"+Base64Util.encodeMessage(encode));
+            byte[] decode = RSAUtil.decodeMessage(privateKey, encode);
+            System.out.println("解密后的字符串"+new String(decode));
+</textarea>
+</body>
+</html>
