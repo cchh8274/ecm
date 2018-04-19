@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblEarningsInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblEarningsInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="wx_user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="maniche_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="unversity_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="unversity_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="maniche_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coffee_number" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="tolal_money" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="earing_month" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="earning_start_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_eaning_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="earning_send_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,openid,wx_user_name,maniche_id,unversity_name,unversity_id,maniche_name,price,coffee_number,tolal_money,earing_month,earning_start_time,is_eaning_status,earning_send_time,create_time,create_user,update_time,update_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblEarningsInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUserName != null and wxUserName != '' ">
+            and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityId != null and unversityId != '' ">
+            and unversity_id = #{unversityId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="coffeeNumber != null and coffeeNumber != '' ">
+            and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="tolalMoney != null and tolalMoney != '' ">
+            and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="earingMonth != null and earingMonth != '' ">
+            and earing_month = #{earingMonth,jdbcType=VARCHAR}
+        </if>
+        <if test="earningStartTime != null and earningStartTime != '' ">
+            and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="isEaningStatus != null and isEaningStatus != '' ">
+            and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="earningSendTime != null and earningSendTime != '' ">
+            and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblEarningsInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUserName != null and wxUserName != '' ">
+            and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityId != null and unversityId != '' ">
+            and unversity_id = #{unversityId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="coffeeNumber != null and coffeeNumber != '' ">
+            and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="tolalMoney != null and tolalMoney != '' ">
+            and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="earingMonth != null and earingMonth != '' ">
+            and earing_month = #{earingMonth,jdbcType=VARCHAR}
+        </if>
+        <if test="earningStartTime != null and earningStartTime != '' ">
+            and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="isEaningStatus != null and isEaningStatus != '' ">
+            and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="earningSendTime != null and earningSendTime != '' ">
+            and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblEarningsInfo" >
+        insert into tbl_earnings_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="wxUserName != null ">
+                wx_user_name,
+            </if>
+            <if test="manicheId != null ">
+                maniche_id,
+            </if>
+            <if test="unversityName != null ">
+                unversity_name,
+            </if>
+            <if test="unversityId != null ">
+                unversity_id,
+            </if>
+            <if test="manicheName != null ">
+                maniche_name,
+            </if>
+            <if test="price != null ">
+                price,
+            </if>
+            <if test="coffeeNumber != null ">
+                coffee_number,
+            </if>
+            <if test="tolalMoney != null ">
+                tolal_money,
+            </if>
+            <if test="earingMonth != null ">
+                earing_month,
+            </if>
+            <if test="earningStartTime != null ">
+                earning_start_time,
+            </if>
+            <if test="isEaningStatus != null ">
+                is_eaning_status,
+            </if>
+            <if test="earningSendTime != null ">
+                earning_send_time,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="updateTime != null ">
+                update_time,
+            </if>
+            <if test="updateUser != null ">
+                update_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="wxUserName != null ">
+                #{wxUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="manicheId != null ">
+                #{manicheId,jdbcType=VARCHAR},
+            </if>
+            <if test="unversityName != null ">
+                #{unversityName,jdbcType=VARCHAR},
+            </if>
+            <if test="unversityId != null ">
+                #{unversityId,jdbcType=VARCHAR},
+            </if>
+            <if test="manicheName != null ">
+                #{manicheName,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null ">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="coffeeNumber != null ">
+                #{coffeeNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="tolalMoney != null ">
+                #{tolalMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="earingMonth != null ">
+                #{earingMonth,jdbcType=VARCHAR},
+            </if>
+            <if test="earningStartTime != null ">
+                #{earningStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="isEaningStatus != null ">
+                #{isEaningStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="earningSendTime != null ">
+                #{earningSendTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null ">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null ">
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblEarningsInfo" >
+        update tbl_earnings_info
+        <set>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="wxUserName != null">
+                wx_user_name = #{wxUserName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheId != null">
+                maniche_id = #{manicheId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityName != null">
+                unversity_name = #{unversityName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityId != null">
+                unversity_id = #{unversityId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheName != null">
+                maniche_name = #{manicheName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR} ,
+            </if>
+            <if test="coffeeNumber != null">
+                coffee_number = #{coffeeNumber,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tolalMoney != null">
+                tolal_money = #{tolalMoney,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earingMonth != null">
+                earing_month = #{earingMonth,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earningStartTime != null">
+                earning_start_time = #{earningStartTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isEaningStatus != null">
+                is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earningSendTime != null">
+                earning_send_time = #{earningSendTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblEarningsInfo" >
+        delete from tbl_earnings_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="wxUserName != null and wxUserName != '' ">
+                and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheId != null and manicheId != '' ">
+                and maniche_id = #{manicheId,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityName != null and unversityName != '' ">
+                and unversity_name = #{unversityName,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityId != null and unversityId != '' ">
+                and unversity_id = #{unversityId,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheName != null and manicheName != '' ">
+                and maniche_name = #{manicheName,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null and price != '' ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="coffeeNumber != null and coffeeNumber != '' ">
+                and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="tolalMoney != null and tolalMoney != '' ">
+                and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="earingMonth != null and earingMonth != '' ">
+                and earing_month = #{earingMonth,jdbcType=VARCHAR}
+            </if>
+            <if test="earningStartTime != null and earningStartTime != '' ">
+                and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+            </if>
+            <if test="isEaningStatus != null and isEaningStatus != '' ">
+                and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="earningSendTime != null and earningSendTime != '' ">
+                and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != '' ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null and updateUser != '' ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUserName != null and wxUserName != '' ">
+            and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityId != null and unversityId != '' ">
+            and unversity_id = #{unversityId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="coffeeNumber != null and coffeeNumber != '' ">
+            and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="tolalMoney != null and tolalMoney != '' ">
+            and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="earingMonth != null and earingMonth != '' ">
+            and earing_month = #{earingMonth,jdbcType=VARCHAR}
+        </if>
+        <if test="earningStartTime != null and earningStartTime != '' ">
+            and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="isEaningStatus != null and isEaningStatus != '' ">
+            and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="earningSendTime != null and earningSendTime != '' ">
+            and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUserName != null and wxUserName != '' ">
+            and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityId != null and unversityId != '' ">
+            and unversity_id = #{unversityId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="coffeeNumber != null and coffeeNumber != '' ">
+            and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="tolalMoney != null and tolalMoney != '' ">
+            and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="earingMonth != null and earingMonth != '' ">
+            and earing_month = #{earingMonth,jdbcType=VARCHAR}
+        </if>
+        <if test="earningStartTime != null and earningStartTime != '' ">
+            and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="isEaningStatus != null and isEaningStatus != '' ">
+            and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="earningSendTime != null and earningSendTime != '' ">
+            and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_earnings_info
+        <set>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="wxUserName_new != null">
+                wx_user_name = #{wxUserName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheId_new != null">
+                maniche_id = #{manicheId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityName_new != null">
+                unversity_name = #{unversityName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityId_new != null">
+                unversity_id = #{unversityId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheName_new != null">
+                maniche_name = #{manicheName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price_new != null">
+                price = #{price_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="coffeeNumber_new != null">
+                coffee_number = #{coffeeNumber_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tolalMoney_new != null">
+                tolal_money = #{tolalMoney_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earingMonth_new != null">
+                earing_month = #{earingMonth_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earningStartTime_new != null">
+                earning_start_time = #{earningStartTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isEaningStatus_new != null">
+                is_eaning_status = #{isEaningStatus_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="earningSendTime_new != null">
+                earning_send_time = #{earningSendTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime_new != null">
+                update_time = #{updateTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser_new != null">
+                update_user = #{updateUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="wxUserName != null ">
+                and wx_user_name = #{wxUserName,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheId != null ">
+                and maniche_id = #{manicheId,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityName != null ">
+                and unversity_name = #{unversityName,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityId != null ">
+                and unversity_id = #{unversityId,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheName != null ">
+                and maniche_name = #{manicheName,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="coffeeNumber != null ">
+                and coffee_number = #{coffeeNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="tolalMoney != null ">
+                and tolal_money = #{tolalMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="earingMonth != null ">
+                and earing_month = #{earingMonth,jdbcType=VARCHAR}
+            </if>
+            <if test="earningStartTime != null ">
+                and earning_start_time = #{earningStartTime,jdbcType=VARCHAR}
+            </if>
+            <if test="isEaningStatus != null ">
+                and is_eaning_status = #{isEaningStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="earningSendTime != null ">
+                and earning_send_time = #{earningSendTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="wxUserName != null and wxUserName != '' ">
+            and wx_user_name like CONCAT(#{wxUserName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id like CONCAT(#{manicheId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name like CONCAT(#{unversityName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="unversityId != null and unversityId != '' ">
+            and unversity_id like CONCAT(#{unversityId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name like CONCAT(#{manicheName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="price != null and price != '' ">
+            and price like CONCAT(#{price,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="coffeeNumber != null and coffeeNumber != '' ">
+            and coffee_number like CONCAT(#{coffeeNumber,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="tolalMoney != null and tolalMoney != '' ">
+            and tolal_money like CONCAT(#{tolalMoney,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="earingMonth != null and earingMonth != '' ">
+            and earing_month like CONCAT(#{earingMonth,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="earningStartTime != null and earningStartTime != '' ">
+            and earning_start_time like CONCAT(#{earningStartTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isEaningStatus != null and isEaningStatus != '' ">
+            and is_eaning_status like CONCAT(#{isEaningStatus,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="earningSendTime != null and earningSendTime != '' ">
+            and earning_send_time like CONCAT(#{earningSendTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time like CONCAT(#{updateTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user like CONCAT(#{updateUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_earnings_info (id,openid,wx_user_name,maniche_id,unversity_name,unversity_id,maniche_name,price,coffee_number,tolal_money,earing_month,earning_start_time,is_eaning_status,earning_send_time,create_time,create_user,update_time,update_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.openid},#{item.wxUserName},#{item.manicheId},#{item.unversityName},#{item.unversityId},#{item.manicheName},#{item.price},#{item.coffeeNumber},#{item.tolalMoney},#{item.earingMonth},#{item.earningStartTime},#{item.isEaningStatus},#{item.earningSendTime},#{item.createTime},#{item.createUser},#{item.updateTime},#{item.updateUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_earnings_info
+            <set>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.wxUserName_new != null">
+                    wx_user_name = #{item.wxUserName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.manicheId_new != null">
+                    maniche_id = #{item.manicheId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.unversityName_new != null">
+                    unversity_name = #{item.unversityName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.unversityId_new != null">
+                    unversity_id = #{item.unversityId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.manicheName_new != null">
+                    maniche_name = #{item.manicheName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.price_new != null">
+                    price = #{item.price_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.coffeeNumber_new != null">
+                    coffee_number = #{item.coffeeNumber_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.tolalMoney_new != null">
+                    tolal_money = #{item.tolalMoney_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.earingMonth_new != null">
+                    earing_month = #{item.earingMonth_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.earningStartTime_new != null">
+                    earning_start_time = #{item.earningStartTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isEaningStatus_new != null">
+                    is_eaning_status = #{item.isEaningStatus_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.earningSendTime_new != null">
+                    earning_send_time = #{item.earningSendTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateTime_new != null">
+                    update_time = #{item.updateTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateUser_new != null">
+                    update_user = #{item.updateUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.wxUserName != null ">
+                    and wx_user_name = #{item.wxUserName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.manicheId != null ">
+                    and maniche_id = #{item.manicheId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.unversityName != null ">
+                    and unversity_name = #{item.unversityName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.unversityId != null ">
+                    and unversity_id = #{item.unversityId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.manicheName != null ">
+                    and maniche_name = #{item.manicheName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.price != null ">
+                    and price = #{item.price,jdbcType=VARCHAR}
+                </if>
+                <if test="item.coffeeNumber != null ">
+                    and coffee_number = #{item.coffeeNumber,jdbcType=VARCHAR}
+                </if>
+                <if test="item.tolalMoney != null ">
+                    and tolal_money = #{item.tolalMoney,jdbcType=VARCHAR}
+                </if>
+                <if test="item.earingMonth != null ">
+                    and earing_month = #{item.earingMonth,jdbcType=VARCHAR}
+                </if>
+                <if test="item.earningStartTime != null ">
+                    and earning_start_time = #{item.earningStartTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isEaningStatus != null ">
+                    and is_eaning_status = #{item.isEaningStatus,jdbcType=VARCHAR}
+                </if>
+                <if test="item.earningSendTime != null ">
+                    and earning_send_time = #{item.earningSendTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateTime != null ">
+                    and update_time = #{item.updateTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateUser != null ">
+                    and update_user = #{item.updateUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_earnings_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

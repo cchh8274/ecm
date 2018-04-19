@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java=utf-8
 encoding//src/main/resources/props=utf-8
+encoding//src/main/resources/props/ecm/jdbc/jdbc.properties=UTF-8
 encoding//src/main/resources/spring=utf-8
 encoding/<project>=utf-8

@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblWxUserInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblWxUserInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="nickname" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="sex" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="city" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="country" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="province" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="language" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="headimgurl" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="subscribe_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="unionid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="groupid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="tagid_list" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="subscribe_scene" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="qr_scene" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="qr_scene_str" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="createt_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,openid,nickname,sex,city,country,province,language,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list,subscribe_scene,qr_scene,qr_scene_str,createt_time,create_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblWxUserInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null and nickname != '' ">
+            and nickname = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null and sex != '' ">
+            and sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null and country != '' ">
+            and country = #{country,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="language != null and language != '' ">
+            and language = #{language,jdbcType=VARCHAR}
+        </if>
+        <if test="headimgurl != null and headimgurl != '' ">
+            and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeTime != null and subscribeTime != '' ">
+            and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+        </if>
+        <if test="unionid != null and unionid != '' ">
+            and unionid = #{unionid,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null and remark != '' ">
+            and remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="groupid != null and groupid != '' ">
+            and groupid = #{groupid,jdbcType=VARCHAR}
+        </if>
+        <if test="tagidList != null and tagidList != '' ">
+            and tagid_list = #{tagidList,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeScene != null and subscribeScene != '' ">
+            and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrScene != null and qrScene != '' ">
+            and qr_scene = #{qrScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrSceneStr != null and qrSceneStr != '' ">
+            and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+        </if>
+        <if test="createtTime != null and createtTime != '' ">
+            and createt_time = #{createtTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblWxUserInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null and nickname != '' ">
+            and nickname = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null and sex != '' ">
+            and sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null and country != '' ">
+            and country = #{country,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="language != null and language != '' ">
+            and language = #{language,jdbcType=VARCHAR}
+        </if>
+        <if test="headimgurl != null and headimgurl != '' ">
+            and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeTime != null and subscribeTime != '' ">
+            and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+        </if>
+        <if test="unionid != null and unionid != '' ">
+            and unionid = #{unionid,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null and remark != '' ">
+            and remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="groupid != null and groupid != '' ">
+            and groupid = #{groupid,jdbcType=VARCHAR}
+        </if>
+        <if test="tagidList != null and tagidList != '' ">
+            and tagid_list = #{tagidList,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeScene != null and subscribeScene != '' ">
+            and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrScene != null and qrScene != '' ">
+            and qr_scene = #{qrScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrSceneStr != null and qrSceneStr != '' ">
+            and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+        </if>
+        <if test="createtTime != null and createtTime != '' ">
+            and createt_time = #{createtTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblWxUserInfo" >
+        insert into tbl_wx_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="nickname != null ">
+                nickname,
+            </if>
+            <if test="sex != null ">
+                sex,
+            </if>
+            <if test="city != null ">
+                city,
+            </if>
+            <if test="country != null ">
+                country,
+            </if>
+            <if test="province != null ">
+                province,
+            </if>
+            <if test="language != null ">
+                language,
+            </if>
+            <if test="headimgurl != null ">
+                headimgurl,
+            </if>
+            <if test="subscribeTime != null ">
+                subscribe_time,
+            </if>
+            <if test="unionid != null ">
+                unionid,
+            </if>
+            <if test="remark != null ">
+                remark,
+            </if>
+            <if test="groupid != null ">
+                groupid,
+            </if>
+            <if test="tagidList != null ">
+                tagid_list,
+            </if>
+            <if test="subscribeScene != null ">
+                subscribe_scene,
+            </if>
+            <if test="qrScene != null ">
+                qr_scene,
+            </if>
+            <if test="qrSceneStr != null ">
+                qr_scene_str,
+            </if>
+            <if test="createtTime != null ">
+                createt_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null ">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null ">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null ">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null ">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null ">
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="language != null ">
+                #{language,jdbcType=VARCHAR},
+            </if>
+            <if test="headimgurl != null ">
+                #{headimgurl,jdbcType=VARCHAR},
+            </if>
+            <if test="subscribeTime != null ">
+                #{subscribeTime,jdbcType=VARCHAR},
+            </if>
+            <if test="unionid != null ">
+                #{unionid,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null ">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="groupid != null ">
+                #{groupid,jdbcType=VARCHAR},
+            </if>
+            <if test="tagidList != null ">
+                #{tagidList,jdbcType=VARCHAR},
+            </if>
+            <if test="subscribeScene != null ">
+                #{subscribeScene,jdbcType=VARCHAR},
+            </if>
+            <if test="qrScene != null ">
+                #{qrScene,jdbcType=VARCHAR},
+            </if>
+            <if test="qrSceneStr != null ">
+                #{qrSceneStr,jdbcType=VARCHAR},
+            </if>
+            <if test="createtTime != null ">
+                #{createtTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblWxUserInfo" >
+        update tbl_wx_user_info
+        <set>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR} ,
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR} ,
+            </if>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR} ,
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=VARCHAR} ,
+            </if>
+            <if test="language != null">
+                language = #{language,jdbcType=VARCHAR} ,
+            </if>
+            <if test="headimgurl != null">
+                headimgurl = #{headimgurl,jdbcType=VARCHAR} ,
+            </if>
+            <if test="subscribeTime != null">
+                subscribe_time = #{subscribeTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unionid != null">
+                unionid = #{unionid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR} ,
+            </if>
+            <if test="groupid != null">
+                groupid = #{groupid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tagidList != null">
+                tagid_list = #{tagidList,jdbcType=VARCHAR} ,
+            </if>
+            <if test="subscribeScene != null">
+                subscribe_scene = #{subscribeScene,jdbcType=VARCHAR} ,
+            </if>
+            <if test="qrScene != null">
+                qr_scene = #{qrScene,jdbcType=VARCHAR} ,
+            </if>
+            <if test="qrSceneStr != null">
+                qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createtTime != null">
+                createt_time = #{createtTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblWxUserInfo" >
+        delete from tbl_wx_user_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="nickname != null and nickname != '' ">
+                and nickname = #{nickname,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null and sex != '' ">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="city != null and city != '' ">
+                and city = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="country != null and country != '' ">
+                and country = #{country,jdbcType=VARCHAR}
+            </if>
+            <if test="province != null and province != '' ">
+                and province = #{province,jdbcType=VARCHAR}
+            </if>
+            <if test="language != null and language != '' ">
+                and language = #{language,jdbcType=VARCHAR}
+            </if>
+            <if test="headimgurl != null and headimgurl != '' ">
+                and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+            </if>
+            <if test="subscribeTime != null and subscribeTime != '' ">
+                and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="unionid != null and unionid != '' ">
+                and unionid = #{unionid,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null and remark != '' ">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="groupid != null and groupid != '' ">
+                and groupid = #{groupid,jdbcType=VARCHAR}
+            </if>
+            <if test="tagidList != null and tagidList != '' ">
+                and tagid_list = #{tagidList,jdbcType=VARCHAR}
+            </if>
+            <if test="subscribeScene != null and subscribeScene != '' ">
+                and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+            </if>
+            <if test="qrScene != null and qrScene != '' ">
+                and qr_scene = #{qrScene,jdbcType=VARCHAR}
+            </if>
+            <if test="qrSceneStr != null and qrSceneStr != '' ">
+                and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+            </if>
+            <if test="createtTime != null and createtTime != '' ">
+                and createt_time = #{createtTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null and nickname != '' ">
+            and nickname = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null and sex != '' ">
+            and sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null and country != '' ">
+            and country = #{country,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="language != null and language != '' ">
+            and language = #{language,jdbcType=VARCHAR}
+        </if>
+        <if test="headimgurl != null and headimgurl != '' ">
+            and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeTime != null and subscribeTime != '' ">
+            and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+        </if>
+        <if test="unionid != null and unionid != '' ">
+            and unionid = #{unionid,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null and remark != '' ">
+            and remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="groupid != null and groupid != '' ">
+            and groupid = #{groupid,jdbcType=VARCHAR}
+        </if>
+        <if test="tagidList != null and tagidList != '' ">
+            and tagid_list = #{tagidList,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeScene != null and subscribeScene != '' ">
+            and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrScene != null and qrScene != '' ">
+            and qr_scene = #{qrScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrSceneStr != null and qrSceneStr != '' ">
+            and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+        </if>
+        <if test="createtTime != null and createtTime != '' ">
+            and createt_time = #{createtTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null and nickname != '' ">
+            and nickname = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null and sex != '' ">
+            and sex = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null and city != '' ">
+            and city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null and country != '' ">
+            and country = #{country,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null and province != '' ">
+            and province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="language != null and language != '' ">
+            and language = #{language,jdbcType=VARCHAR}
+        </if>
+        <if test="headimgurl != null and headimgurl != '' ">
+            and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeTime != null and subscribeTime != '' ">
+            and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+        </if>
+        <if test="unionid != null and unionid != '' ">
+            and unionid = #{unionid,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null and remark != '' ">
+            and remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="groupid != null and groupid != '' ">
+            and groupid = #{groupid,jdbcType=VARCHAR}
+        </if>
+        <if test="tagidList != null and tagidList != '' ">
+            and tagid_list = #{tagidList,jdbcType=VARCHAR}
+        </if>
+        <if test="subscribeScene != null and subscribeScene != '' ">
+            and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrScene != null and qrScene != '' ">
+            and qr_scene = #{qrScene,jdbcType=VARCHAR}
+        </if>
+        <if test="qrSceneStr != null and qrSceneStr != '' ">
+            and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+        </if>
+        <if test="createtTime != null and createtTime != '' ">
+            and createt_time = #{createtTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_wx_user_info
+        <set>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="nickname_new != null">
+                nickname = #{nickname_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sex_new != null">
+                sex = #{sex_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="city_new != null">
+                city = #{city_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="country_new != null">
+                country = #{country_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="province_new != null">
+                province = #{province_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="language_new != null">
+                language = #{language_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="headimgurl_new != null">
+                headimgurl = #{headimgurl_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="subscribeTime_new != null">
+                subscribe_time = #{subscribeTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unionid_new != null">
+                unionid = #{unionid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="remark_new != null">
+                remark = #{remark_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="groupid_new != null">
+                groupid = #{groupid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tagidList_new != null">
+                tagid_list = #{tagidList_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="subscribeScene_new != null">
+                subscribe_scene = #{subscribeScene_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="qrScene_new != null">
+                qr_scene = #{qrScene_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="qrSceneStr_new != null">
+                qr_scene_str = #{qrSceneStr_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createtTime_new != null">
+                createt_time = #{createtTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="nickname != null ">
+                and nickname = #{nickname,jdbcType=VARCHAR}
+            </if>
+            <if test="sex != null ">
+                and sex = #{sex,jdbcType=VARCHAR}
+            </if>
+            <if test="city != null ">
+                and city = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="country != null ">
+                and country = #{country,jdbcType=VARCHAR}
+            </if>
+            <if test="province != null ">
+                and province = #{province,jdbcType=VARCHAR}
+            </if>
+            <if test="language != null ">
+                and language = #{language,jdbcType=VARCHAR}
+            </if>
+            <if test="headimgurl != null ">
+                and headimgurl = #{headimgurl,jdbcType=VARCHAR}
+            </if>
+            <if test="subscribeTime != null ">
+                and subscribe_time = #{subscribeTime,jdbcType=VARCHAR}
+            </if>
+            <if test="unionid != null ">
+                and unionid = #{unionid,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null ">
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="groupid != null ">
+                and groupid = #{groupid,jdbcType=VARCHAR}
+            </if>
+            <if test="tagidList != null ">
+                and tagid_list = #{tagidList,jdbcType=VARCHAR}
+            </if>
+            <if test="subscribeScene != null ">
+                and subscribe_scene = #{subscribeScene,jdbcType=VARCHAR}
+            </if>
+            <if test="qrScene != null ">
+                and qr_scene = #{qrScene,jdbcType=VARCHAR}
+            </if>
+            <if test="qrSceneStr != null ">
+                and qr_scene_str = #{qrSceneStr,jdbcType=VARCHAR}
+            </if>
+            <if test="createtTime != null ">
+                and createt_time = #{createtTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="nickname != null and nickname != '' ">
+            and nickname like CONCAT(#{nickname,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="sex != null and sex != '' ">
+            and sex like CONCAT(#{sex,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="city != null and city != '' ">
+            and city like CONCAT(#{city,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="country != null and country != '' ">
+            and country like CONCAT(#{country,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="province != null and province != '' ">
+            and province like CONCAT(#{province,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="language != null and language != '' ">
+            and language like CONCAT(#{language,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="headimgurl != null and headimgurl != '' ">
+            and headimgurl like CONCAT(#{headimgurl,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="subscribeTime != null and subscribeTime != '' ">
+            and subscribe_time like CONCAT(#{subscribeTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="unionid != null and unionid != '' ">
+            and unionid like CONCAT(#{unionid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="remark != null and remark != '' ">
+            and remark like CONCAT(#{remark,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="groupid != null and groupid != '' ">
+            and groupid like CONCAT(#{groupid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="tagidList != null and tagidList != '' ">
+            and tagid_list like CONCAT(#{tagidList,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="subscribeScene != null and subscribeScene != '' ">
+            and subscribe_scene like CONCAT(#{subscribeScene,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="qrScene != null and qrScene != '' ">
+            and qr_scene like CONCAT(#{qrScene,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="qrSceneStr != null and qrSceneStr != '' ">
+            and qr_scene_str like CONCAT(#{qrSceneStr,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createtTime != null and createtTime != '' ">
+            and createt_time like CONCAT(#{createtTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_wx_user_info (id,openid,nickname,sex,city,country,province,language,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list,subscribe_scene,qr_scene,qr_scene_str,createt_time,create_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.openid},#{item.nickname},#{item.sex},#{item.city},#{item.country},#{item.province},#{item.language},#{item.headimgurl},#{item.subscribeTime},#{item.unionid},#{item.remark},#{item.groupid},#{item.tagidList},#{item.subscribeScene},#{item.qrScene},#{item.qrSceneStr},#{item.createtTime},#{item.createUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_wx_user_info
+            <set>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.nickname_new != null">
+                    nickname = #{item.nickname_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.sex_new != null">
+                    sex = #{item.sex_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.city_new != null">
+                    city = #{item.city_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.country_new != null">
+                    country = #{item.country_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.province_new != null">
+                    province = #{item.province_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.language_new != null">
+                    language = #{item.language_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.headimgurl_new != null">
+                    headimgurl = #{item.headimgurl_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.subscribeTime_new != null">
+                    subscribe_time = #{item.subscribeTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.unionid_new != null">
+                    unionid = #{item.unionid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.remark_new != null">
+                    remark = #{item.remark_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.groupid_new != null">
+                    groupid = #{item.groupid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.tagidList_new != null">
+                    tagid_list = #{item.tagidList_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.subscribeScene_new != null">
+                    subscribe_scene = #{item.subscribeScene_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.qrScene_new != null">
+                    qr_scene = #{item.qrScene_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.qrSceneStr_new != null">
+                    qr_scene_str = #{item.qrSceneStr_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createtTime_new != null">
+                    createt_time = #{item.createtTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.nickname != null ">
+                    and nickname = #{item.nickname,jdbcType=VARCHAR}
+                </if>
+                <if test="item.sex != null ">
+                    and sex = #{item.sex,jdbcType=VARCHAR}
+                </if>
+                <if test="item.city != null ">
+                    and city = #{item.city,jdbcType=VARCHAR}
+                </if>
+                <if test="item.country != null ">
+                    and country = #{item.country,jdbcType=VARCHAR}
+                </if>
+                <if test="item.province != null ">
+                    and province = #{item.province,jdbcType=VARCHAR}
+                </if>
+                <if test="item.language != null ">
+                    and language = #{item.language,jdbcType=VARCHAR}
+                </if>
+                <if test="item.headimgurl != null ">
+                    and headimgurl = #{item.headimgurl,jdbcType=VARCHAR}
+                </if>
+                <if test="item.subscribeTime != null ">
+                    and subscribe_time = #{item.subscribeTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.unionid != null ">
+                    and unionid = #{item.unionid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.remark != null ">
+                    and remark = #{item.remark,jdbcType=VARCHAR}
+                </if>
+                <if test="item.groupid != null ">
+                    and groupid = #{item.groupid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.tagidList != null ">
+                    and tagid_list = #{item.tagidList,jdbcType=VARCHAR}
+                </if>
+                <if test="item.subscribeScene != null ">
+                    and subscribe_scene = #{item.subscribeScene,jdbcType=VARCHAR}
+                </if>
+                <if test="item.qrScene != null ">
+                    and qr_scene = #{item.qrScene,jdbcType=VARCHAR}
+                </if>
+                <if test="item.qrSceneStr != null ">
+                    and qr_scene_str = #{item.qrSceneStr,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createtTime != null ">
+                    and createt_time = #{item.createtTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_wx_user_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

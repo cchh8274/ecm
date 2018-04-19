@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblPayResultInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblPayResultInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="appid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="mch_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="device_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="nonce_str" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="sign" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="sign_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="result_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="err_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="err_code_des" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_subscribe" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="trade_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="bank_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="total_fee" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="settlement_total_fee" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="fee_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="cash_fee" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="cash_fee_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coupon_fee" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coupon_count" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coupon_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coupon_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="coupon_fee_one" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="transaction_idtransaction_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="out_trade_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="time_end" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,appid,mch_id,device_info,nonce_str,sign,sign_type,result_code,err_code,err_code_des,openid,is_subscribe,trade_type,bank_type,total_fee,settlement_total_fee,fee_type,cash_fee,cash_fee_type,coupon_fee,coupon_count,coupon_type,coupon_id,coupon_fee_one,transaction_idtransaction_id,out_trade_no,time_end,create_time,create_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblPayResultInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="appid != null and appid != '' ">
+            and appid = #{appid,jdbcType=VARCHAR}
+        </if>
+        <if test="mchId != null and mchId != '' ">
+            and mch_id = #{mchId,jdbcType=VARCHAR}
+        </if>
+        <if test="deviceInfo != null and deviceInfo != '' ">
+            and device_info = #{deviceInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="nonceStr != null and nonceStr != '' ">
+            and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+        </if>
+        <if test="sign != null and sign != '' ">
+            and sign = #{sign,jdbcType=VARCHAR}
+        </if>
+        <if test="signType != null and signType != '' ">
+            and sign_type = #{signType,jdbcType=VARCHAR}
+        </if>
+        <if test="resultCode != null and resultCode != '' ">
+            and result_code = #{resultCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCode != null and errCode != '' ">
+            and err_code = #{errCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCodeDes != null and errCodeDes != '' ">
+            and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="isSubscribe != null and isSubscribe != '' ">
+            and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+        </if>
+        <if test="tradeType != null and tradeType != '' ">
+            and trade_type = #{tradeType,jdbcType=VARCHAR}
+        </if>
+        <if test="bankType != null and bankType != '' ">
+            and bank_type = #{bankType,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+            and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="feeType != null and feeType != '' ">
+            and fee_type = #{feeType,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFee != null and cashFee != '' ">
+            and cash_fee = #{cashFee,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFeeType != null and cashFeeType != '' ">
+            and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFee != null and couponFee != '' ">
+            and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+        </if>
+        <if test="couponCount != null and couponCount != '' ">
+            and coupon_count = #{couponCount,jdbcType=VARCHAR}
+        </if>
+        <if test="couponType != null and couponType != '' ">
+            and coupon_type = #{couponType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponId != null and couponId != '' ">
+            and coupon_id = #{couponId,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFeeOne != null and couponFeeOne != '' ">
+            and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+        </if>
+        <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+            and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+        </if>
+        <if test="outTradeNo != null and outTradeNo != '' ">
+            and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="timeEnd != null and timeEnd != '' ">
+            and time_end = #{timeEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblPayResultInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="appid != null and appid != '' ">
+            and appid = #{appid,jdbcType=VARCHAR}
+        </if>
+        <if test="mchId != null and mchId != '' ">
+            and mch_id = #{mchId,jdbcType=VARCHAR}
+        </if>
+        <if test="deviceInfo != null and deviceInfo != '' ">
+            and device_info = #{deviceInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="nonceStr != null and nonceStr != '' ">
+            and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+        </if>
+        <if test="sign != null and sign != '' ">
+            and sign = #{sign,jdbcType=VARCHAR}
+        </if>
+        <if test="signType != null and signType != '' ">
+            and sign_type = #{signType,jdbcType=VARCHAR}
+        </if>
+        <if test="resultCode != null and resultCode != '' ">
+            and result_code = #{resultCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCode != null and errCode != '' ">
+            and err_code = #{errCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCodeDes != null and errCodeDes != '' ">
+            and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="isSubscribe != null and isSubscribe != '' ">
+            and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+        </if>
+        <if test="tradeType != null and tradeType != '' ">
+            and trade_type = #{tradeType,jdbcType=VARCHAR}
+        </if>
+        <if test="bankType != null and bankType != '' ">
+            and bank_type = #{bankType,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+            and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="feeType != null and feeType != '' ">
+            and fee_type = #{feeType,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFee != null and cashFee != '' ">
+            and cash_fee = #{cashFee,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFeeType != null and cashFeeType != '' ">
+            and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFee != null and couponFee != '' ">
+            and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+        </if>
+        <if test="couponCount != null and couponCount != '' ">
+            and coupon_count = #{couponCount,jdbcType=VARCHAR}
+        </if>
+        <if test="couponType != null and couponType != '' ">
+            and coupon_type = #{couponType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponId != null and couponId != '' ">
+            and coupon_id = #{couponId,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFeeOne != null and couponFeeOne != '' ">
+            and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+        </if>
+        <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+            and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+        </if>
+        <if test="outTradeNo != null and outTradeNo != '' ">
+            and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="timeEnd != null and timeEnd != '' ">
+            and time_end = #{timeEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblPayResultInfo" >
+        insert into tbl_pay_result_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="appid != null ">
+                appid,
+            </if>
+            <if test="mchId != null ">
+                mch_id,
+            </if>
+            <if test="deviceInfo != null ">
+                device_info,
+            </if>
+            <if test="nonceStr != null ">
+                nonce_str,
+            </if>
+            <if test="sign != null ">
+                sign,
+            </if>
+            <if test="signType != null ">
+                sign_type,
+            </if>
+            <if test="resultCode != null ">
+                result_code,
+            </if>
+            <if test="errCode != null ">
+                err_code,
+            </if>
+            <if test="errCodeDes != null ">
+                err_code_des,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="isSubscribe != null ">
+                is_subscribe,
+            </if>
+            <if test="tradeType != null ">
+                trade_type,
+            </if>
+            <if test="bankType != null ">
+                bank_type,
+            </if>
+            <if test="totalFee != null ">
+                total_fee,
+            </if>
+            <if test="settlementTotalFee != null ">
+                settlement_total_fee,
+            </if>
+            <if test="feeType != null ">
+                fee_type,
+            </if>
+            <if test="cashFee != null ">
+                cash_fee,
+            </if>
+            <if test="cashFeeType != null ">
+                cash_fee_type,
+            </if>
+            <if test="couponFee != null ">
+                coupon_fee,
+            </if>
+            <if test="couponCount != null ">
+                coupon_count,
+            </if>
+            <if test="couponType != null ">
+                coupon_type,
+            </if>
+            <if test="couponId != null ">
+                coupon_id,
+            </if>
+            <if test="couponFeeOne != null ">
+                coupon_fee_one,
+            </if>
+            <if test="transactionIdtransactionId != null ">
+                transaction_idtransaction_id,
+            </if>
+            <if test="outTradeNo != null ">
+                out_trade_no,
+            </if>
+            <if test="timeEnd != null ">
+                time_end,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="appid != null ">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="mchId != null ">
+                #{mchId,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceInfo != null ">
+                #{deviceInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="nonceStr != null ">
+                #{nonceStr,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null ">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null ">
+                #{signType,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null ">
+                #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="errCode != null ">
+                #{errCode,jdbcType=VARCHAR},
+            </if>
+            <if test="errCodeDes != null ">
+                #{errCodeDes,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="isSubscribe != null ">
+                #{isSubscribe,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeType != null ">
+                #{tradeType,jdbcType=VARCHAR},
+            </if>
+            <if test="bankType != null ">
+                #{bankType,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null ">
+                #{totalFee,jdbcType=VARCHAR},
+            </if>
+            <if test="settlementTotalFee != null ">
+                #{settlementTotalFee,jdbcType=VARCHAR},
+            </if>
+            <if test="feeType != null ">
+                #{feeType,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFee != null ">
+                #{cashFee,jdbcType=VARCHAR},
+            </if>
+            <if test="cashFeeType != null ">
+                #{cashFeeType,jdbcType=VARCHAR},
+            </if>
+            <if test="couponFee != null ">
+                #{couponFee,jdbcType=VARCHAR},
+            </if>
+            <if test="couponCount != null ">
+                #{couponCount,jdbcType=VARCHAR},
+            </if>
+            <if test="couponType != null ">
+                #{couponType,jdbcType=VARCHAR},
+            </if>
+            <if test="couponId != null ">
+                #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="couponFeeOne != null ">
+                #{couponFeeOne,jdbcType=VARCHAR},
+            </if>
+            <if test="transactionIdtransactionId != null ">
+                #{transactionIdtransactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null ">
+                #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="timeEnd != null ">
+                #{timeEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblPayResultInfo" >
+        update tbl_pay_result_info
+        <set>
+            <if test="appid != null">
+                appid = #{appid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="mchId != null">
+                mch_id = #{mchId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="deviceInfo != null">
+                device_info = #{deviceInfo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="nonceStr != null">
+                nonce_str = #{nonceStr,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sign != null">
+                sign = #{sign,jdbcType=VARCHAR} ,
+            </if>
+            <if test="signType != null">
+                sign_type = #{signType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="resultCode != null">
+                result_code = #{resultCode,jdbcType=VARCHAR} ,
+            </if>
+            <if test="errCode != null">
+                err_code = #{errCode,jdbcType=VARCHAR} ,
+            </if>
+            <if test="errCodeDes != null">
+                err_code_des = #{errCodeDes,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isSubscribe != null">
+                is_subscribe = #{isSubscribe,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tradeType != null">
+                trade_type = #{tradeType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankType != null">
+                bank_type = #{bankType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee,jdbcType=VARCHAR} ,
+            </if>
+            <if test="settlementTotalFee != null">
+                settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR} ,
+            </if>
+            <if test="feeType != null">
+                fee_type = #{feeType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="cashFee != null">
+                cash_fee = #{cashFee,jdbcType=VARCHAR} ,
+            </if>
+            <if test="cashFeeType != null">
+                cash_fee_type = #{cashFeeType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponFee != null">
+                coupon_fee = #{couponFee,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponCount != null">
+                coupon_count = #{couponCount,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponType != null">
+                coupon_type = #{couponType,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponId != null">
+                coupon_id = #{couponId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponFeeOne != null">
+                coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR} ,
+            </if>
+            <if test="transactionIdtransactionId != null">
+                transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no = #{outTradeNo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="timeEnd != null">
+                time_end = #{timeEnd,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblPayResultInfo" >
+        delete from tbl_pay_result_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="appid != null and appid != '' ">
+                and appid = #{appid,jdbcType=VARCHAR}
+            </if>
+            <if test="mchId != null and mchId != '' ">
+                and mch_id = #{mchId,jdbcType=VARCHAR}
+            </if>
+            <if test="deviceInfo != null and deviceInfo != '' ">
+                and device_info = #{deviceInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="nonceStr != null and nonceStr != '' ">
+                and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+            </if>
+            <if test="sign != null and sign != '' ">
+                and sign = #{sign,jdbcType=VARCHAR}
+            </if>
+            <if test="signType != null and signType != '' ">
+                and sign_type = #{signType,jdbcType=VARCHAR}
+            </if>
+            <if test="resultCode != null and resultCode != '' ">
+                and result_code = #{resultCode,jdbcType=VARCHAR}
+            </if>
+            <if test="errCode != null and errCode != '' ">
+                and err_code = #{errCode,jdbcType=VARCHAR}
+            </if>
+            <if test="errCodeDes != null and errCodeDes != '' ">
+                and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="isSubscribe != null and isSubscribe != '' ">
+                and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+            </if>
+            <if test="tradeType != null and tradeType != '' ">
+                and trade_type = #{tradeType,jdbcType=VARCHAR}
+            </if>
+            <if test="bankType != null and bankType != '' ">
+                and bank_type = #{bankType,jdbcType=VARCHAR}
+            </if>
+            <if test="totalFee != null and totalFee != '' ">
+                and total_fee = #{totalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+                and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="feeType != null and feeType != '' ">
+                and fee_type = #{feeType,jdbcType=VARCHAR}
+            </if>
+            <if test="cashFee != null and cashFee != '' ">
+                and cash_fee = #{cashFee,jdbcType=VARCHAR}
+            </if>
+            <if test="cashFeeType != null and cashFeeType != '' ">
+                and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+            </if>
+            <if test="couponFee != null and couponFee != '' ">
+                and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+            </if>
+            <if test="couponCount != null and couponCount != '' ">
+                and coupon_count = #{couponCount,jdbcType=VARCHAR}
+            </if>
+            <if test="couponType != null and couponType != '' ">
+                and coupon_type = #{couponType,jdbcType=VARCHAR}
+            </if>
+            <if test="couponId != null and couponId != '' ">
+                and coupon_id = #{couponId,jdbcType=VARCHAR}
+            </if>
+            <if test="couponFeeOne != null and couponFeeOne != '' ">
+                and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+            </if>
+            <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+                and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+            </if>
+            <if test="outTradeNo != null and outTradeNo != '' ">
+                and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+            </if>
+            <if test="timeEnd != null and timeEnd != '' ">
+                and time_end = #{timeEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="appid != null and appid != '' ">
+            and appid = #{appid,jdbcType=VARCHAR}
+        </if>
+        <if test="mchId != null and mchId != '' ">
+            and mch_id = #{mchId,jdbcType=VARCHAR}
+        </if>
+        <if test="deviceInfo != null and deviceInfo != '' ">
+            and device_info = #{deviceInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="nonceStr != null and nonceStr != '' ">
+            and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+        </if>
+        <if test="sign != null and sign != '' ">
+            and sign = #{sign,jdbcType=VARCHAR}
+        </if>
+        <if test="signType != null and signType != '' ">
+            and sign_type = #{signType,jdbcType=VARCHAR}
+        </if>
+        <if test="resultCode != null and resultCode != '' ">
+            and result_code = #{resultCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCode != null and errCode != '' ">
+            and err_code = #{errCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCodeDes != null and errCodeDes != '' ">
+            and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="isSubscribe != null and isSubscribe != '' ">
+            and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+        </if>
+        <if test="tradeType != null and tradeType != '' ">
+            and trade_type = #{tradeType,jdbcType=VARCHAR}
+        </if>
+        <if test="bankType != null and bankType != '' ">
+            and bank_type = #{bankType,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+            and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="feeType != null and feeType != '' ">
+            and fee_type = #{feeType,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFee != null and cashFee != '' ">
+            and cash_fee = #{cashFee,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFeeType != null and cashFeeType != '' ">
+            and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFee != null and couponFee != '' ">
+            and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+        </if>
+        <if test="couponCount != null and couponCount != '' ">
+            and coupon_count = #{couponCount,jdbcType=VARCHAR}
+        </if>
+        <if test="couponType != null and couponType != '' ">
+            and coupon_type = #{couponType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponId != null and couponId != '' ">
+            and coupon_id = #{couponId,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFeeOne != null and couponFeeOne != '' ">
+            and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+        </if>
+        <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+            and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+        </if>
+        <if test="outTradeNo != null and outTradeNo != '' ">
+            and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="timeEnd != null and timeEnd != '' ">
+            and time_end = #{timeEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="appid != null and appid != '' ">
+            and appid = #{appid,jdbcType=VARCHAR}
+        </if>
+        <if test="mchId != null and mchId != '' ">
+            and mch_id = #{mchId,jdbcType=VARCHAR}
+        </if>
+        <if test="deviceInfo != null and deviceInfo != '' ">
+            and device_info = #{deviceInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="nonceStr != null and nonceStr != '' ">
+            and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+        </if>
+        <if test="sign != null and sign != '' ">
+            and sign = #{sign,jdbcType=VARCHAR}
+        </if>
+        <if test="signType != null and signType != '' ">
+            and sign_type = #{signType,jdbcType=VARCHAR}
+        </if>
+        <if test="resultCode != null and resultCode != '' ">
+            and result_code = #{resultCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCode != null and errCode != '' ">
+            and err_code = #{errCode,jdbcType=VARCHAR}
+        </if>
+        <if test="errCodeDes != null and errCodeDes != '' ">
+            and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="isSubscribe != null and isSubscribe != '' ">
+            and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+        </if>
+        <if test="tradeType != null and tradeType != '' ">
+            and trade_type = #{tradeType,jdbcType=VARCHAR}
+        </if>
+        <if test="bankType != null and bankType != '' ">
+            and bank_type = #{bankType,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+            and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="feeType != null and feeType != '' ">
+            and fee_type = #{feeType,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFee != null and cashFee != '' ">
+            and cash_fee = #{cashFee,jdbcType=VARCHAR}
+        </if>
+        <if test="cashFeeType != null and cashFeeType != '' ">
+            and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFee != null and couponFee != '' ">
+            and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+        </if>
+        <if test="couponCount != null and couponCount != '' ">
+            and coupon_count = #{couponCount,jdbcType=VARCHAR}
+        </if>
+        <if test="couponType != null and couponType != '' ">
+            and coupon_type = #{couponType,jdbcType=VARCHAR}
+        </if>
+        <if test="couponId != null and couponId != '' ">
+            and coupon_id = #{couponId,jdbcType=VARCHAR}
+        </if>
+        <if test="couponFeeOne != null and couponFeeOne != '' ">
+            and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+        </if>
+        <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+            and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+        </if>
+        <if test="outTradeNo != null and outTradeNo != '' ">
+            and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+        </if>
+        <if test="timeEnd != null and timeEnd != '' ">
+            and time_end = #{timeEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_pay_result_info
+        <set>
+            <if test="appid_new != null">
+                appid = #{appid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="mchId_new != null">
+                mch_id = #{mchId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="deviceInfo_new != null">
+                device_info = #{deviceInfo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="nonceStr_new != null">
+                nonce_str = #{nonceStr_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="sign_new != null">
+                sign = #{sign_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="signType_new != null">
+                sign_type = #{signType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="resultCode_new != null">
+                result_code = #{resultCode_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="errCode_new != null">
+                err_code = #{errCode_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="errCodeDes_new != null">
+                err_code_des = #{errCodeDes_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isSubscribe_new != null">
+                is_subscribe = #{isSubscribe_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="tradeType_new != null">
+                trade_type = #{tradeType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankType_new != null">
+                bank_type = #{bankType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalFee_new != null">
+                total_fee = #{totalFee_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="settlementTotalFee_new != null">
+                settlement_total_fee = #{settlementTotalFee_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="feeType_new != null">
+                fee_type = #{feeType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="cashFee_new != null">
+                cash_fee = #{cashFee_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="cashFeeType_new != null">
+                cash_fee_type = #{cashFeeType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponFee_new != null">
+                coupon_fee = #{couponFee_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponCount_new != null">
+                coupon_count = #{couponCount_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponType_new != null">
+                coupon_type = #{couponType_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponId_new != null">
+                coupon_id = #{couponId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="couponFeeOne_new != null">
+                coupon_fee_one = #{couponFeeOne_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="transactionIdtransactionId_new != null">
+                transaction_idtransaction_id = #{transactionIdtransactionId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="outTradeNo_new != null">
+                out_trade_no = #{outTradeNo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="timeEnd_new != null">
+                time_end = #{timeEnd_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="appid != null ">
+                and appid = #{appid,jdbcType=VARCHAR}
+            </if>
+            <if test="mchId != null ">
+                and mch_id = #{mchId,jdbcType=VARCHAR}
+            </if>
+            <if test="deviceInfo != null ">
+                and device_info = #{deviceInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="nonceStr != null ">
+                and nonce_str = #{nonceStr,jdbcType=VARCHAR}
+            </if>
+            <if test="sign != null ">
+                and sign = #{sign,jdbcType=VARCHAR}
+            </if>
+            <if test="signType != null ">
+                and sign_type = #{signType,jdbcType=VARCHAR}
+            </if>
+            <if test="resultCode != null ">
+                and result_code = #{resultCode,jdbcType=VARCHAR}
+            </if>
+            <if test="errCode != null ">
+                and err_code = #{errCode,jdbcType=VARCHAR}
+            </if>
+            <if test="errCodeDes != null ">
+                and err_code_des = #{errCodeDes,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="isSubscribe != null ">
+                and is_subscribe = #{isSubscribe,jdbcType=VARCHAR}
+            </if>
+            <if test="tradeType != null ">
+                and trade_type = #{tradeType,jdbcType=VARCHAR}
+            </if>
+            <if test="bankType != null ">
+                and bank_type = #{bankType,jdbcType=VARCHAR}
+            </if>
+            <if test="totalFee != null ">
+                and total_fee = #{totalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="settlementTotalFee != null ">
+                and settlement_total_fee = #{settlementTotalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="feeType != null ">
+                and fee_type = #{feeType,jdbcType=VARCHAR}
+            </if>
+            <if test="cashFee != null ">
+                and cash_fee = #{cashFee,jdbcType=VARCHAR}
+            </if>
+            <if test="cashFeeType != null ">
+                and cash_fee_type = #{cashFeeType,jdbcType=VARCHAR}
+            </if>
+            <if test="couponFee != null ">
+                and coupon_fee = #{couponFee,jdbcType=VARCHAR}
+            </if>
+            <if test="couponCount != null ">
+                and coupon_count = #{couponCount,jdbcType=VARCHAR}
+            </if>
+            <if test="couponType != null ">
+                and coupon_type = #{couponType,jdbcType=VARCHAR}
+            </if>
+            <if test="couponId != null ">
+                and coupon_id = #{couponId,jdbcType=VARCHAR}
+            </if>
+            <if test="couponFeeOne != null ">
+                and coupon_fee_one = #{couponFeeOne,jdbcType=VARCHAR}
+            </if>
+            <if test="transactionIdtransactionId != null ">
+                and transaction_idtransaction_id = #{transactionIdtransactionId,jdbcType=VARCHAR}
+            </if>
+            <if test="outTradeNo != null ">
+                and out_trade_no = #{outTradeNo,jdbcType=VARCHAR}
+            </if>
+            <if test="timeEnd != null ">
+                and time_end = #{timeEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="appid != null and appid != '' ">
+            and appid like CONCAT(#{appid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="mchId != null and mchId != '' ">
+            and mch_id like CONCAT(#{mchId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="deviceInfo != null and deviceInfo != '' ">
+            and device_info like CONCAT(#{deviceInfo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="nonceStr != null and nonceStr != '' ">
+            and nonce_str like CONCAT(#{nonceStr,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="sign != null and sign != '' ">
+            and sign like CONCAT(#{sign,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="signType != null and signType != '' ">
+            and sign_type like CONCAT(#{signType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="resultCode != null and resultCode != '' ">
+            and result_code like CONCAT(#{resultCode,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="errCode != null and errCode != '' ">
+            and err_code like CONCAT(#{errCode,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="errCodeDes != null and errCodeDes != '' ">
+            and err_code_des like CONCAT(#{errCodeDes,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isSubscribe != null and isSubscribe != '' ">
+            and is_subscribe like CONCAT(#{isSubscribe,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="tradeType != null and tradeType != '' ">
+            and trade_type like CONCAT(#{tradeType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bankType != null and bankType != '' ">
+            and bank_type like CONCAT(#{bankType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee like CONCAT(#{totalFee,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="settlementTotalFee != null and settlementTotalFee != '' ">
+            and settlement_total_fee like CONCAT(#{settlementTotalFee,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="feeType != null and feeType != '' ">
+            and fee_type like CONCAT(#{feeType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="cashFee != null and cashFee != '' ">
+            and cash_fee like CONCAT(#{cashFee,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="cashFeeType != null and cashFeeType != '' ">
+            and cash_fee_type like CONCAT(#{cashFeeType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="couponFee != null and couponFee != '' ">
+            and coupon_fee like CONCAT(#{couponFee,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="couponCount != null and couponCount != '' ">
+            and coupon_count like CONCAT(#{couponCount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="couponType != null and couponType != '' ">
+            and coupon_type like CONCAT(#{couponType,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="couponId != null and couponId != '' ">
+            and coupon_id like CONCAT(#{couponId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="couponFeeOne != null and couponFeeOne != '' ">
+            and coupon_fee_one like CONCAT(#{couponFeeOne,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="transactionIdtransactionId != null and transactionIdtransactionId != '' ">
+            and transaction_idtransaction_id like CONCAT(#{transactionIdtransactionId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="outTradeNo != null and outTradeNo != '' ">
+            and out_trade_no like CONCAT(#{outTradeNo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="timeEnd != null and timeEnd != '' ">
+            and time_end like CONCAT(#{timeEnd,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_pay_result_info (id,appid,mch_id,device_info,nonce_str,sign,sign_type,result_code,err_code,err_code_des,openid,is_subscribe,trade_type,bank_type,total_fee,settlement_total_fee,fee_type,cash_fee,cash_fee_type,coupon_fee,coupon_count,coupon_type,coupon_id,coupon_fee_one,transaction_idtransaction_id,out_trade_no,time_end,create_time,create_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.appid},#{item.mchId},#{item.deviceInfo},#{item.nonceStr},#{item.sign},#{item.signType},#{item.resultCode},#{item.errCode},#{item.errCodeDes},#{item.openid},#{item.isSubscribe},#{item.tradeType},#{item.bankType},#{item.totalFee},#{item.settlementTotalFee},#{item.feeType},#{item.cashFee},#{item.cashFeeType},#{item.couponFee},#{item.couponCount},#{item.couponType},#{item.couponId},#{item.couponFeeOne},#{item.transactionIdtransactionId},#{item.outTradeNo},#{item.timeEnd},#{item.createTime},#{item.createUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_pay_result_info
+            <set>
+                <if test="item.appid_new != null">
+                    appid = #{item.appid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.mchId_new != null">
+                    mch_id = #{item.mchId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.deviceInfo_new != null">
+                    device_info = #{item.deviceInfo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.nonceStr_new != null">
+                    nonce_str = #{item.nonceStr_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.sign_new != null">
+                    sign = #{item.sign_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.signType_new != null">
+                    sign_type = #{item.signType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.resultCode_new != null">
+                    result_code = #{item.resultCode_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.errCode_new != null">
+                    err_code = #{item.errCode_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.errCodeDes_new != null">
+                    err_code_des = #{item.errCodeDes_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isSubscribe_new != null">
+                    is_subscribe = #{item.isSubscribe_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.tradeType_new != null">
+                    trade_type = #{item.tradeType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.bankType_new != null">
+                    bank_type = #{item.bankType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.totalFee_new != null">
+                    total_fee = #{item.totalFee_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.settlementTotalFee_new != null">
+                    settlement_total_fee = #{item.settlementTotalFee_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.feeType_new != null">
+                    fee_type = #{item.feeType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.cashFee_new != null">
+                    cash_fee = #{item.cashFee_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.cashFeeType_new != null">
+                    cash_fee_type = #{item.cashFeeType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.couponFee_new != null">
+                    coupon_fee = #{item.couponFee_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.couponCount_new != null">
+                    coupon_count = #{item.couponCount_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.couponType_new != null">
+                    coupon_type = #{item.couponType_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.couponId_new != null">
+                    coupon_id = #{item.couponId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.couponFeeOne_new != null">
+                    coupon_fee_one = #{item.couponFeeOne_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.transactionIdtransactionId_new != null">
+                    transaction_idtransaction_id = #{item.transactionIdtransactionId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.outTradeNo_new != null">
+                    out_trade_no = #{item.outTradeNo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.timeEnd_new != null">
+                    time_end = #{item.timeEnd_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.appid != null ">
+                    and appid = #{item.appid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.mchId != null ">
+                    and mch_id = #{item.mchId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.deviceInfo != null ">
+                    and device_info = #{item.deviceInfo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.nonceStr != null ">
+                    and nonce_str = #{item.nonceStr,jdbcType=VARCHAR}
+                </if>
+                <if test="item.sign != null ">
+                    and sign = #{item.sign,jdbcType=VARCHAR}
+                </if>
+                <if test="item.signType != null ">
+                    and sign_type = #{item.signType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.resultCode != null ">
+                    and result_code = #{item.resultCode,jdbcType=VARCHAR}
+                </if>
+                <if test="item.errCode != null ">
+                    and err_code = #{item.errCode,jdbcType=VARCHAR}
+                </if>
+                <if test="item.errCodeDes != null ">
+                    and err_code_des = #{item.errCodeDes,jdbcType=VARCHAR}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isSubscribe != null ">
+                    and is_subscribe = #{item.isSubscribe,jdbcType=VARCHAR}
+                </if>
+                <if test="item.tradeType != null ">
+                    and trade_type = #{item.tradeType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.bankType != null ">
+                    and bank_type = #{item.bankType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.totalFee != null ">
+                    and total_fee = #{item.totalFee,jdbcType=VARCHAR}
+                </if>
+                <if test="item.settlementTotalFee != null ">
+                    and settlement_total_fee = #{item.settlementTotalFee,jdbcType=VARCHAR}
+                </if>
+                <if test="item.feeType != null ">
+                    and fee_type = #{item.feeType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.cashFee != null ">
+                    and cash_fee = #{item.cashFee,jdbcType=VARCHAR}
+                </if>
+                <if test="item.cashFeeType != null ">
+                    and cash_fee_type = #{item.cashFeeType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.couponFee != null ">
+                    and coupon_fee = #{item.couponFee,jdbcType=VARCHAR}
+                </if>
+                <if test="item.couponCount != null ">
+                    and coupon_count = #{item.couponCount,jdbcType=VARCHAR}
+                </if>
+                <if test="item.couponType != null ">
+                    and coupon_type = #{item.couponType,jdbcType=VARCHAR}
+                </if>
+                <if test="item.couponId != null ">
+                    and coupon_id = #{item.couponId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.couponFeeOne != null ">
+                    and coupon_fee_one = #{item.couponFeeOne,jdbcType=VARCHAR}
+                </if>
+                <if test="item.transactionIdtransactionId != null ">
+                    and transaction_idtransaction_id = #{item.transactionIdtransactionId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.outTradeNo != null ">
+                    and out_trade_no = #{item.outTradeNo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.timeEnd != null ">
+                    and time_end = #{item.timeEnd,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_pay_result_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

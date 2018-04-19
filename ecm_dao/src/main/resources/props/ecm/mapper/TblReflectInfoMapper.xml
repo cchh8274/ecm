@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblReflectInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblReflectInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="trans_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="wx_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="reflect_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="bank_card" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="bank_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="reflect_money" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_account" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_freeze" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="account_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblReflectInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="transNo != null and transNo != '' ">
+            and trans_no = #{transNo,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUser != null and wxUser != '' ">
+            and wx_user = #{wxUser,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectUser != null and reflectUser != '' ">
+            and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+        </if>
+        <if test="bankCard != null and bankCard != '' ">
+            and bank_card = #{bankCard,jdbcType=VARCHAR}
+        </if>
+        <if test="bankName != null and bankName != '' ">
+            and bank_name = #{bankName,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectMoney != null and reflectMoney != '' ">
+            and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isAccount != null and isAccount != '' ">
+            and is_account = #{isAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblReflectInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="transNo != null and transNo != '' ">
+            and trans_no = #{transNo,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUser != null and wxUser != '' ">
+            and wx_user = #{wxUser,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectUser != null and reflectUser != '' ">
+            and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+        </if>
+        <if test="bankCard != null and bankCard != '' ">
+            and bank_card = #{bankCard,jdbcType=VARCHAR}
+        </if>
+        <if test="bankName != null and bankName != '' ">
+            and bank_name = #{bankName,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectMoney != null and reflectMoney != '' ">
+            and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isAccount != null and isAccount != '' ">
+            and is_account = #{isAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblReflectInfo" >
+        insert into tbl_reflect_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="transNo != null ">
+                trans_no,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="wxUser != null ">
+                wx_user,
+            </if>
+            <if test="reflectUser != null ">
+                reflect_user,
+            </if>
+            <if test="bankCard != null ">
+                bank_card,
+            </if>
+            <if test="bankName != null ">
+                bank_name,
+            </if>
+            <if test="reflectMoney != null ">
+                reflect_money,
+            </if>
+            <if test="isAccount != null ">
+                is_account,
+            </if>
+            <if test="isFreeze != null ">
+                is_freeze,
+            </if>
+            <if test="accountTime != null ">
+                account_time,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="transNo != null ">
+                #{transNo,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="wxUser != null ">
+                #{wxUser,jdbcType=VARCHAR},
+            </if>
+            <if test="reflectUser != null ">
+                #{reflectUser,jdbcType=VARCHAR},
+            </if>
+            <if test="bankCard != null ">
+                #{bankCard,jdbcType=VARCHAR},
+            </if>
+            <if test="bankName != null ">
+                #{bankName,jdbcType=VARCHAR},
+            </if>
+            <if test="reflectMoney != null ">
+                #{reflectMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="isAccount != null ">
+                #{isAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="isFreeze != null ">
+                #{isFreeze,jdbcType=VARCHAR},
+            </if>
+            <if test="accountTime != null ">
+                #{accountTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblReflectInfo" >
+        update tbl_reflect_info
+        <set>
+            <if test="transNo != null">
+                trans_no = #{transNo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="wxUser != null">
+                wx_user = #{wxUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="reflectUser != null">
+                reflect_user = #{reflectUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankCard != null">
+                bank_card = #{bankCard,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankName != null">
+                bank_name = #{bankName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="reflectMoney != null">
+                reflect_money = #{reflectMoney,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isAccount != null">
+                is_account = #{isAccount,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isFreeze != null">
+                is_freeze = #{isFreeze,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountTime != null">
+                account_time = #{accountTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblReflectInfo" >
+        delete from tbl_reflect_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="transNo != null and transNo != '' ">
+                and trans_no = #{transNo,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="wxUser != null and wxUser != '' ">
+                and wx_user = #{wxUser,jdbcType=VARCHAR}
+            </if>
+            <if test="reflectUser != null and reflectUser != '' ">
+                and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+            </if>
+            <if test="bankCard != null and bankCard != '' ">
+                and bank_card = #{bankCard,jdbcType=VARCHAR}
+            </if>
+            <if test="bankName != null and bankName != '' ">
+                and bank_name = #{bankName,jdbcType=VARCHAR}
+            </if>
+            <if test="reflectMoney != null and reflectMoney != '' ">
+                and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="isAccount != null and isAccount != '' ">
+                and is_account = #{isAccount,jdbcType=VARCHAR}
+            </if>
+            <if test="isFreeze != null and isFreeze != '' ">
+                and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+            </if>
+            <if test="accountTime != null and accountTime != '' ">
+                and account_time = #{accountTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="transNo != null and transNo != '' ">
+            and trans_no = #{transNo,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUser != null and wxUser != '' ">
+            and wx_user = #{wxUser,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectUser != null and reflectUser != '' ">
+            and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+        </if>
+        <if test="bankCard != null and bankCard != '' ">
+            and bank_card = #{bankCard,jdbcType=VARCHAR}
+        </if>
+        <if test="bankName != null and bankName != '' ">
+            and bank_name = #{bankName,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectMoney != null and reflectMoney != '' ">
+            and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isAccount != null and isAccount != '' ">
+            and is_account = #{isAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="transNo != null and transNo != '' ">
+            and trans_no = #{transNo,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="wxUser != null and wxUser != '' ">
+            and wx_user = #{wxUser,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectUser != null and reflectUser != '' ">
+            and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+        </if>
+        <if test="bankCard != null and bankCard != '' ">
+            and bank_card = #{bankCard,jdbcType=VARCHAR}
+        </if>
+        <if test="bankName != null and bankName != '' ">
+            and bank_name = #{bankName,jdbcType=VARCHAR}
+        </if>
+        <if test="reflectMoney != null and reflectMoney != '' ">
+            and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isAccount != null and isAccount != '' ">
+            and is_account = #{isAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_reflect_info
+        <set>
+            <if test="transNo_new != null">
+                trans_no = #{transNo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="wxUser_new != null">
+                wx_user = #{wxUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="reflectUser_new != null">
+                reflect_user = #{reflectUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankCard_new != null">
+                bank_card = #{bankCard_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="bankName_new != null">
+                bank_name = #{bankName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="reflectMoney_new != null">
+                reflect_money = #{reflectMoney_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isAccount_new != null">
+                is_account = #{isAccount_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isFreeze_new != null">
+                is_freeze = #{isFreeze_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountTime_new != null">
+                account_time = #{accountTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="transNo != null ">
+                and trans_no = #{transNo,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="wxUser != null ">
+                and wx_user = #{wxUser,jdbcType=VARCHAR}
+            </if>
+            <if test="reflectUser != null ">
+                and reflect_user = #{reflectUser,jdbcType=VARCHAR}
+            </if>
+            <if test="bankCard != null ">
+                and bank_card = #{bankCard,jdbcType=VARCHAR}
+            </if>
+            <if test="bankName != null ">
+                and bank_name = #{bankName,jdbcType=VARCHAR}
+            </if>
+            <if test="reflectMoney != null ">
+                and reflect_money = #{reflectMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="isAccount != null ">
+                and is_account = #{isAccount,jdbcType=VARCHAR}
+            </if>
+            <if test="isFreeze != null ">
+                and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+            </if>
+            <if test="accountTime != null ">
+                and account_time = #{accountTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="transNo != null and transNo != '' ">
+            and trans_no like CONCAT(#{transNo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="wxUser != null and wxUser != '' ">
+            and wx_user like CONCAT(#{wxUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="reflectUser != null and reflectUser != '' ">
+            and reflect_user like CONCAT(#{reflectUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bankCard != null and bankCard != '' ">
+            and bank_card like CONCAT(#{bankCard,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bankName != null and bankName != '' ">
+            and bank_name like CONCAT(#{bankName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="reflectMoney != null and reflectMoney != '' ">
+            and reflect_money like CONCAT(#{reflectMoney,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isAccount != null and isAccount != '' ">
+            and is_account like CONCAT(#{isAccount,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze like CONCAT(#{isFreeze,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time like CONCAT(#{accountTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_reflect_info (id,trans_no,openid,wx_user,reflect_user,bank_card,bank_name,reflect_money,is_account,is_freeze,account_time,create_time,create_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.transNo},#{item.openid},#{item.wxUser},#{item.reflectUser},#{item.bankCard},#{item.bankName},#{item.reflectMoney},#{item.isAccount},#{item.isFreeze},#{item.accountTime},#{item.createTime},#{item.createUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_reflect_info
+            <set>
+                <if test="item.transNo_new != null">
+                    trans_no = #{item.transNo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.wxUser_new != null">
+                    wx_user = #{item.wxUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.reflectUser_new != null">
+                    reflect_user = #{item.reflectUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.bankCard_new != null">
+                    bank_card = #{item.bankCard_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.bankName_new != null">
+                    bank_name = #{item.bankName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.reflectMoney_new != null">
+                    reflect_money = #{item.reflectMoney_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isAccount_new != null">
+                    is_account = #{item.isAccount_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isFreeze_new != null">
+                    is_freeze = #{item.isFreeze_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.accountTime_new != null">
+                    account_time = #{item.accountTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.transNo != null ">
+                    and trans_no = #{item.transNo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.wxUser != null ">
+                    and wx_user = #{item.wxUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.reflectUser != null ">
+                    and reflect_user = #{item.reflectUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.bankCard != null ">
+                    and bank_card = #{item.bankCard,jdbcType=VARCHAR}
+                </if>
+                <if test="item.bankName != null ">
+                    and bank_name = #{item.bankName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.reflectMoney != null ">
+                    and reflect_money = #{item.reflectMoney,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isAccount != null ">
+                    and is_account = #{item.isAccount,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isFreeze != null ">
+                    and is_freeze = #{item.isFreeze,jdbcType=VARCHAR}
+                </if>
+                <if test="item.accountTime != null ">
+                    and account_time = #{item.accountTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_reflect_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblOrderInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblOrderInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="body" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="detail" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="number" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="total_fee" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="spbill_create_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="pay_start_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="pay_end_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="goods_tag" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="pay_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="pay_status" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="maniche_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="maniche_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="area_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="unversity_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="university_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,order_no,body,detail,number,price,total_fee,spbill_create_ip,pay_start_time,pay_end_time,goods_tag,openid,user_name,pay_time,pay_status,maniche_id,maniche_name,area_name,area_id,unversity_name,university_id,create_time,create_user,update_time,update_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblOrderInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="orderNo != null and orderNo != '' ">
+            and order_no = #{orderNo,jdbcType=VARCHAR}
+        </if>
+        <if test="body != null and body != '' ">
+            and body = #{body,jdbcType=VARCHAR}
+        </if>
+        <if test="detail != null and detail != '' ">
+            and detail = #{detail,jdbcType=VARCHAR}
+        </if>
+        <if test="number != null and number != '' ">
+            and number = #{number,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+            and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+        </if>
+        <if test="payStartTime != null and payStartTime != '' ">
+            and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payEndTime != null and payEndTime != '' ">
+            and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="goodsTag != null and goodsTag != '' ">
+            and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="payTime != null and payTime != '' ">
+            and pay_time = #{payTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payStatus != null and payStatus != '' ">
+            and pay_status = #{payStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="universityId != null and universityId != '' ">
+            and university_id = #{universityId,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblOrderInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="orderNo != null and orderNo != '' ">
+            and order_no = #{orderNo,jdbcType=VARCHAR}
+        </if>
+        <if test="body != null and body != '' ">
+            and body = #{body,jdbcType=VARCHAR}
+        </if>
+        <if test="detail != null and detail != '' ">
+            and detail = #{detail,jdbcType=VARCHAR}
+        </if>
+        <if test="number != null and number != '' ">
+            and number = #{number,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+            and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+        </if>
+        <if test="payStartTime != null and payStartTime != '' ">
+            and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payEndTime != null and payEndTime != '' ">
+            and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="goodsTag != null and goodsTag != '' ">
+            and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="payTime != null and payTime != '' ">
+            and pay_time = #{payTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payStatus != null and payStatus != '' ">
+            and pay_status = #{payStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="universityId != null and universityId != '' ">
+            and university_id = #{universityId,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblOrderInfo" >
+        insert into tbl_order_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="orderNo != null ">
+                order_no,
+            </if>
+            <if test="body != null ">
+                body,
+            </if>
+            <if test="detail != null ">
+                detail,
+            </if>
+            <if test="number != null ">
+                number,
+            </if>
+            <if test="price != null ">
+                price,
+            </if>
+            <if test="totalFee != null ">
+                total_fee,
+            </if>
+            <if test="spbillCreateIp != null ">
+                spbill_create_ip,
+            </if>
+            <if test="payStartTime != null ">
+                pay_start_time,
+            </if>
+            <if test="payEndTime != null ">
+                pay_end_time,
+            </if>
+            <if test="goodsTag != null ">
+                goods_tag,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="userName != null ">
+                user_name,
+            </if>
+            <if test="payTime != null ">
+                pay_time,
+            </if>
+            <if test="payStatus != null ">
+                pay_status,
+            </if>
+            <if test="manicheId != null ">
+                maniche_id,
+            </if>
+            <if test="manicheName != null ">
+                maniche_name,
+            </if>
+            <if test="areaName != null ">
+                area_name,
+            </if>
+            <if test="areaId != null ">
+                area_id,
+            </if>
+            <if test="unversityName != null ">
+                unversity_name,
+            </if>
+            <if test="universityId != null ">
+                university_id,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="updateTime != null ">
+                update_time,
+            </if>
+            <if test="updateUser != null ">
+                update_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="orderNo != null ">
+                #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="body != null ">
+                #{body,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null ">
+                #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null ">
+                #{number,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null ">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null ">
+                #{totalFee,jdbcType=VARCHAR},
+            </if>
+            <if test="spbillCreateIp != null ">
+                #{spbillCreateIp,jdbcType=VARCHAR},
+            </if>
+            <if test="payStartTime != null ">
+                #{payStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="payEndTime != null ">
+                #{payEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsTag != null ">
+                #{goodsTag,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null ">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="payTime != null ">
+                #{payTime,jdbcType=VARCHAR},
+            </if>
+            <if test="payStatus != null ">
+                #{payStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="manicheId != null ">
+                #{manicheId,jdbcType=VARCHAR},
+            </if>
+            <if test="manicheName != null ">
+                #{manicheName,jdbcType=VARCHAR},
+            </if>
+            <if test="areaName != null ">
+                #{areaName,jdbcType=VARCHAR},
+            </if>
+            <if test="areaId != null ">
+                #{areaId,jdbcType=VARCHAR},
+            </if>
+            <if test="unversityName != null ">
+                #{unversityName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityId != null ">
+                #{universityId,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null ">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null ">
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblOrderInfo" >
+        update tbl_order_info
+        <set>
+            <if test="orderNo != null">
+                order_no = #{orderNo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="body != null">
+                body = #{body,jdbcType=VARCHAR} ,
+            </if>
+            <if test="detail != null">
+                detail = #{detail,jdbcType=VARCHAR} ,
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee,jdbcType=VARCHAR} ,
+            </if>
+            <if test="spbillCreateIp != null">
+                spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payStartTime != null">
+                pay_start_time = #{payStartTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payEndTime != null">
+                pay_end_time = #{payEndTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="goodsTag != null">
+                goods_tag = #{goodsTag,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payStatus != null">
+                pay_status = #{payStatus,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheId != null">
+                maniche_id = #{manicheId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheName != null">
+                maniche_name = #{manicheName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaName != null">
+                area_name = #{areaName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaId != null">
+                area_id = #{areaId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityName != null">
+                unversity_name = #{unversityName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="universityId != null">
+                university_id = #{universityId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblOrderInfo" >
+        delete from tbl_order_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="orderNo != null and orderNo != '' ">
+                and order_no = #{orderNo,jdbcType=VARCHAR}
+            </if>
+            <if test="body != null and body != '' ">
+                and body = #{body,jdbcType=VARCHAR}
+            </if>
+            <if test="detail != null and detail != '' ">
+                and detail = #{detail,jdbcType=VARCHAR}
+            </if>
+            <if test="number != null and number != '' ">
+                and number = #{number,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null and price != '' ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="totalFee != null and totalFee != '' ">
+                and total_fee = #{totalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+                and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+            </if>
+            <if test="payStartTime != null and payStartTime != '' ">
+                and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+            </if>
+            <if test="payEndTime != null and payEndTime != '' ">
+                and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsTag != null and goodsTag != '' ">
+                and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="userName != null and userName != '' ">
+                and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="payTime != null and payTime != '' ">
+                and pay_time = #{payTime,jdbcType=VARCHAR}
+            </if>
+            <if test="payStatus != null and payStatus != '' ">
+                and pay_status = #{payStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheId != null and manicheId != '' ">
+                and maniche_id = #{manicheId,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheName != null and manicheName != '' ">
+                and maniche_name = #{manicheName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaName != null and areaName != '' ">
+                and area_name = #{areaName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null and areaId != '' ">
+                and area_id = #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityName != null and unversityName != '' ">
+                and unversity_name = #{unversityName,jdbcType=VARCHAR}
+            </if>
+            <if test="universityId != null and universityId != '' ">
+                and university_id = #{universityId,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != '' ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null and updateUser != '' ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="orderNo != null and orderNo != '' ">
+            and order_no = #{orderNo,jdbcType=VARCHAR}
+        </if>
+        <if test="body != null and body != '' ">
+            and body = #{body,jdbcType=VARCHAR}
+        </if>
+        <if test="detail != null and detail != '' ">
+            and detail = #{detail,jdbcType=VARCHAR}
+        </if>
+        <if test="number != null and number != '' ">
+            and number = #{number,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+            and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+        </if>
+        <if test="payStartTime != null and payStartTime != '' ">
+            and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payEndTime != null and payEndTime != '' ">
+            and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="goodsTag != null and goodsTag != '' ">
+            and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="payTime != null and payTime != '' ">
+            and pay_time = #{payTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payStatus != null and payStatus != '' ">
+            and pay_status = #{payStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="universityId != null and universityId != '' ">
+            and university_id = #{universityId,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="orderNo != null and orderNo != '' ">
+            and order_no = #{orderNo,jdbcType=VARCHAR}
+        </if>
+        <if test="body != null and body != '' ">
+            and body = #{body,jdbcType=VARCHAR}
+        </if>
+        <if test="detail != null and detail != '' ">
+            and detail = #{detail,jdbcType=VARCHAR}
+        </if>
+        <if test="number != null and number != '' ">
+            and number = #{number,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee = #{totalFee,jdbcType=VARCHAR}
+        </if>
+        <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+            and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+        </if>
+        <if test="payStartTime != null and payStartTime != '' ">
+            and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payEndTime != null and payEndTime != '' ">
+            and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+        </if>
+        <if test="goodsTag != null and goodsTag != '' ">
+            and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="payTime != null and payTime != '' ">
+            and pay_time = #{payTime,jdbcType=VARCHAR}
+        </if>
+        <if test="payStatus != null and payStatus != '' ">
+            and pay_status = #{payStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id = #{manicheId,jdbcType=VARCHAR}
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name = #{manicheName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name = #{unversityName,jdbcType=VARCHAR}
+        </if>
+        <if test="universityId != null and universityId != '' ">
+            and university_id = #{universityId,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_order_info
+        <set>
+            <if test="orderNo_new != null">
+                order_no = #{orderNo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="body_new != null">
+                body = #{body_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="detail_new != null">
+                detail = #{detail_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="number_new != null">
+                number = #{number_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price_new != null">
+                price = #{price_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalFee_new != null">
+                total_fee = #{totalFee_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="spbillCreateIp_new != null">
+                spbill_create_ip = #{spbillCreateIp_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payStartTime_new != null">
+                pay_start_time = #{payStartTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payEndTime_new != null">
+                pay_end_time = #{payEndTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="goodsTag_new != null">
+                goods_tag = #{goodsTag_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="userName_new != null">
+                user_name = #{userName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payTime_new != null">
+                pay_time = #{payTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="payStatus_new != null">
+                pay_status = #{payStatus_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheId_new != null">
+                maniche_id = #{manicheId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="manicheName_new != null">
+                maniche_name = #{manicheName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaName_new != null">
+                area_name = #{areaName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaId_new != null">
+                area_id = #{areaId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="unversityName_new != null">
+                unversity_name = #{unversityName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="universityId_new != null">
+                university_id = #{universityId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime_new != null">
+                update_time = #{updateTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser_new != null">
+                update_user = #{updateUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="orderNo != null ">
+                and order_no = #{orderNo,jdbcType=VARCHAR}
+            </if>
+            <if test="body != null ">
+                and body = #{body,jdbcType=VARCHAR}
+            </if>
+            <if test="detail != null ">
+                and detail = #{detail,jdbcType=VARCHAR}
+            </if>
+            <if test="number != null ">
+                and number = #{number,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="totalFee != null ">
+                and total_fee = #{totalFee,jdbcType=VARCHAR}
+            </if>
+            <if test="spbillCreateIp != null ">
+                and spbill_create_ip = #{spbillCreateIp,jdbcType=VARCHAR}
+            </if>
+            <if test="payStartTime != null ">
+                and pay_start_time = #{payStartTime,jdbcType=VARCHAR}
+            </if>
+            <if test="payEndTime != null ">
+                and pay_end_time = #{payEndTime,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsTag != null ">
+                and goods_tag = #{goodsTag,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="userName != null ">
+                and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="payTime != null ">
+                and pay_time = #{payTime,jdbcType=VARCHAR}
+            </if>
+            <if test="payStatus != null ">
+                and pay_status = #{payStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheId != null ">
+                and maniche_id = #{manicheId,jdbcType=VARCHAR}
+            </if>
+            <if test="manicheName != null ">
+                and maniche_name = #{manicheName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaName != null ">
+                and area_name = #{areaName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null ">
+                and area_id = #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="unversityName != null ">
+                and unversity_name = #{unversityName,jdbcType=VARCHAR}
+            </if>
+            <if test="universityId != null ">
+                and university_id = #{universityId,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="orderNo != null and orderNo != '' ">
+            and order_no like CONCAT(#{orderNo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="body != null and body != '' ">
+            and body like CONCAT(#{body,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="detail != null and detail != '' ">
+            and detail like CONCAT(#{detail,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="number != null and number != '' ">
+            and number like CONCAT(#{number,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="price != null and price != '' ">
+            and price like CONCAT(#{price,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="totalFee != null and totalFee != '' ">
+            and total_fee like CONCAT(#{totalFee,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="spbillCreateIp != null and spbillCreateIp != '' ">
+            and spbill_create_ip like CONCAT(#{spbillCreateIp,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="payStartTime != null and payStartTime != '' ">
+            and pay_start_time like CONCAT(#{payStartTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="payEndTime != null and payEndTime != '' ">
+            and pay_end_time like CONCAT(#{payEndTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="goodsTag != null and goodsTag != '' ">
+            and goods_tag like CONCAT(#{goodsTag,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name like CONCAT(#{userName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="payTime != null and payTime != '' ">
+            and pay_time like CONCAT(#{payTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="payStatus != null and payStatus != '' ">
+            and pay_status like CONCAT(#{payStatus,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="manicheId != null and manicheId != '' ">
+            and maniche_id like CONCAT(#{manicheId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="manicheName != null and manicheName != '' ">
+            and maniche_name like CONCAT(#{manicheName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name like CONCAT(#{areaName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id like CONCAT(#{areaId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="unversityName != null and unversityName != '' ">
+            and unversity_name like CONCAT(#{unversityName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="universityId != null and universityId != '' ">
+            and university_id like CONCAT(#{universityId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time like CONCAT(#{updateTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user like CONCAT(#{updateUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_order_info (id,order_no,body,detail,number,price,total_fee,spbill_create_ip,pay_start_time,pay_end_time,goods_tag,openid,user_name,pay_time,pay_status,maniche_id,maniche_name,area_name,area_id,unversity_name,university_id,create_time,create_user,update_time,update_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.orderNo},#{item.body},#{item.detail},#{item.number},#{item.price},#{item.totalFee},#{item.spbillCreateIp},#{item.payStartTime},#{item.payEndTime},#{item.goodsTag},#{item.openid},#{item.userName},#{item.payTime},#{item.payStatus},#{item.manicheId},#{item.manicheName},#{item.areaName},#{item.areaId},#{item.unversityName},#{item.universityId},#{item.createTime},#{item.createUser},#{item.updateTime},#{item.updateUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_order_info
+            <set>
+                <if test="item.orderNo_new != null">
+                    order_no = #{item.orderNo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.body_new != null">
+                    body = #{item.body_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.detail_new != null">
+                    detail = #{item.detail_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.number_new != null">
+                    number = #{item.number_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.price_new != null">
+                    price = #{item.price_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.totalFee_new != null">
+                    total_fee = #{item.totalFee_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.spbillCreateIp_new != null">
+                    spbill_create_ip = #{item.spbillCreateIp_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.payStartTime_new != null">
+                    pay_start_time = #{item.payStartTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.payEndTime_new != null">
+                    pay_end_time = #{item.payEndTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.goodsTag_new != null">
+                    goods_tag = #{item.goodsTag_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.userName_new != null">
+                    user_name = #{item.userName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.payTime_new != null">
+                    pay_time = #{item.payTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.payStatus_new != null">
+                    pay_status = #{item.payStatus_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.manicheId_new != null">
+                    maniche_id = #{item.manicheId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.manicheName_new != null">
+                    maniche_name = #{item.manicheName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.areaName_new != null">
+                    area_name = #{item.areaName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.areaId_new != null">
+                    area_id = #{item.areaId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.unversityName_new != null">
+                    unversity_name = #{item.unversityName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.universityId_new != null">
+                    university_id = #{item.universityId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateTime_new != null">
+                    update_time = #{item.updateTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateUser_new != null">
+                    update_user = #{item.updateUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.orderNo != null ">
+                    and order_no = #{item.orderNo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.body != null ">
+                    and body = #{item.body,jdbcType=VARCHAR}
+                </if>
+                <if test="item.detail != null ">
+                    and detail = #{item.detail,jdbcType=VARCHAR}
+                </if>
+                <if test="item.number != null ">
+                    and number = #{item.number,jdbcType=VARCHAR}
+                </if>
+                <if test="item.price != null ">
+                    and price = #{item.price,jdbcType=VARCHAR}
+                </if>
+                <if test="item.totalFee != null ">
+                    and total_fee = #{item.totalFee,jdbcType=VARCHAR}
+                </if>
+                <if test="item.spbillCreateIp != null ">
+                    and spbill_create_ip = #{item.spbillCreateIp,jdbcType=VARCHAR}
+                </if>
+                <if test="item.payStartTime != null ">
+                    and pay_start_time = #{item.payStartTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.payEndTime != null ">
+                    and pay_end_time = #{item.payEndTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.goodsTag != null ">
+                    and goods_tag = #{item.goodsTag,jdbcType=VARCHAR}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.userName != null ">
+                    and user_name = #{item.userName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.payTime != null ">
+                    and pay_time = #{item.payTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.payStatus != null ">
+                    and pay_status = #{item.payStatus,jdbcType=VARCHAR}
+                </if>
+                <if test="item.manicheId != null ">
+                    and maniche_id = #{item.manicheId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.manicheName != null ">
+                    and maniche_name = #{item.manicheName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.areaName != null ">
+                    and area_name = #{item.areaName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.areaId != null ">
+                    and area_id = #{item.areaId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.unversityName != null ">
+                    and unversity_name = #{item.unversityName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.universityId != null ">
+                    and university_id = #{item.universityId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateTime != null ">
+                    and update_time = #{item.updateTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateUser != null ">
+                    and update_user = #{item.updateUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_order_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

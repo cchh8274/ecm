@@ -157,6 +157,9 @@
         <profile>
             <!-- 开发环境配置 -->
             <id>dev</id>
+            <activation>
+            	<activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <env>dev</env>
                 <!--

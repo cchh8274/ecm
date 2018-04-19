@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblAmountInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblAmountInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="openid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="account_money" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_start" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="account_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="account_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_freeze" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,user_name,openid,account_money,is_start,account_id,account_time,create_time,create_user,is_freeze
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblAmountInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="accountMoney != null and accountMoney != '' ">
+            and account_money = #{accountMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isStart != null and isStart != '' ">
+            and is_start = #{isStart,jdbcType=VARCHAR}
+        </if>
+        <if test="accountId != null and accountId != '' ">
+            and account_id = #{accountId,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblAmountInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="accountMoney != null and accountMoney != '' ">
+            and account_money = #{accountMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isStart != null and isStart != '' ">
+            and is_start = #{isStart,jdbcType=VARCHAR}
+        </if>
+        <if test="accountId != null and accountId != '' ">
+            and account_id = #{accountId,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblAmountInfo" >
+        insert into tbl_amount_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="userName != null ">
+                user_name,
+            </if>
+            <if test="openid != null ">
+                openid,
+            </if>
+            <if test="accountMoney != null ">
+                account_money,
+            </if>
+            <if test="isStart != null ">
+                is_start,
+            </if>
+            <if test="accountId != null ">
+                account_id,
+            </if>
+            <if test="accountTime != null ">
+                account_time,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="isFreeze != null ">
+                is_freeze,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="userName != null ">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="openid != null ">
+                #{openid,jdbcType=VARCHAR},
+            </if>
+            <if test="accountMoney != null ">
+                #{accountMoney,jdbcType=VARCHAR},
+            </if>
+            <if test="isStart != null ">
+                #{isStart,jdbcType=VARCHAR},
+            </if>
+            <if test="accountId != null ">
+                #{accountId,jdbcType=VARCHAR},
+            </if>
+            <if test="accountTime != null ">
+                #{accountTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isFreeze != null ">
+                #{isFreeze,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblAmountInfo" >
+        update tbl_amount_info
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid != null">
+                openid = #{openid,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountMoney != null">
+                account_money = #{accountMoney,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isStart != null">
+                is_start = #{isStart,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountId != null">
+                account_id = #{accountId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountTime != null">
+                account_time = #{accountTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isFreeze != null">
+                is_freeze = #{isFreeze,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblAmountInfo" >
+        delete from tbl_amount_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="userName != null and userName != '' ">
+                and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null and openid != '' ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="accountMoney != null and accountMoney != '' ">
+                and account_money = #{accountMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="isStart != null and isStart != '' ">
+                and is_start = #{isStart,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null and accountId != '' ">
+                and account_id = #{accountId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountTime != null and accountTime != '' ">
+                and account_time = #{accountTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="isFreeze != null and isFreeze != '' ">
+                and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="accountMoney != null and accountMoney != '' ">
+            and account_money = #{accountMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isStart != null and isStart != '' ">
+            and is_start = #{isStart,jdbcType=VARCHAR}
+        </if>
+        <if test="accountId != null and accountId != '' ">
+            and account_id = #{accountId,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name = #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="accountMoney != null and accountMoney != '' ">
+            and account_money = #{accountMoney,jdbcType=VARCHAR}
+        </if>
+        <if test="isStart != null and isStart != '' ">
+            and is_start = #{isStart,jdbcType=VARCHAR}
+        </if>
+        <if test="accountId != null and accountId != '' ">
+            and account_id = #{accountId,jdbcType=VARCHAR}
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time = #{accountTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_amount_info
+        <set>
+            <if test="userName_new != null">
+                user_name = #{userName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="openid_new != null">
+                openid = #{openid_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountMoney_new != null">
+                account_money = #{accountMoney_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isStart_new != null">
+                is_start = #{isStart_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountId_new != null">
+                account_id = #{accountId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="accountTime_new != null">
+                account_time = #{accountTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isFreeze_new != null">
+                is_freeze = #{isFreeze_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="userName != null ">
+                and user_name = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="openid != null ">
+                and openid = #{openid,jdbcType=VARCHAR}
+            </if>
+            <if test="accountMoney != null ">
+                and account_money = #{accountMoney,jdbcType=VARCHAR}
+            </if>
+            <if test="isStart != null ">
+                and is_start = #{isStart,jdbcType=VARCHAR}
+            </if>
+            <if test="accountId != null ">
+                and account_id = #{accountId,jdbcType=VARCHAR}
+            </if>
+            <if test="accountTime != null ">
+                and account_time = #{accountTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="isFreeze != null ">
+                and is_freeze = #{isFreeze,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="userName != null and userName != '' ">
+            and user_name like CONCAT(#{userName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="openid != null and openid != '' ">
+            and openid like CONCAT(#{openid,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="accountMoney != null and accountMoney != '' ">
+            and account_money like CONCAT(#{accountMoney,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isStart != null and isStart != '' ">
+            and is_start like CONCAT(#{isStart,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="accountId != null and accountId != '' ">
+            and account_id like CONCAT(#{accountId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="accountTime != null and accountTime != '' ">
+            and account_time like CONCAT(#{accountTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isFreeze != null and isFreeze != '' ">
+            and is_freeze like CONCAT(#{isFreeze,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_amount_info (id,user_name,openid,account_money,is_start,account_id,account_time,create_time,create_user,is_freeze) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.userName},#{item.openid},#{item.accountMoney},#{item.isStart},#{item.accountId},#{item.accountTime},#{item.createTime},#{item.createUser},#{item.isFreeze}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_amount_info
+            <set>
+                <if test="item.userName_new != null">
+                    user_name = #{item.userName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.openid_new != null">
+                    openid = #{item.openid_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.accountMoney_new != null">
+                    account_money = #{item.accountMoney_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isStart_new != null">
+                    is_start = #{item.isStart_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.accountId_new != null">
+                    account_id = #{item.accountId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.accountTime_new != null">
+                    account_time = #{item.accountTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isFreeze_new != null">
+                    is_freeze = #{item.isFreeze_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.userName != null ">
+                    and user_name = #{item.userName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.openid != null ">
+                    and openid = #{item.openid,jdbcType=VARCHAR}
+                </if>
+                <if test="item.accountMoney != null ">
+                    and account_money = #{item.accountMoney,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isStart != null ">
+                    and is_start = #{item.isStart,jdbcType=VARCHAR}
+                </if>
+                <if test="item.accountId != null ">
+                    and account_id = #{item.accountId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.accountTime != null ">
+                    and account_time = #{item.accountTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isFreeze != null ">
+                    and is_freeze = #{item.isFreeze,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_amount_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

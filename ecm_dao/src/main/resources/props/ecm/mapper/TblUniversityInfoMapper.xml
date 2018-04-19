@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblUniversityInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblUniversityInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="univer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="area_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="area_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="location" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="up_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="up_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,univer_name,area_name,area_id,location,create_time,create_user,up_time,up_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblUniversityInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="univerName != null and univerName != '' ">
+            and univer_name = #{univerName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="location != null and location != '' ">
+            and location = #{location,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=VARCHAR}
+        </if>
+        <if test="upUser != null and upUser != '' ">
+            and up_user = #{upUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblUniversityInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="univerName != null and univerName != '' ">
+            and univer_name = #{univerName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="location != null and location != '' ">
+            and location = #{location,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=VARCHAR}
+        </if>
+        <if test="upUser != null and upUser != '' ">
+            and up_user = #{upUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblUniversityInfo" >
+        insert into tbl_university_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="univerName != null ">
+                univer_name,
+            </if>
+            <if test="areaName != null ">
+                area_name,
+            </if>
+            <if test="areaId != null ">
+                area_id,
+            </if>
+            <if test="location != null ">
+                location,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="upTime != null ">
+                up_time,
+            </if>
+            <if test="upUser != null ">
+                up_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="univerName != null ">
+                #{univerName,jdbcType=VARCHAR},
+            </if>
+            <if test="areaName != null ">
+                #{areaName,jdbcType=VARCHAR},
+            </if>
+            <if test="areaId != null ">
+                #{areaId,jdbcType=VARCHAR},
+            </if>
+            <if test="location != null ">
+                #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="upTime != null ">
+                #{upTime,jdbcType=VARCHAR},
+            </if>
+            <if test="upUser != null ">
+                #{upUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblUniversityInfo" >
+        update tbl_university_info
+        <set>
+            <if test="univerName != null">
+                univer_name = #{univerName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaName != null">
+                area_name = #{areaName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaId != null">
+                area_id = #{areaId,jdbcType=VARCHAR} ,
+            </if>
+            <if test="location != null">
+                location = #{location,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="upTime != null">
+                up_time = #{upTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="upUser != null">
+                up_user = #{upUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblUniversityInfo" >
+        delete from tbl_university_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="univerName != null and univerName != '' ">
+                and univer_name = #{univerName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaName != null and areaName != '' ">
+                and area_name = #{areaName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null and areaId != '' ">
+                and area_id = #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="location != null and location != '' ">
+                and location = #{location,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="upTime != null and upTime != '' ">
+                and up_time = #{upTime,jdbcType=VARCHAR}
+            </if>
+            <if test="upUser != null and upUser != '' ">
+                and up_user = #{upUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="univerName != null and univerName != '' ">
+            and univer_name = #{univerName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="location != null and location != '' ">
+            and location = #{location,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=VARCHAR}
+        </if>
+        <if test="upUser != null and upUser != '' ">
+            and up_user = #{upUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="univerName != null and univerName != '' ">
+            and univer_name = #{univerName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name = #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id = #{areaId,jdbcType=VARCHAR}
+        </if>
+        <if test="location != null and location != '' ">
+            and location = #{location,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=VARCHAR}
+        </if>
+        <if test="upUser != null and upUser != '' ">
+            and up_user = #{upUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_university_info
+        <set>
+            <if test="univerName_new != null">
+                univer_name = #{univerName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaName_new != null">
+                area_name = #{areaName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="areaId_new != null">
+                area_id = #{areaId_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="location_new != null">
+                location = #{location_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="upTime_new != null">
+                up_time = #{upTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="upUser_new != null">
+                up_user = #{upUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="univerName != null ">
+                and univer_name = #{univerName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaName != null ">
+                and area_name = #{areaName,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null ">
+                and area_id = #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="location != null ">
+                and location = #{location,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="upTime != null ">
+                and up_time = #{upTime,jdbcType=VARCHAR}
+            </if>
+            <if test="upUser != null ">
+                and up_user = #{upUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="univerName != null and univerName != '' ">
+            and univer_name like CONCAT(#{univerName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="areaName != null and areaName != '' ">
+            and area_name like CONCAT(#{areaName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="areaId != null and areaId != '' ">
+            and area_id like CONCAT(#{areaId,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="location != null and location != '' ">
+            and location like CONCAT(#{location,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time like CONCAT(#{upTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="upUser != null and upUser != '' ">
+            and up_user like CONCAT(#{upUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_university_info (id,univer_name,area_name,area_id,location,create_time,create_user,up_time,up_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.univerName},#{item.areaName},#{item.areaId},#{item.location},#{item.createTime},#{item.createUser},#{item.upTime},#{item.upUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_university_info
+            <set>
+                <if test="item.univerName_new != null">
+                    univer_name = #{item.univerName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.areaName_new != null">
+                    area_name = #{item.areaName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.areaId_new != null">
+                    area_id = #{item.areaId_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.location_new != null">
+                    location = #{item.location_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.upTime_new != null">
+                    up_time = #{item.upTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.upUser_new != null">
+                    up_user = #{item.upUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.univerName != null ">
+                    and univer_name = #{item.univerName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.areaName != null ">
+                    and area_name = #{item.areaName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.areaId != null ">
+                    and area_id = #{item.areaId,jdbcType=VARCHAR}
+                </if>
+                <if test="item.location != null ">
+                    and location = #{item.location,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.upTime != null ">
+                    and up_time = #{item.upTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.upUser != null ">
+                    and up_user = #{item.upUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_university_info
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

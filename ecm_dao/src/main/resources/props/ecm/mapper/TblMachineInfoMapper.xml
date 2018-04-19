@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.ecm.dao.TblMachineInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.ecm.entity.TblMachineInfo">
+        <constructor>
+            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <idArg column="machine_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="adress" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_use" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="price" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="total_places" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="left_place" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="out_sale_place" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,machine_name,adress,is_use,price,total_places,left_place,out_sale_place,create_time,create_user,update_time,update_user
+    </sql>
+    <select id="select" parameterType="cn.kanmars.ecm.entity.TblMachineInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="machineName != null and machineName != '' ">
+            and machine_name = #{machineName,jdbcType=VARCHAR}
+        </if>
+        <if test="adress != null and adress != '' ">
+            and adress = #{adress,jdbcType=VARCHAR}
+        </if>
+        <if test="isUse != null and isUse != '' ">
+            and is_use = #{isUse,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalPlaces != null and totalPlaces != '' ">
+            and total_places = #{totalPlaces,jdbcType=VARCHAR}
+        </if>
+        <if test="leftPlace != null and leftPlace != '' ">
+            and left_place = #{leftPlace,jdbcType=VARCHAR}
+        </if>
+        <if test="outSalePlace != null and outSalePlace != '' ">
+            and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.ecm.entity.TblMachineInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="machineName != null and machineName != '' ">
+            and machine_name = #{machineName,jdbcType=VARCHAR}
+        </if>
+        <if test="adress != null and adress != '' ">
+            and adress = #{adress,jdbcType=VARCHAR}
+        </if>
+        <if test="isUse != null and isUse != '' ">
+            and is_use = #{isUse,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalPlaces != null and totalPlaces != '' ">
+            and total_places = #{totalPlaces,jdbcType=VARCHAR}
+        </if>
+        <if test="leftPlace != null and leftPlace != '' ">
+            and left_place = #{leftPlace,jdbcType=VARCHAR}
+        </if>
+        <if test="outSalePlace != null and outSalePlace != '' ">
+            and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.ecm.entity.TblMachineInfo" >
+        insert into tbl_machine_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="machineName != null ">
+                machine_name,
+            </if>
+            <if test="adress != null ">
+                adress,
+            </if>
+            <if test="isUse != null ">
+                is_use,
+            </if>
+            <if test="price != null ">
+                price,
+            </if>
+            <if test="totalPlaces != null ">
+                total_places,
+            </if>
+            <if test="leftPlace != null ">
+                left_place,
+            </if>
+            <if test="outSalePlace != null ">
+                out_sale_place,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createUser != null ">
+                create_user,
+            </if>
+            <if test="updateTime != null ">
+                update_time,
+            </if>
+            <if test="updateUser != null ">
+                update_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="machineName != null ">
+                #{machineName,jdbcType=VARCHAR},
+            </if>
+            <if test="adress != null ">
+                #{adress,jdbcType=VARCHAR},
+            </if>
+            <if test="isUse != null ">
+                #{isUse,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null ">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="totalPlaces != null ">
+                #{totalPlaces,jdbcType=VARCHAR},
+            </if>
+            <if test="leftPlace != null ">
+                #{leftPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="outSalePlace != null ">
+                #{outSalePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null ">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null ">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null ">
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.ecm.entity.TblMachineInfo" >
+        update tbl_machine_info
+        <set>
+            <if test="adress != null">
+                adress = #{adress,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isUse != null">
+                is_use = #{isUse,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalPlaces != null">
+                total_places = #{totalPlaces,jdbcType=VARCHAR} ,
+            </if>
+            <if test="leftPlace != null">
+                left_place = #{leftPlace,jdbcType=VARCHAR} ,
+            </if>
+            <if test="outSalePlace != null">
+                out_sale_place = #{outSalePlace,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser != null">
+                update_user = #{updateUser,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=VARCHAR}
+            and machine_name = #{machineName,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.ecm.entity.TblMachineInfo" >
+        delete from tbl_machine_info
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="machineName != null and machineName != '' ">
+                and machine_name = #{machineName,jdbcType=VARCHAR}
+            </if>
+            <if test="adress != null and adress != '' ">
+                and adress = #{adress,jdbcType=VARCHAR}
+            </if>
+            <if test="isUse != null and isUse != '' ">
+                and is_use = #{isUse,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null and price != '' ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="totalPlaces != null and totalPlaces != '' ">
+                and total_places = #{totalPlaces,jdbcType=VARCHAR}
+            </if>
+            <if test="leftPlace != null and leftPlace != '' ">
+                and left_place = #{leftPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="outSalePlace != null and outSalePlace != '' ">
+                and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null and createUser != '' ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != '' ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null and updateUser != '' ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="machineName != null and machineName != '' ">
+            and machine_name = #{machineName,jdbcType=VARCHAR}
+        </if>
+        <if test="adress != null and adress != '' ">
+            and adress = #{adress,jdbcType=VARCHAR}
+        </if>
+        <if test="isUse != null and isUse != '' ">
+            and is_use = #{isUse,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalPlaces != null and totalPlaces != '' ">
+            and total_places = #{totalPlaces,jdbcType=VARCHAR}
+        </if>
+        <if test="leftPlace != null and leftPlace != '' ">
+            and left_place = #{leftPlace,jdbcType=VARCHAR}
+        </if>
+        <if test="outSalePlace != null and outSalePlace != '' ">
+            and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="machineName != null and machineName != '' ">
+            and machine_name = #{machineName,jdbcType=VARCHAR}
+        </if>
+        <if test="adress != null and adress != '' ">
+            and adress = #{adress,jdbcType=VARCHAR}
+        </if>
+        <if test="isUse != null and isUse != '' ">
+            and is_use = #{isUse,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null and price != '' ">
+            and price = #{price,jdbcType=VARCHAR}
+        </if>
+        <if test="totalPlaces != null and totalPlaces != '' ">
+            and total_places = #{totalPlaces,jdbcType=VARCHAR}
+        </if>
+        <if test="leftPlace != null and leftPlace != '' ">
+            and left_place = #{leftPlace,jdbcType=VARCHAR}
+        </if>
+        <if test="outSalePlace != null and outSalePlace != '' ">
+            and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user = #{createUser,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=VARCHAR}
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user = #{updateUser,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_machine_info
+        <set>
+            <if test="adress_new != null">
+                adress = #{adress_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="isUse_new != null">
+                is_use = #{isUse_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="price_new != null">
+                price = #{price_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="totalPlaces_new != null">
+                total_places = #{totalPlaces_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="leftPlace_new != null">
+                left_place = #{leftPlace_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="outSalePlace_new != null">
+                out_sale_place = #{outSalePlace_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createUser_new != null">
+                create_user = #{createUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime_new != null">
+                update_time = #{updateTime_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateUser_new != null">
+                update_user = #{updateUser_new,jdbcType=VARCHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="machineName != null ">
+                and machine_name = #{machineName,jdbcType=VARCHAR}
+            </if>
+            <if test="adress != null ">
+                and adress = #{adress,jdbcType=VARCHAR}
+            </if>
+            <if test="isUse != null ">
+                and is_use = #{isUse,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null ">
+                and price = #{price,jdbcType=VARCHAR}
+            </if>
+            <if test="totalPlaces != null ">
+                and total_places = #{totalPlaces,jdbcType=VARCHAR}
+            </if>
+            <if test="leftPlace != null ">
+                and left_place = #{leftPlace,jdbcType=VARCHAR}
+            </if>
+            <if test="outSalePlace != null ">
+                and out_sale_place = #{outSalePlace,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=VARCHAR}
+            </if>
+            <if test="createUser != null ">
+                and create_user = #{createUser,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null ">
+                and update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser != null ">
+                and update_user = #{updateUser,jdbcType=VARCHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id like CONCAT(#{id,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="machineName != null and machineName != '' ">
+            and machine_name like CONCAT(#{machineName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="adress != null and adress != '' ">
+            and adress like CONCAT(#{adress,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="isUse != null and isUse != '' ">
+            and is_use like CONCAT(#{isUse,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="price != null and price != '' ">
+            and price like CONCAT(#{price,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="totalPlaces != null and totalPlaces != '' ">
+            and total_places like CONCAT(#{totalPlaces,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="leftPlace != null and leftPlace != '' ">
+            and left_place like CONCAT(#{leftPlace,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="outSalePlace != null and outSalePlace != '' ">
+            and out_sale_place like CONCAT(#{outSalePlace,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time like CONCAT(#{createTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createUser != null and createUser != '' ">
+            and create_user like CONCAT(#{createUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time like CONCAT(#{updateTime,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateUser != null and updateUser != '' ">
+            and update_user like CONCAT(#{updateUser,jdbcType=VARCHAR},'%')
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_machine_info (id,machine_name,adress,is_use,price,total_places,left_place,out_sale_place,create_time,create_user,update_time,update_user) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.machineName},#{item.adress},#{item.isUse},#{item.price},#{item.totalPlaces},#{item.leftPlace},#{item.outSalePlace},#{item.createTime},#{item.createUser},#{item.updateTime},#{item.updateUser}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_machine_info
+            <set>
+                <if test="item.adress_new != null">
+                    adress = #{item.adress_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.isUse_new != null">
+                    is_use = #{item.isUse_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.price_new != null">
+                    price = #{item.price_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.totalPlaces_new != null">
+                    total_places = #{item.totalPlaces_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.leftPlace_new != null">
+                    left_place = #{item.leftPlace_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.outSalePlace_new != null">
+                    out_sale_place = #{item.outSalePlace_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createUser_new != null">
+                    create_user = #{item.createUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateTime_new != null">
+                    update_time = #{item.updateTime_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateUser_new != null">
+                    update_user = #{item.updateUser_new,jdbcType=VARCHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=VARCHAR}
+                </if>
+                <if test="item.machineName != null ">
+                    and machine_name = #{item.machineName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.adress != null ">
+                    and adress = #{item.adress,jdbcType=VARCHAR}
+                </if>
+                <if test="item.isUse != null ">
+                    and is_use = #{item.isUse,jdbcType=VARCHAR}
+                </if>
+                <if test="item.price != null ">
+                    and price = #{item.price,jdbcType=VARCHAR}
+                </if>
+                <if test="item.totalPlaces != null ">
+                    and total_places = #{item.totalPlaces,jdbcType=VARCHAR}
+                </if>
+                <if test="item.leftPlace != null ">
+                    and left_place = #{item.leftPlace,jdbcType=VARCHAR}
+                </if>
+                <if test="item.outSalePlace != null ">
+                    and out_sale_place = #{item.outSalePlace,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createUser != null ">
+                    and create_user = #{item.createUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateTime != null ">
+                    and update_time = #{item.updateTime,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateUser != null ">
+                    and update_user = #{item.updateUser,jdbcType=VARCHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_machine_info
+        where 1=1
+        and id = #{0}
+        and machine_name = #{1}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+
